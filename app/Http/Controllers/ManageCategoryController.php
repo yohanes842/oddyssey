@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class ManageCategoryController extends Controller
 {
     public function index(){
-        $categories = Category::orderBy('categoryName')->get();
+        $categories = Category::orderBy('category_name')->paginate(6);
         return view('manage-categories')->with('categories', $categories);
     }
 }
