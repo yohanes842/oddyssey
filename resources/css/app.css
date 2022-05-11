@@ -1,0 +1,31 @@
+@tailwind base;
+
+@layer base {
+    h1 {
+        @apply text-xl font-normal;
+    }
+    h2 {
+        @apply text-lg;
+    }
+    h3 {
+        @apply text-sm;
+    }
+}
+
+@tailwind components;
+
+@layer components {
+    .active {
+        @apply border-b-4 border-[#c7ccf7] font-semibold;
+    }
+}
+
+@tailwind utilities;
+
+@layer utilities {
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+}
