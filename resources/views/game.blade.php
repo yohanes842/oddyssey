@@ -45,17 +45,17 @@
             >
                 <img
                     class="carousel-image-card w-[27vw] h-full"
-                    src="{{ asset('assets/apex1.jpg') }}"
+                    src="{{ asset('assets/Apex Legend-img/apex1.jpg') }}"
                     alt=""
                 />
                 <img
                     class="carousel-image-card w-[27vw] h-full"
-                    src="{{ asset('assets/apex2.jpg') }}"
+                    src="{{ asset('assets/Apex Legend-img/apex2.jpg') }}"
                     alt=""
                 />
                 <img
                     class="carousel-image-card w-[27vw] h-full"
-                    src="{{ asset('assets/apex3.jpg') }}"
+                    src="{{ asset('assets/Apex Legend-img/apex3.jpg') }}"
                     alt=""
                 />
                 <img

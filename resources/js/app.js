@@ -1,6 +1,7 @@
-const { first } = require("lodash");
-
 require("./bootstrap");
+
+import $ from "jquery";
+window.$ = window.jQuery = $;
 
 //Notification
 const notification = $(".notification");

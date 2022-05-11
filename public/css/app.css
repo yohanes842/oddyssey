@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css2?family=Poppins:ital@0;1&display=swap);
 /*
 ! tailwindcss v3.0.24 | MIT License | https://tailwindcss.com
 *//*
@@ -724,10 +725,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: fit-content;
 }
 
-.w-24 {
-  width: 6rem;
-}
-
 .w-1\/5 {
   width: 20%;
 }
@@ -746,6 +743,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .w-\[32\%\] {
   width: 32%;
+}
+
+.w-24 {
+  width: 6rem;
 }
 
 .w-32 {
@@ -1002,12 +1003,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding: 0.25rem;
 }
 
-.p-2 {
-  padding: 0.5rem;
-}
-
 .p-4 {
   padding: 1rem;
+}
+
+.p-2 {
+  padding: 0.5rem;
 }
 
 .px-\[10\%\] {
@@ -1040,6 +1041,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-right: 0.5rem;
 }
 
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
 .px-\[15\%\] {
   padding-left: 15%;
   padding-right: 15%;
@@ -1048,11 +1054,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
-}
-
-.py-2 {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
 }
 
 .px-\[20\%\] {
@@ -1137,10 +1138,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .font-medium {
   font-weight: 500;
-}
-
-.font-normal {
-  font-weight: 400;
 }
 
 .uppercase {
