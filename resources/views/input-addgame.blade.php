@@ -4,6 +4,7 @@
 
 @section('form')
 <form action="" method="post">
+    @csrf
     <h2 class="font-semibold text-[#374151] text-center mb-5">Add Game</h2>
     <div class="form-container flex flex-col gap-3 mb-2">
         <div class="form-field flex flex-col">
@@ -33,7 +34,7 @@
                 <input
                     class="w-full h-[2.5rem] p-1 shadow-sm border-2 border-gray rounded-md ring-[#c7ccf7] hover:ring-1 focus:outline-none focus:ring-2"
                     type="number"
-                    name=""
+                    name="price"
                     id=""
                     placeholder="Price"
                 />
@@ -61,7 +62,7 @@
 
         <textarea
             class="w-full p-3 rounded-md border-gray-300 border-2 ring-[#c7ccf7] hover:ring-1 focus:outline-none focus:ring-2"
-            name="review-commend"
+            name="description"
             id=""
             cols="30"
             rows="7"

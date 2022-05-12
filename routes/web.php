@@ -7,7 +7,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ManageCategoryController;
 use App\Http\Controllers\ManageGameController;
 use App\Http\Controllers\AddCategoryController;
-
+use App\Http\Controllers\AddGameController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -64,3 +64,7 @@ Route::get('/admin/manage/games/addcategory', function () {
 Route::get('/admin/manage/games/addcategory', [AddCategoryController::class, 'index']);
 
 Route::post('/admin/manage/games/addcategory', [AddCategoryController::class, 'store']);
+
+Route::get('/admin/manage/games/addgame', [AddGameController::class, 'index']);
+
+Route::post('/admin/manage/games/addgame', [AddGameController::class, 'store']);

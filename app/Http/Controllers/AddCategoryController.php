@@ -34,7 +34,9 @@ class AddCategoryController extends Controller
         $newCategory->updated_at = now();
         $newCategory->save();
 
-        return "uda ke save";
-        
+        return redirect()
+            ->back()
+            ->with('add_success', 'Category "'.$request->category_name.'" has successfully been added!');
+       
     }
 }
