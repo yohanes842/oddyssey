@@ -5,8 +5,7 @@
 @section('content')
     <h2>Your Cart</h2>
     <div class="cart-box p-3 m-2 bg-white rounded-md">
-
-        <div class="items-container flex flex-col gap-2">
+        <div class="items-container flex flex-col gap-2 ">
             @for($i = 0 ; $i < 3 ; $i++)
                 <div class="items-box mb-3 flex justify-between items-center rounded-md">
                     <div class="left-content flex gap-5">

@@ -30,14 +30,23 @@ class RegisterController extends Controller
                 ->withErrors($validation);
         }
 
-        User::create([
-            'name' => $request->name,
-            'user_type' => 'member',
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'create_at' => now(),
-            'updated_at' => now(),
-        ]);
+        // User::create([
+        //     'name' => $request->name,
+        //     'user_type' => 'member',
+        //     'email' => $request->email,
+        //     'password' => Hash::make($request->password),
+        //     'create_at' => now(),
+        //     'updated_at' => now(),
+        // ]);
+        $newUser = new User();
+        $newUser->name = $request->name;
+        $newUser->user_type = 'member';
+        $newUser->email = $request->email;
+        $newUser->password = Hash::make($request->password);
+        $newUser->created_at = now();
+        $newUser->uploaded_at = now();
+        $newUser->save();    
+        
 
         return redirect('/login')->with('register_success', '<b>Registration successful!</b> Please login to your account!');
     }

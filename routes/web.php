@@ -6,6 +6,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ManageCategoryController;
 use App\Http\Controllers\ManageGameController;
+use App\Http\Controllers\AddCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,3 +60,7 @@ Route::get('/admin/manage/games/addgame', function () {
 Route::get('/admin/manage/games/addcategory', function () {
     return view('input-addcat');
 });
+
+Route::get('/admin/manage/games/addcategory', [AddCategoryController::class, 'index']);
+
+Route::post('/admin/manage/games/addcategory', [AddCategoryController::class, 'store']);

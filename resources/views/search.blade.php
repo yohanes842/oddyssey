@@ -13,7 +13,7 @@
             </div>
             <div class="card-content flex flex-col gap-1 p-3">
                 <h3 class="card-gameTitle">{{ $game->title }}</h3>
-                <p class="card-description text-gray-400 text-sm text-justify leading-4">{{ $game->description}}</p>
+                <p class="card-description text-gray-400 text-sm text-justify leading-4">{{ substr($game->description,0 ,20).'...'}}</p>
                 <h3 class="card-price text-right">{{ ($game->price) ?  'IDR '.number_format($game->price) : 'FREE' }}</h3>
             </div>
         </div>
