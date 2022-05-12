@@ -2,8 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\ManageCategoryController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SearchController;
+use App\Http\Controllers\ManageCategoryController;
 use App\Http\Controllers\ManageGameController;
 
 /*
@@ -37,9 +38,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 });
 
-Route::get('/search', function () {
-    return view('search');
-}); 
+Route::get('/search', [SearchController::class, 'index']); 
 
 Route::get('/cart', function () {
     return view('cart');
