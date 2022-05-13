@@ -5,7 +5,7 @@
 @section('content')
 <div class="w-full flex flex-col items-center">
     <div class="m-5 hover:scale-105">
-        <a class="p-3 bg-[#374151] text-white text-sm rounded-md font-medium cursor-pointer hover:scale-105 hover:bg-[#475161]" href="/admin/manage/games/addgame">ADD NEW GAME</a>
+        <a class="p-3 bg-[#374151] text-white text-sm rounded-md font-medium cursor-pointer hover:scale-105 hover:bg-[#475161]" href="/admin/manage-games/addgame">ADD NEW GAME</a>
     </div>
     <div class="games-list pr-2 w-[85%] flex flex-col gap-2 text-sm">
         @if($games->isEmpty())
@@ -14,7 +14,7 @@
             @foreach($games as $game)
                 <div class="game-box flex justify-between items-center rounded-md bg-white shadow">
                     <div class="game-left flex">
-                        <img class="h-20" src="{{  asset('assets/apex.jpg') }}" alt="">
+                        <img class="h-20" src="{{  asset('assets/'.$game->image_path.'/') }} " alt="">
                         <div class="game-description mx-3 flex flex-col justify-center">
                             <h2 class="font-medium">{{ $game->title }}</h2>
                             <h3 class="text-gray-500 text-xs">{{ $game->category->category_name }}</h3>

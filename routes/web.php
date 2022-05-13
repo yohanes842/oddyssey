@@ -8,6 +8,8 @@ use App\Http\Controllers\ManageCategoryController;
 use App\Http\Controllers\ManageGameController;
 use App\Http\Controllers\AddCategoryController;
 use App\Http\Controllers\AddGameController;
+use App\Http\Controllers\GameController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -45,26 +47,20 @@ Route::get('/cart', function () {
     return view('cart');
 });
 
-Route::get('/game', function () {
-    return view('game');
-});
+// Route::get('/game', function () {
+//     return view('game');
+// });
 
-Route::get('/admin/manage/games', [ManageGameController::class, 'index']);
+Route::get('/game/{slug}', [GameController::class, 'index']);
 
-Route::get('/admin/manage/categories', [ManageCategoryController::class, 'index']);
+Route::get('/admin/manage-games', [ManageGameController::class, 'index']);
 
-Route::get('/admin/manage/games/addgame', function () {
-    return view('input-addgame');
-});
+Route::get('/admin/manage-categories', [ManageCategoryController::class, 'index']);
 
-Route::get('/admin/manage/games/addcategory', function () {
-    return view('input-addcat');
-});
+Route::get('/admin/manage-categories/addcategory', [AddCategoryController::class, 'index']);
 
-Route::get('/admin/manage/games/addcategory', [AddCategoryController::class, 'index']);
+Route::post('/admin/manage-categories/addcategory', [AddCategoryController::class, 'store']);
 
-Route::post('/admin/manage/games/addcategory', [AddCategoryController::class, 'store']);
+Route::get('/admin/manage-games/addgame', [AddGameController::class, 'index']);
 
-Route::get('/admin/manage/games/addgame', [AddGameController::class, 'index']);
-
-Route::post('/admin/manage/games/addgame', [AddGameController::class, 'store']);
+Route::post('/admin/manage-games/addgame', [AddGameController::class, 'store']);

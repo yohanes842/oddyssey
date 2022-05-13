@@ -16,9 +16,10 @@ class CreateGamesTable extends Migration
         Schema::create('games', function (Blueprint $table) {
             $table->id();
             $table->string('title')->unique();
+            $table->string('slug');
             $table->longText('description');
             $table->integer('price');
-            $table->string('image');
+            $table->string('image_path');
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories');
             $table->timestamps();

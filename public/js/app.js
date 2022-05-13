@@ -2084,7 +2084,7 @@ close_notification.on("click", function () {
 }); //Carousel
 
 var slideBox = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#image-carousel");
-slideBox.css("left", "-27vw");
+slideBox.css("left", "-30vw");
 var leftArrow = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#arrowLeft");
 var rightArrow = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#arrowRight");
 
@@ -2099,7 +2099,7 @@ function moveLeft() {
   setTimeout(function () {
     last.prependTo(slideBox);
     slideBox.animate({
-      left: "-27vw"
+      left: "-30vw"
     }, 0);
     leftArrow.on("click", moveLeft);
     rightArrow.on("click", moveRight);
@@ -2112,12 +2112,12 @@ function moveRight() {
   var first = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".carousel-image-card").first();
   var current = first.next();
   slideBox.animate({
-    left: "-54vw"
+    left: "-60vw"
   }, 1000, "linear");
   setTimeout(function () {
     first.appendTo(slideBox);
     slideBox.animate({
-      left: "-27vw"
+      left: "-30vw"
     }, 0);
     leftArrow.on("click", moveLeft);
     rightArrow.on("click", moveRight);

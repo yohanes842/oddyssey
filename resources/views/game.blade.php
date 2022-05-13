@@ -3,25 +3,22 @@
 <div class="flex flex-col items-center gap-5 px-[15%]">
     <div class="content-1 flex justify-between">
         <div
-            class="game-description w-[43%] flex flex-col gap-2 bg-white rounded-b-md shadow"
+            class="game-description w-[37%] flex flex-col gap-2 bg-white rounded-b-md shadow"
         >
             <div class="game-description-image">
                 <img
                     class="w-full"
-                    src="{{ asset('assets/apex.jpg') }}"
+                    src="{{ asset('assets/'.$vargame->image_path.'thumb.jpg') }}"
                     alt=""
                 />
             </div>
             <div class="game-description-text p-2 pb-4 flex flex-col gap-2">
-                <h1 class="font-medium">Elden Ring</h1>
+                <h1 class="font-medium">{{ $vargame->title }}</h1>
                 <p class="text-gray-500 text-xs w-full">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Maiores aperiam, tenetur qui necessitatibus quod tempore
-                    voluptates unde nam libero dolor laborum error recusandae in
-                    cupiditate. Aperiam ipsa odit aspernatur optio.
+                    {{ $vargame->description }}
                 </p>
                 <div class="game-description-price flex flex-col gap-2">
-                    <p class="text-lg font-semibold">IDR 599.000</p>
+                    <p class="text-lg font-semibold">{{ ($vargame->price) ?  'IDR '.number_format($vargame->price) : 'FREE' }}</p>
                     <button
                         class="p-2 w-[30%] rounded-lg text-sm font-medium text-white bg-[#374151] hover:bg-[#475161]"
                     >
@@ -31,7 +28,7 @@
             </div>
         </div>
         <div
-            class="image-carousel w-[27vw] rounded-sm flex items-center bg-black text-[#374151] overflow-hidden relative"
+            class="image-carousel w-[30vw] rounded-sm flex items-center bg-black text-[#374151] overflow-hidden relative"
         >
             <button
                 class="z-10 m-3 bg-white h-fit w-fit rounded-sm drop-shadow-xl flex items-center absolute left-0 ease-in-out duration-600 ring-[#979cb7] hover:ring-2 hover:scale-110 hover:bg-gray-100"
@@ -44,23 +41,18 @@
                 id="image-carousel"
             >
                 <img
-                    class="carousel-image-card w-[27vw] h-full"
-                    src="{{ asset('assets/Apex Legend-img/apex1.jpg') }}"
+                    class="carousel-image-card w-[30vw] h-full"
+                    src="{{ asset('assets/'.$vargame->image_path.'slide1.jpg') }}"
                     alt=""
                 />
                 <img
-                    class="carousel-image-card w-[27vw] h-full"
-                    src="{{ asset('assets/Apex Legend-img/apex2.jpg') }}"
+                    class="carousel-image-card w-[30vw] h-full"
+                    src="{{ asset('assets/'.$vargame->image_path.'slide2.jpg') }}"
                     alt=""
                 />
                 <img
-                    class="carousel-image-card w-[27vw] h-full"
-                    src="{{ asset('assets/Apex Legend-img/apex3.jpg') }}"
-                    alt=""
-                />
-                <img
-                    class="carousel-image-card w-[27vw] h-full"
-                    src="{{ asset('assets/apex.jpg') }}"
+                    class="carousel-image-card w-[30vw] h-full"
+                    src="{{ asset('assets/'.$vargame->image_path.'slide3.jpg') }}"
                     alt=""
                 />
             </div>
@@ -78,11 +70,11 @@
     >
         <div class="game-genre">
             <h3 class="text-xs text-gray-500">Genre</h3>
-            <h2 class="font-semibold">Action RPG</h2>
+            <h2 class="font-semibold">{{ $vargame->category->category_name }}</h2>
         </div>
         <div class="game-releasedate">
             <h3 class="text-xs text-gray-500">Release Date</h3>
-            <h2 class="font-semibold">12 Apr,2022</h2>
+            <h2 class="font-semibold">{{ $vargame->created_at->format('d M, Y') }}</h2>
         </div>
         <div class="game-review-summary">
             <h3 class="text-xs text-gray-500">All Reviews</h3>
@@ -92,21 +84,21 @@
     </div>
     <div class="content-morelike w-full">
         <h3 class="font-medium text-gray-500">More Like This</h3>
-        <div class="morelike-container flex justify-between gap-5">
-            @for($i=0;$i<3;$i++)
+        <div class="morelike-container flex justify-between gap-3">
+            @foreach($morelikethis as $game)
             <div class="morelike-box">
                 <div class="morelike-image">
                     <img
                         class="w-full"
-                        src="{{ asset('assets/apex.jpg') }}"
+                        src="{{ asset('assets/'.$game->image_path.'thumb.jpg') }}"
                         alt=""
                     />
                 </div>
                 <div class="morelike-price w-full font-medium text-right">
-                    IDR 329.000
+                    {{  ($vargame->price) ?  'IDR '.number_format($vargame->price) : 'FREE'  }}
                 </div>
             </div>
-            @endfor
+            @endforeach
         </div>
     </div>
     <div
@@ -145,45 +137,35 @@
         </form>
     </div>
     <div class="content-reviews w-full flex gap-[2%] flex-wrap">
-        @for($i=0;$i<5;$i++)
-        <div
-            class="review-box w-[32%] p-3 mb-5 bg-white rounded-md shadow flex flex-col gap-3"
-        >
-            <div class="review-user font-semibold">Abenbby</div>
-            <div class="review-type flex items-center gap-2">
-                <span
-                    class="material-symbols-rounded p-1 text-green-400 rounded-[50%] bg-green-100"
-                >
-                    thumb_up
-                </span>
-                <span> Recommended</span>
+        @foreach($reviews as $review)
+            <div
+                class="review-box w-[32%] p-3 mb-5 bg-white rounded-md shadow flex flex-col gap-3"
+            >
+                <div class="review-user font-semibold">{{ $review->user->name }}</div>
+                @if($review->review_type == 'recommended')
+                    <div class="review-type flex items-center gap-2">
+                        <span
+                            class="material-symbols-rounded p-1 text-green-400 rounded-[50%] bg-green-100"
+                        >
+                            thumb_up
+                        </span>
+                        <span> Recommended</span>
+                    </div>
+                @else
+                    <div class="review-type flex items-center gap-2">
+                        <span
+                            class="material-symbols-rounded p-1 text-red-400 rounded-[50%] bg-red-100"
+                        >
+                            thumb_down
+                        </span>
+                        <span> Recommended</span>
+                    </div>
+                @endif
+                <div class="review-post">
+                    {{ $review->description }}
+                </div>
             </div>
-            <div class="review-post">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore
-                vitae, minima nisi inventore porro sed facilis ab deserunt aut
-                ea, iste nobis omnis eum unde dicta ipsum itaque, voluptatum
-                recusandae!
-            </div>
-        </div>
-        @endfor @for($i=0;$i<3;$i++)
-        <div
-            class="review-box w-[32%] p-3 mb-5 bg-white rounded-md shadow flex flex-col gap-3"
-        >
-            <div class="review-user font-semibold">Abenbby</div>
-            <div class="review-type flex items-center gap-2">
-                <span
-                    class="material-symbols-rounded p-1 text-red-400 rounded-[50%] bg-red-100"
-                >
-                    thumb_down
-                </span>
-                <span> Recommended</span>
-            </div>
-            <div class="review-post">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore
-                vitae, minima nisi inventore porro sed facilis ab
-            </div>
-        </div>
-        @endfor
+        @endforeach
     </div>
 </div>
 @endsection

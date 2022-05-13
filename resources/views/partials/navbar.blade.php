@@ -23,14 +23,14 @@
                 <span class="material-symbols-rounded"> expand_more </span>
 
                 <div
-                    class="admin-dropdown z-10 w-[13rem] text-md py-3 bg-white rounded-b-lg x-10 divide-y divide-gray-400 shadow hidden absolute top-[60px] group-hover:block"
+                    class="admin-dropdown z-20 w-[13rem] text-md py-3 bg-white rounded-b-lg x-10 divide-y divide-gray-400 shadow hidden absolute top-[60px] group-hover:block"
                 >
                     <ul class="divide-y divide-gray-400">
                         <li class="p-2 hover:bg-[#c7ccf7] hover:bg-opacity-40 hover:text-[#374151] ease-in-out duration-300 hover:text-[1.1rem]">
-                            <a href="/admin/manage/games">Manage Games</a>
+                            <a href="/admin/manage-games">Manage Games</a>
                         </li>
                         <li class="p-2 hover:bg-[#c7ccf7] hover:bg-opacity-40 hover:text-[#374151] ease-in-out duration-300 hover:text-[1.1rem]">
-                            <a href="/admin/manage/categories">Manage Categories</a>
+                            <a href="/admin/manage-categories">Manage Categories</a>
                         </li>
                     </ul>
                 </div>
@@ -45,7 +45,7 @@
                 <span class="material-symbols-rounded"> expand_more </span>
 
                 <div
-                    class="account-dropdown z-10 w-[9rem] text-md py-3 bg-white rounded-b-lg shadow hidden absolute top-[60px] group-hover:block"
+                    class="account-dropdown z-20 w-[9rem] text-md py-3 bg-white rounded-b-lg shadow hidden absolute top-[60px] group-hover:block"
                 >
                     <ul class="divide-y divide-gray-400">
                         <li class="p-2 hover:bg-[#c7ccf7] hover:bg-opacity-40 hover:text-[#374151] ease-in-out duration-300 text-red-500 hover:text-[1.1rem] hover:text-red-600">

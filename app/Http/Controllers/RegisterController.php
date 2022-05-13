@@ -44,7 +44,7 @@ class RegisterController extends Controller
         $newUser->email = $request->email;
         $newUser->password = Hash::make($request->password);
         $newUser->created_at = now();
-        $newUser->uploaded_at = now();
+        $newUser->updated_at = now();
         $newUser->save();    
         
 

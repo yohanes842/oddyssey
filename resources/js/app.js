@@ -20,7 +20,7 @@ close_notification.on("click", () => {
 
 //Carousel
 const slideBox = $("#image-carousel");
-slideBox.css("left", "-27vw");
+slideBox.css("left", "-30vw");
 
 const leftArrow = $("#arrowLeft");
 const rightArrow = $("#arrowRight");
@@ -35,7 +35,7 @@ function moveLeft() {
     slideBox.animate({ left: "0vw" }, 1000, "linear");
     setTimeout(() => {
         last.prependTo(slideBox);
-        slideBox.animate({ left: "-27vw" }, 0);
+        slideBox.animate({ left: "-30vw" }, 0);
         leftArrow.on("click", moveLeft);
         rightArrow.on("click", moveRight);
     }, 1000);
@@ -48,10 +48,10 @@ function moveRight() {
     const first = $(".carousel-image-card").first();
     const current = first.next();
 
-    slideBox.animate({ left: "-54vw" }, 1000, "linear");
+    slideBox.animate({ left: "-60vw" }, 1000, "linear");
     setTimeout(() => {
         first.appendTo(slideBox);
-        slideBox.animate({ left: "-27vw" }, 0);
+        slideBox.animate({ left: "-30vw" }, 0);
         leftArrow.on("click", moveLeft);
         rightArrow.on("click", moveRight);
     }, 1000);

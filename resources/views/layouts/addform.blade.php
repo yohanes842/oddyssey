@@ -11,8 +11,8 @@
         <link href="/css/app.css" rel="stylesheet" />
         <title>@yield('title')</title>
     </head>
-    <body class="bg-[#f3f4f6] w-screen h-screen overflow-hidden body-font font-poppins">
-        <div class="card bg-white m-auto mt-20 p-5 shadow-md w-[50vw] h-fit text-gray-500 text-sm">
+    <body class="bg-[#f3f4f6] w-screen p-20 body-font font-poppins">
+        <div class="card bg-white m-auto p-5 shadow-md w-[50vw] h-fit text-gray-500 text-sm">
             @yield('form')
         </div>
         <div class="notification-container">
