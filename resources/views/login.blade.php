@@ -3,7 +3,7 @@
 @section('title', 'Oddyssey | Login') 
 
 @section('form')
-    <form action="/login" method="post">
+    <form action="{{ route("login") }}" method="post">
         @csrf
         <div class="form-container flex flex-col mb-2">
             <div class="form-field flex flex-col mb-2">
@@ -34,7 +34,7 @@
             </div>
         </div>
         <div class="submit flex flex-col items-center gap-[1rem] mt-[1rem]">
-            <a class="underline hover:text-[#979cc7]" href="/register"
+            <a class="underline hover:text-[#979cc7]" href="{{ route("register") }}"
                 >Don't have an account? Register now!</a
             >
             <input

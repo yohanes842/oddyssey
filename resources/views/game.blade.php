@@ -20,7 +20,7 @@
                 <div class="game-description-price flex flex-col gap-2">
                     <p class="text-lg font-semibold">{{ ($vargame->price) ?  'IDR '.number_format($vargame->price) : 'FREE' }}</p>
                     <button
-                        class="p-2 w-[30%] rounded-lg text-sm font-medium text-white bg-[#374151] hover:bg-[#475161]"
+                        class="p-2 w-[45%] rounded-lg text-sm font-medium text-white bg-[#374151] hover:bg-[#475161]"
                     >
                         ADD TO CART
                     </button>
@@ -78,24 +78,24 @@
         </div>
         <div class="game-review-summary">
             <h3 class="text-xs text-gray-500">All Reviews</h3>
-            <h2 class="text-sm">1<span> Recommended</span></h2>
-            <h2 class="text-sm">1<span> Not Recommended</span></h2>
+            <h2 class="text-sm">{{ $counter['recommended'] }}<span> Recommended</span></h2>
+            <h2 class="text-sm">{{ $counter['not'] }}<span> Not Recommended</span></h2>
         </div>
     </div>
     <div class="content-morelike w-full">
         <h3 class="font-medium text-gray-500">More Like This</h3>
-        <div class="morelike-container flex justify-between gap-3">
+        <div class="morelike-container flex justify-start gap-2">
             @foreach($morelikethis as $game)
-            <div class="morelike-box">
-                <div class="morelike-image">
+            <div class="morelike-box w-[33%]">
+                <a href="{{ route('game-detail', $game) }}">
                     <img
-                        class="w-full"
+                        class="w-full hover:brightness-75"
                         src="{{ asset('assets/'.$game->image_path.'thumb.jpg') }}"
                         alt=""
                     />
-                </div>
+                </a>
                 <div class="morelike-price w-full font-medium text-right">
-                    {{  ($vargame->price) ?  'IDR '.number_format($vargame->price) : 'FREE'  }}
+                    {{  ($game->price) ?  'IDR '.number_format($game->price) : 'FREE'  }}
                 </div>
             </div>
             @endforeach
@@ -136,10 +136,10 @@
             </div>
         </form>
     </div>
-    <div class="content-reviews w-full flex gap-[2%] flex-wrap">
+    <div class="content-reviews w-full grid grid-cols-3 gap-3">
         @foreach($reviews as $review)
             <div
-                class="review-box w-[32%] p-3 mb-5 bg-white rounded-md shadow flex flex-col gap-3"
+                class="review-box p-3 mb-5 bg-white rounded-md shadow flex flex-col gap-3"
             >
                 <div class="review-user font-semibold">{{ $review->user->name }}</div>
                 @if($review->review_type == 'recommended')
@@ -161,7 +161,7 @@
                         <span> Recommended</span>
                     </div>
                 @endif
-                <div class="review-post">
+                <div class="review-post text-justify">
                     {{ $review->description }}
                 </div>
             </div>

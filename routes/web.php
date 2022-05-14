@@ -21,46 +21,46 @@ use App\Http\Controllers\GameController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::redirect('/', '/dashboard');
 
-Route::get('/login', [LoginController::class, 'create'])->middleware('guest');
+Route::get('/login', [LoginController::class, 'create'])->middleware('guest')->name('login');
 
 Route::post('/login', [LoginController::class, 'authentication']);
 
-Route::post('/logout', [LoginController::class, 'logout']);
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('/register', [RegisterController::class, 'create']);
+Route::get('/register', [RegisterController::class, 'create'])->name('register');
 
 Route::post('/register', [RegisterController::class, 'store']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-});
+})->name('dashboard');
 
 Route::get('/search', [SearchController::class, 'index']); 
 
 Route::get('/cart', function () {
     return view('cart');
-});
+})->name('cart');
 
 // Route::get('/game', function () {
 //     return view('game');
 // });
 
-Route::get('/game/{slug}', [GameController::class, 'index']);
+Route::get('/game/{game:slug}', [GameController::class, 'index'])->name("game-detail");
 
-Route::get('/admin/manage-games', [ManageGameController::class, 'index']);
+Route::get('/admin/manage-games', [ManageGameController::class, 'index'])->name('manage-games');;
 
-Route::get('/admin/manage-categories', [ManageCategoryController::class, 'index']);
+Route::get('/admin/manage-categories', [ManageCategoryController::class, 'index'])->name('manage-categories');;
 
-Route::get('/admin/manage-categories/addcategory', [AddCategoryController::class, 'index']);
+Route::get('/admin/manage-categories/add-category', [AddCategoryController::class, 'index'])->name('add-category');
 
-Route::post('/admin/manage-categories/addcategory', [AddCategoryController::class, 'store']);
+Route::post('/admin/manage-categories/add-category', [AddCategoryController::class, 'store']);
 
-Route::get('/admin/manage-games/addgame', [AddGameController::class, 'index']);
+Route::get('/admin/manage-games/add-game', [AddGameController::class, 'index'])->name('add-game');;
 
-Route::post('/admin/manage-games/addgame', [AddGameController::class, 'store']);
+Route::post('/admin/manage-games/add-game', [AddGameController::class, 'store']);

@@ -5,23 +5,37 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Game;
 use App\Models\Review;
+use Illuminate\Support\Facades\DB;
 
 class GameController extends Controller
 {
-    public function index($slug){
+    public function index(Game $game){ //using route model binding
 
+        $morelikethis = Game::where('category_id', $game->category_id)
+            ->where('id', '!=', $game->id)
+            ->inRandomOrder()
+            ->take(3)
+            ->get();
 
-        $game = Game::with('category')->where('slug', $slug)
-            ->first();
+        $reviews = Review::with('user')
+            ->where('game_id', $game->id)
+            ->get();
 
-        $morelikethis = Game::where('category_id', $game->category_id)->get();
-        $reviews = Review::with('user')->where('game_id', $game->id)->get();
-        // return dd($reviews);
+        $recommended_count = Review::select(DB::raw('count(*) as counter'))
+            ->where('review_type', 'recommended')
+            ->first()
+            ->counter;
 
+        $counter = [
+            'recommended' => $recommended_count,
+            'not' => $reviews->count()-$recommended_count,
+        ];
+        // return dd($counter);
         return view('game')
             ->with('vargame', $game)
             ->with('morelikethis', $morelikethis)
-            ->with('reviews', $reviews);
+            ->with('reviews', $reviews)
+            ->with('counter', $counter);
     }
 
 }
