@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\DB;
 
 class GameController extends Controller
 {
-    public function index(Game $game){ //using route model binding
+    public function index($slug){
+        $game = Game::where('slug', $slug)->first();
 
         $morelikethis = Game::where('category_id', $game->category_id)
             ->where('id', '!=', $game->id)
@@ -21,10 +22,9 @@ class GameController extends Controller
             ->where('game_id', $game->id)
             ->get();
 
-        $recommended_count = Review::select(DB::raw('count(*) as counter'))
+        $recommended_count = Review::where('game_id', $game->id)
             ->where('review_type', 'recommended')
-            ->first()
-            ->counter;
+            ->count();
 
         $counter = [
             'recommended' => $recommended_count,

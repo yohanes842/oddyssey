@@ -18,12 +18,16 @@
                     {{ $vargame->description }}
                 </p>
                 <div class="game-description-price flex flex-col gap-2">
-                    <p class="text-lg font-semibold">{{ ($vargame->price) ?  'IDR '.number_format($vargame->price) : 'FREE' }}</p>
-                    <button
-                        class="p-2 w-[45%] rounded-lg text-sm font-medium text-white bg-[#374151] hover:bg-[#475161]"
-                    >
-                        ADD TO CART
-                    </button>
+                    <p class="text-lg font-semibold">{{ $vargame->price_with_notation }}</p>
+                    <form action="{{ route('add-to-cart', $vargame->slug) }}" method="POST">
+                        @csrf
+                        <button
+                            class="p-2 w-[45%] rounded-lg text-sm font-medium text-white bg-[#374151] hover:bg-[#475161]"
+                            type="submit"
+                            >
+                            ADD TO CART
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -95,7 +99,7 @@
                     />
                 </a>
                 <div class="morelike-price w-full font-medium text-right">
-                    {{  ($game->price) ?  'IDR '.number_format($game->price) : 'FREE'  }}
+                    {{  $game->price_with_notation  }}
                 </div>
             </div>
             @endforeach

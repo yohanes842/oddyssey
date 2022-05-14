@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
 class Game extends Model
 {
     use HasFactory;
@@ -19,5 +18,8 @@ class Game extends Model
     }
     public function transactions(){
         return $this->hasMany(Transaction::class);
+    }
+    public function getPriceWithNotationAttribute(){
+        return ($this->attributes['price']) ? 'IDR '.number_format($this->attributes['price']) : 'FREE';
     }
 }

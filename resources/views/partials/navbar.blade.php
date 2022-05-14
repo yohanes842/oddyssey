@@ -48,7 +48,7 @@
                     class="account-dropdown z-20 w-[9rem] text-md py-3 bg-white rounded-b-lg shadow hidden absolute top-[60px] group-hover:block"
                 >
                     <ul class="divide-y divide-gray-400">
-                        <li class="p-2 hover:bg-[#c7ccf7] hover:bg-opacity-40 hover:text-[#374151] ease-in-out duration-300 text-red-500 hover:text-[1.1rem] hover:text-red-600">
+                        <li class="p-2 hover:bg-[#c7ccf7] hover:bg-opacity-40 ease-in-out duration-300 text-red-500 hover:text-[1.1rem] hover:text-red-600">
                             <form action="{{ route("logout") }}" method="post">
                                 @csrf
                                 <button type="submit">

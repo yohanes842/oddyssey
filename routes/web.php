@@ -8,6 +8,7 @@ use App\Http\Controllers\ManageCategoryController;
 use App\Http\Controllers\ManageGameController;
 use App\Http\Controllers\AddCategoryController;
 use App\Http\Controllers\AddGameController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\GameController;
 
 /*
@@ -43,15 +44,15 @@ Route::get('/dashboard', function () {
 
 Route::get('/search', [SearchController::class, 'index']); 
 
-Route::get('/cart', function () {
-    return view('cart');
-})->name('cart');
+Route::get('/cart', [CartController::class, 'index'])->name('cart');
+
+Route::post('/add-to-cart/{slug}', [CartController::class, 'store'])->middleware('auth')->name('add-to-cart');
 
 // Route::get('/game', function () {
 //     return view('game');
 // });
 
-Route::get('/game/{game:slug}', [GameController::class, 'index'])->name("game-detail");
+Route::get('/game/{slug}', [GameController::class, 'index'])->name("game-detail");
 
 Route::get('/admin/manage-games', [ManageGameController::class, 'index'])->name('manage-games');;
 

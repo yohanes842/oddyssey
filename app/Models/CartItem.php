@@ -13,6 +13,6 @@ class CartItem extends Model
         return $this->belongsTo(User::class);
     }
     public function game(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Game::class);
     }
 }
