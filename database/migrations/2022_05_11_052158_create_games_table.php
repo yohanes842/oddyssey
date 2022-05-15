@@ -21,8 +21,11 @@ class CreateGamesTable extends Migration
             $table->integer('price');
             $table->string('image_path');
             $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('category_id')->references('id')->on('categories')->constrained()
+                                                                              ->onUpdate('cascade')
+                                                                              ->onDelete('cascade');
             $table->timestamps();
+
         });
     }
 

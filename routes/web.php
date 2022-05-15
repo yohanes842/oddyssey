@@ -9,8 +9,9 @@ use App\Http\Controllers\ManageGameController;
 use App\Http\Controllers\AddCategoryController;
 use App\Http\Controllers\AddGameController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\DeleteGameController;
 use App\Http\Controllers\GameController;
-
+use App\Http\Controllers\UpdateGameController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -67,3 +68,9 @@ Route::post('/admin/manage-categories/add-category', [AddCategoryController::cla
 Route::get('/admin/manage-games/add-game', [AddGameController::class, 'index'])->name('add-game');
 
 Route::post('/admin/manage-games/add-game', [AddGameController::class, 'store']);
+
+Route::get('/admin/manage-games/update-game/{slug}', [UpdateGameController::class, 'index'])->name('update-game');
+
+Route::put('/admin/manage-games/update-game/{slug}', [UpdateGameController::class, 'update']);
+
+Route::delete('/admin/manage-games/delete-game', [DeleteGameController::class, 'delete'])->name('delete-game');
