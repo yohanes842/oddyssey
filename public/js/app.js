@@ -2074,12 +2074,16 @@ var close_notification = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#close-b
 setTimeout(function () {
   notification.animate({
     opacity: 0
-  }, 1500);
-}, 1000);
+  }, 2000);
+}, 17000);
 setTimeout(function () {
   notification.parent().empty();
-}, 4000);
+}, 20000);
 close_notification.on("click", function () {
+  // notification.animate({ opacity: 0 }, 2000);
+  // setTimeout(() => {
+  //     notification.parent().empty();
+  // }, 2000);
   notification.parent().empty();
 }); //Carousel
 

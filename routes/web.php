@@ -49,13 +49,11 @@ Route::get('/search', [SearchController::class, 'index']);
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
 
-Route::post('/cart', [CartController::class, 'store'])->middleware('auth');
+Route::post('/add-to-cart', [CartController::class, 'store'])->middleware('auth')->name('add-to-cart');
 
-Route::delete('/cart', [CartController::class, 'remove'])->middleware('auth');
+Route::delete('/remove-from-cart', [CartController::class, 'remove'])->middleware('auth')->name('remove-from-cart');
 
-// Route::get('/game', function () {
-//     return view('game');
-// });
+Route::post('/checkout-cart', [CartController::class, 'checkout'])->middleware('auth')->name('checkout');
 
 Route::get('/game/{slug}', [GameController::class, 'index'])->name("game-detail");
 

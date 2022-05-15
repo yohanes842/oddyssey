@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\CartItem;
 use App\Models\Game;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class CartController extends Controller
 {
@@ -13,7 +13,7 @@ class CartController extends Controller
         $cartItems = CartItem::with('game.category')
             ->join('games', 'cart_items.game_id', '=', 'games.id')
             ->where('user_id', auth()->user()->id)->get();
-            
+
         $count = [
             'counter' => $cartItems->count(),
             'total' => 'IDR '.number_format($cartItems->sum('price')),
@@ -46,5 +46,19 @@ class CartController extends Controller
 
         $cartItem->delete();
         return redirect(route("cart"))->with('message', '<b>'.$cartItem->game->title.'</b> has successfully been deleted from your cart!');
+    }
+
+    public function checkout(Request $request){
+        $cartItems = CartItem::where('user_id', auth()->user()->id)->get();
+        foreach($cartItems as $cartItem){
+            $transaction = new Transaction();
+            $transaction->game_id = $cartItem->game_id;
+            $transaction->user_id = $cartItem->user_id;
+            $transaction->updated_at = now();
+            $transaction->save();
+            $cartItem->delete();
+        }
+        
+        return redirect(route("cart"))->with('message', $request->counter.' game(s) has successfully been checked out!<br>Total Payment : '.$request->total);
     }
 }

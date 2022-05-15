@@ -22,11 +22,15 @@
                         </div>
                         <div class="right-content flex flex-col items-center">
                             <h3 class="font-medium">{{ $cartItem->game->price_with_notation }}</h3>
-                            <form action="{{ route('cart') }}" method="post">
+                            <form action="{{ route('remove-from-cart') }}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <input type="hidden" name="id" value="{{ $cartItem->id }}">
-                                <button type="submit" class="w-24 p-2 mt-1 bg-[#ef4343] rounded-md text-white text-sm font-center font-medium hover:bg-[#ff5353]">REMOVE</button>
+                                <button type="submit" 
+                                    class="w-24 p-2 mt-1 bg-[#ef4343] rounded-md text-white text-sm font-center font-medium hover:bg-[#ff5353]"
+                                    >
+                                    REMOVE
+                                </button>
                             </form>
                         </div>
                     </div>
@@ -56,13 +60,24 @@
         </div>
         
         <div class="button-checkout w-full flex justify-end">
-            <button class="w-32 p-1 m-2 py-2 bg-[#374151] rounded-md text-white font-center font-medium hover:bg-[#475161] hover:scale-105">CHECKOUT</button>
+            <form action="{{ route('checkout') }}" method="post">
+                @csrf
+                <input type="hidden" name="counter" value="{{ $count['counter'] }}">
+                <input type="hidden" name="total" value="{{ $count['total'] }}">
+                <button type="submit" 
+                    class="w-32 p-1 m-2 py-2 bg-[#374151] rounded-md text-white font-center font-medium hover:bg-[#475161] hover:scale-105"
+                >
+                    CHECKOUT
+                </button>
+            </form>
         </div>
     @endif
 @endsection
 
 @section('notification')
     @if(session()->has('message'))
+    <x-notification message="{!! session('message') !!}" bg-color="bg-[#c7ccf7]" text-color="text-gray-900"/>
+    @elseif(session()->has('checkout'))
     <x-notification message="{!! session('message') !!}" bg-color="bg-[#c7ccf7]" text-color="text-gray-900"/>
     @endif  
 @endsection

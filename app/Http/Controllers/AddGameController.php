@@ -33,10 +33,6 @@ class AddGameController extends Controller
                 ->withInput()
                 ->withErrors($validation);
         }
-
-        // Category::create([
-        //     'name'=> $request->name
-        // ]);
         
         $cat = Category::where('category_name', $request->category)->first();
         $newGame= new Game();

@@ -14,7 +14,7 @@
             @foreach($games as $game)
                 <div class="game-box flex justify-between items-center rounded-md bg-white shadow">
                     <div class="game-left flex">
-                        <img class="h-20" src="{{  asset('assets/'.$game->image_path.'/') }} " alt="">
+                        <img class="h-20" src="{{  asset('storage/assets/'.$game->image_path.'/thumb.jpg') }} " alt="">
                         <div class="game-description mx-3 flex flex-col justify-center">
                             <h2 class="font-medium">{{ $game->title }}</h2>
                             <h3 class="text-gray-500 text-xs">{{ $game->category->category_name }}</h3>
