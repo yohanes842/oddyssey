@@ -2,7 +2,7 @@
     class="w-screen h-[70px] z-10 flex items-center bg-white shadow-lg px-[20%] text-md font-sans fixed top-0"
 >
     <div>
-        <img class="w-[50px]" src="{{ asset('assets/logo.png') }}" alt="" />
+        <img class="w-[50px]" src="{{ asset('storage/assets/Logo.png') }}" alt="" />
     </div>
     <div class="flex justify-between items-center w-full h-full">
         <div class="h-full flex items-center mx-12">

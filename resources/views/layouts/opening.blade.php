@@ -19,7 +19,7 @@
             <div class="logo">
                 <img
                     class="mb-4"
-                    src="/assets/Logo.png"
+                    src="{{ asset('storage/assets/Logo.png') }}"
                     alt="Logo"
                     width="100px"
                 />
