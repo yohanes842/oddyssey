@@ -18,8 +18,18 @@
                     </div>
                     <div class="cat-right flex flex-col items-end justify-center">
                         <div class="flex gap-3 text-sm">
-                            <button class="p-4 py-1 bg-[#374151] rounded-md text-white font-center font-medium scale-105 hover:bg-[#475161]">UPDATE</button>
-                            <button class="p-4 py-1 bg-[#ef4343] rounded-md text-white font-center font-medium scale-105 hover:bg-[#ff5353]">DELETE</button>
+                            <a class="p-4 py-1 bg-[#374151] rounded-md text-white font-center font-medium scale-105 hover:bg-[#475161]" href="{{ route('update-cat', $category->slug) }}">UPDATE</a>
+
+                            <form action="{{ route ('delete-cat') }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <input type="hidden" name="id" value="{{ $category->id }}">
+                                <button type="submit"
+                                    class="p-4 py-1 bg-[#ef4343] rounded-md text-white font-center font-medium scale-105 hover:bg-[#ff5353]"
+                                    >
+                                    DELETE
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -31,4 +41,18 @@
     </div>
 
 </div>
+@endsection
+
+@section('notification')
+    @if(session()->has('delete_success'))
+    <x-notification message="{!! session('delete_success') !!}" bg-color="bg-green-100" text-color="text-green-900"/>
+    @endif  
+
+    @if(session()->has('update_success'))
+    <x-notification message="{!! session('update_success') !!}" bg-color="bg-green-100" text-color="text-green-900"/>
+    @endif  
+
+    @if(session()->has('add_success'))
+    <x-notification message="{!! session('add_success') !!}" bg-color="bg-green-100" text-color="text-green-900"/>
+    @endif  
 @endsection

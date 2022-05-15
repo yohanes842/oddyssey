@@ -16,26 +16,31 @@ class CategorySeeder extends Seeder
     {
         DB::table('categories')->insert([
             'category_name' => 'Action RPG',
+            'slug'=> 'action-rpg',
             'created_at' => now(),
             'updated_at' => now(),
         ]);
         DB::table('categories')->insert([
             'category_name' => 'Shooter',
+            'slug'=> 'shooter',
             'created_at' => now(),
             'updated_at' => now(),
         ]);
         DB::table('categories')->insert([
             'category_name' => 'Fighting',
+            'slug'=> 'fighting',
             'created_at' => now(),
             'updated_at' => now(),
         ]);
         DB::table('categories')->insert([
             'category_name' => 'Sports & Racing',
+            'slug'=> 'sports-&-racing',
             'created_at' => now(),
             'updated_at' => now(),
         ]);
         DB::table('categories')->insert([
             'category_name' => 'Adventure',
+            'slug'=> 'adventure',
             'created_at' => now(),
             'updated_at' => now(),
         ]);

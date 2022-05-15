@@ -9,8 +9,10 @@ use App\Http\Controllers\ManageGameController;
 use App\Http\Controllers\AddCategoryController;
 use App\Http\Controllers\AddGameController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\DeleteCategoryController;
 use App\Http\Controllers\DeleteGameController;
 use App\Http\Controllers\GameController;
+use App\Http\Controllers\UpdatecategoryController;
 use App\Http\Controllers\UpdateGameController;
 /*
 |--------------------------------------------------------------------------
@@ -74,3 +76,9 @@ Route::get('/admin/manage-games/update-game/{slug}', [UpdateGameController::clas
 Route::put('/admin/manage-games/update-game/{slug}', [UpdateGameController::class, 'update']);
 
 Route::delete('/admin/manage-games/delete-game', [DeleteGameController::class, 'delete'])->name('delete-game');
+
+Route::get('/admin/manage-games/update-cat/{slug}', [UpdatecategoryController::class, 'index'])->name('update-cat');
+
+Route::put('/admin/manage-games/update-cat/{slug}', [UpdateCategoryController::class, 'update']);
+
+Route::delete('/admin/manage-games/delete-cat', [DeleteCategoryController::class, 'delete'])->name('delete-cat');
