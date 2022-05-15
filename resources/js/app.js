@@ -8,13 +8,17 @@ const notification = $(".notification");
 const close_notification = $("#close-btn-notification");
 
 setTimeout(() => {
-    notification.animate({ opacity: 0 }, 1500);
-}, 1000);
+    notification.animate({ opacity: 0 }, 2000);
+}, 17000);
 setTimeout(() => {
     notification.parent().empty();
-}, 4000);
+}, 20000);
 
 close_notification.on("click", () => {
+    // notification.animate({ opacity: 0 }, 2000);
+    // setTimeout(() => {
+    //     notification.parent().empty();
+    // }, 2000);
     notification.parent().empty();
 });
 
