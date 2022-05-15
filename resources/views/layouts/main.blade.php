@@ -19,5 +19,8 @@
         <main class="w-screen px-[15%] text-gray-700 mt-24 pb-20">
             @yield('content')
         </main>
+        <div class="notification-container">
+            @yield('notification')    
+        </div>  
     </body>
 </html>

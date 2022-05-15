@@ -5,7 +5,7 @@
 @section('content')
 <div class="w-full flex flex-col items-center">
     <div class="m-5 hover:scale-105">
-        <a class="p-3 bg-[#374151] text-white text-sm rounded-md font-medium cursor-pointer hover:scale-105 hover:bg-[#475161]" href="/admin/manage-categories/addcategory">ADD NEW CATEGORY</a>
+        <a class="p-3 bg-[#374151] text-white text-sm rounded-md font-medium cursor-pointer hover:scale-105 hover:bg-[#475161]" href="{{ route('add-category') }}">ADD NEW CATEGORY</a>
     </div>
     <div class="categories-list w-[85%] flex flex-col gap-2 ">
         @if($categories->isEmpty())

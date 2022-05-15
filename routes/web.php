@@ -46,7 +46,9 @@ Route::get('/search', [SearchController::class, 'index']);
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
 
-Route::post('/add-to-cart/{slug}', [CartController::class, 'store'])->middleware('auth')->name('add-to-cart');
+Route::post('/cart', [CartController::class, 'store'])->middleware('auth');
+
+Route::delete('/cart', [CartController::class, 'remove'])->middleware('auth');
 
 // Route::get('/game', function () {
 //     return view('game');
@@ -62,6 +64,6 @@ Route::get('/admin/manage-categories/add-category', [AddCategoryController::clas
 
 Route::post('/admin/manage-categories/add-category', [AddCategoryController::class, 'store']);
 
-Route::get('/admin/manage-games/add-game', [AddGameController::class, 'index'])->name('add-game');;
+Route::get('/admin/manage-games/add-game', [AddGameController::class, 'index'])->name('add-game');
 
 Route::post('/admin/manage-games/add-game', [AddGameController::class, 'store']);

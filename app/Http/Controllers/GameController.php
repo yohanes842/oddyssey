@@ -11,7 +11,7 @@ class GameController extends Controller
 {
     public function index($slug){
         $game = Game::where('slug', $slug)->first();
-
+        return dd($slug);
         $morelikethis = Game::where('category_id', $game->category_id)
             ->where('id', '!=', $game->id)
             ->inRandomOrder()

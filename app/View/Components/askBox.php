@@ -4,16 +4,19 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class user-dropdown extends Component
+class askBox extends Component
 {
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+
+    public $message;
+
+    public function __construct($message)
     {
-        //
+        $this->message;
     }
 
     /**
@@ -23,6 +26,6 @@ class user-dropdown extends Component
      */
     public function render()
     {
-        return view('components.user-dropdown');
+        return view('components.askBox');
     }
 }
