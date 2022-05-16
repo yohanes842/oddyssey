@@ -9,17 +9,29 @@ const close_notification = $("#close-btn-notification");
 
 setTimeout(() => {
     notification.animate({ opacity: 0 }, 2000);
-}, 17000);
+}, 2000);
 setTimeout(() => {
     notification.parent().empty();
-}, 20000);
+}, 5000);
 
 close_notification.on("click", () => {
-    // notification.animate({ opacity: 0 }, 2000);
-    // setTimeout(() => {
-    //     notification.parent().empty();
-    // }, 2000);
-    notification.parent().empty();
+    notification.animate({ opacity: 0 }, 1000);
+    setTimeout(() => {
+        notification.parent().empty();
+    }, 2500);
+});
+
+//checkout
+const checkout_form = $("#checkout");
+const checkout_button = $("#checkout-button");
+const checkout_exit = $("#checkout-exit-button");
+
+checkout_button.on("click", () => {
+    checkout_form.css("display", "block");
+});
+
+checkout_exit.on("click", () => {
+    checkout_form.css("display", "none");
 });
 
 //Carousel

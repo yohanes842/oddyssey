@@ -40,6 +40,7 @@
                             </form>
                         </div>
                     </div>
+                    
                     {{-- <div class="ask-container z-20 fixed left-0 top-0 w-screen h-screen bg-black/20">
                         <div class="ask-box w-fit p-10 mx-auto mt-64 bg-[#c7ccf7] text-gray-900 shadow-lg rounded-lg">
                             <p>Do you want to remove '{{ $cartItem->game->title }}'' from your cart?</p>
@@ -66,24 +67,60 @@
         </div>
         
         <div class="button-checkout w-full flex justify-end">
-            <form action="{{ route('checkout') }}" method="post">
+            <button 
+                class="w-32 p-1 m-2 py-2 bg-[#374151] rounded-md text-white font-center font-medium hover:bg-[#475161] hover:scale-105"
+                id="checkout-button"
+            >
+                CHECKOUT
+            </button>
+        </div>
+    @endif
+
+
+    <div class="checkout-form z-20 fixed left-0 top-0 w-screen h-screen bg-black/20 @if(!$errors->any()) hidden @endif" id="checkout">
+        <div class="checkout-form-box w-[50%] p-10 mx-auto mt-64 bg-[#c7ccf7] text-gray-900 shadow-lg rounded-lg">
+            <form action="{{ route('checkout') }}" method="POST">
                 @csrf
                 <input type="hidden" name="counter" value="{{ $count['counter'] }}">
                 <input type="hidden" name="total" value="{{ $count['total'] }}">
-                <button type="submit" 
-                    class="w-32 p-1 m-2 py-2 bg-[#374151] rounded-md text-white font-center font-medium hover:bg-[#475161] hover:scale-105"
-                >
-                    CHECKOUT
-                </button>
+                <input type="hidden" name="email" value="{{ auth()->user()->email }}">
+
+                <h2>Hi, <b>{{ auth()->user()->name }}</b>! Please type your password to continue your transaction!</h2>
+                <h2 class="text-center font-semibold">Your total transaction : {{ $count['total'] }}</h2>
+                <input
+                    class="w-[50%] h-[2rem] p-2 mx-[25%] my-5 shadow-sm border-2 border-gray rounded-md ring-[#c7ccf7] hover:ring-1 focus:outline-none focus:ring-2"
+                    type="password"
+                    name="password"
+                    id=""
+                    placeholder="Password"
+                    required
+                />
+                @error('password')
+                    <p class="text-center text-sm text-red-500">{{ $message }}</p>
+                @enderror
+                <div class="flex mt-5 justify-center gap-10">
+                    <button 
+                        type="submit" 
+                        class="w-fit px-3 py-1 bg-green-600 text-white shadow rounded-lg scale-110 hover:brightness-90"
+                    >
+                        Checkout
+                    </button>
+                    <button 
+                        class="w-fit px-3 py-1 bg-red-600 text-white shadow rounded-lg scale-110 hover:brightness-90"
+                        id="checkout-exit-button"
+                    >
+                        Cancel
+                    </button>
+                </div>
             </form>
         </div>
-    @endif
+    </div>
 @endsection
 
 @section('notification')
     @if(session()->has('message'))
     <x-notification message="{!! session('message') !!}" bg-color="bg-[#c7ccf7]" text-color="text-gray-900"/>
-    @elseif(session()->has('checkout'))
-    <x-notification message="{!! session('message') !!}" bg-color="bg-[#c7ccf7]" text-color="text-gray-900"/>
+    @elseif(session()->has('checkout_success'))
+    <x-notification message="{!! session('checkout_success') !!}" bg-color="bg-[#c7ccf7]" text-color="text-gray-900"/>
     @endif  
 @endsection

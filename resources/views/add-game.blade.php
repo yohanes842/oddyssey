@@ -100,4 +100,7 @@
         value="ADD GAME"
     />
 </form>
+<a class="absolute px-2 py-1 top-10 left-10 text-white bg-[#374151] rounded-md shadow hover:scale-110" href="{{ route('manage-games') }}">
+    Back
+</a>
 @endsection

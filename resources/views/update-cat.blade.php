@@ -31,10 +31,7 @@
         </button>
     </form>
 </form>
+<a class="absolute px-2 py-1 top-10 left-10 text-white bg-[#374151] rounded-md shadow hover:scale-110" href="{{ route('manage-categories') }}">
+    Back
+</a>
 @endsection
-{{-- 
-@section('notification')
-    @if(session()->has('add_success'))
-    <x-notification message="{!! session('add_success') !!}" bg-color="bg-green-100" text-color="text-green-900"/>
-    @endif  
-@endsection --}}

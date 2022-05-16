@@ -3,9 +3,12 @@
 @section('title', 'Oddyssey | Update Game')
 
 @section('form')
-<form action="" method="post" enctype="multipart/form-data">
+<form action="{{ route ('update-game',$game->slug) }}" method="post" enctype="multipart/form-data">
     @csrf
+    @method('PUT')
     <input type="hidden" name="oldTitle" value ="{{ $game->title }}">
+    <input type="hidden" name="id" value="{{ $game->id }}">
+
     <h2 class="font-semibold text-[#374151] text-center mb-5">Update Game</h2>
     <div class="form-container flex flex-col gap-2 mb-2">
         <div class="form-field flex flex-col">
@@ -95,20 +98,14 @@
             rows="7"
         >{{ $game->description }}</textarea>
     </div>
-    <form action="{{ route ('update-game',$game->slug) }}" method="post">
-        @csrf
-        @method('PUT')
-        <input type="hidden" name="id" value="{{ $game->id }}">
-        <button type="submit"
-        class="w-fit h-[2rem] m-1 px-2 bg-[#374151] rounded-lg text-white text-xs cursor-pointer font-semibold hover:scale-105"
-            >
-            UPDATE GAME
-        </button>
-        </form>
-    {{-- <input
-        class="w-fit h-[2rem] m-1 px-2 bg-[#374151] rounded-lg text-white text-xs cursor-pointer font-semibold hover:scale-105"
-        type="submit"
-        value="UPDATE GAME"
-    /> --}}
+    
+    <button type="submit"
+    class="w-fit h-[2rem] m-1 px-2 bg-[#374151] rounded-lg text-white text-xs cursor-pointer font-semibold hover:scale-105"
+        >
+        UPDATE GAME
+    </button>
 </form>
+<a class="absolute px-2 py-1 top-10 left-10 text-white bg-[#374151] rounded-md shadow hover:scale-110" href="{{ route('manage-games') }}">
+    Back
+</a>
 @endsection

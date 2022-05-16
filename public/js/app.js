@@ -2075,16 +2075,27 @@ setTimeout(function () {
   notification.animate({
     opacity: 0
   }, 2000);
-}, 17000);
+}, 2000);
 setTimeout(function () {
   notification.parent().empty();
-}, 20000);
+}, 5000);
 close_notification.on("click", function () {
-  // notification.animate({ opacity: 0 }, 2000);
-  // setTimeout(() => {
-  //     notification.parent().empty();
-  // }, 2000);
-  notification.parent().empty();
+  notification.animate({
+    opacity: 0
+  }, 1000);
+  setTimeout(function () {
+    notification.parent().empty();
+  }, 2500);
+}); //checkout
+
+var checkout_form = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#checkout");
+var checkout_button = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#checkout-button");
+var checkout_exit = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#checkout-exit-button");
+checkout_button.on("click", function () {
+  checkout_form.css("display", "block");
+});
+checkout_exit.on("click", function () {
+  checkout_form.css("display", "none");
 }); //Carousel
 
 var slideBox = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#image-carousel");
