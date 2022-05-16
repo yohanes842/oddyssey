@@ -9,6 +9,7 @@
             href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
         />
         <link href="/css/app.css" rel="stylesheet" />
+        <script src="/js/app.js" defer></script>
         <title>@yield('title')</title>
     </head>
     <body class="bg-[#f3f4f6] w-screen p-20 body-font font-poppins">

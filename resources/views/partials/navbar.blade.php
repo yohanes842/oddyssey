@@ -7,12 +7,14 @@
     <div class="flex justify-between items-center w-full h-full">
         <div class="h-full flex items-center mx-12">
             <div
-                class="p-5 mx-1 h-full flex items-center justify-center hover:bg-gray-100 active"
+                class="p-5 mx-1 h-full flex items-center justify-center hover:bg-gray-100"
+                id="navbar-dashboard"
             >
                 <a href="{{ route("dashboard") }}">Dashboard</a>
             </div>
             <div
                 class="p-5 mx-1 h-full flex items-center justify-center hover:bg-gray-100"
+                id="navbar-cart"
             >
                 <a href="{{ route("cart") }}">Cart</a>
             </div>

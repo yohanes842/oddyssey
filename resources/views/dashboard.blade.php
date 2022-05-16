@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Oddyssey')
+@section('title', 'Oddyssey | Dashboard')
     
 @section('content')
     @include('partials.searchbar')

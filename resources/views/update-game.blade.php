@@ -32,11 +32,11 @@
                     class="w-full h-[2.5rem] p-1 px-2 shadow-sm border-2 border-gray rounded-md ring-[#c7ccf7] hover:ring-1 focus:outline-none focus:ring-2"
                     type="text"
                     name="category"
-                    id=""
+                    id="update-category-field"
                     placeholder="Category"
-                    value = "{{ old('category'), $game->category->category_name}}"
+                    old="{{ old('category') }}"
+                    initial = "{{ $game->category->category_name }}"
                 >
-                    <option class="bg-[#c7ccf7] hidden" value="" disabled selected>{{ $game->category->category_name }}</option>
                     @foreach($categories as $category)
                         <option value="{{ $category->category_name }}">{{ $category->category_name }}</option>
                     @endforeach
