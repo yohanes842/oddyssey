@@ -25,14 +25,19 @@
         </div>
         <div class="form-field flex flex-col">
             <div>
-                <input
-                    class="w-full h-[2.5rem] p-1 px-3 shadow-sm border-2 border-gray rounded-md ring-[#c7ccf7] hover:ring-1 focus:outline-none focus:ring-2"
+                <select
+                    class="w-full h-[2.5rem] p-1 px-2 shadow-sm border-2 border-gray rounded-md ring-[#c7ccf7] hover:ring-1 focus:outline-none focus:ring-2"
                     type="text"
                     name="category"
                     id=""
                     placeholder="Category"
-                    value = "{{ $game->category->category_name}}"
-                />
+                    value = "{{ old('category'), $game->category->category_name}}"
+                >
+                    <option class="bg-[#c7ccf7] hidden" value="" disabled selected>{{ $game->category->category_name }}</option>
+                    @foreach($categories as $category)
+                        <option value="{{ $category->category_name }}">{{ $category->category_name }}</option>
+                    @endforeach
+                </select>
                 @error('category')
                     <p class="text-sm text-red-500">{{ $message }}</p>
                 @enderror

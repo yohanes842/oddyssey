@@ -16,9 +16,10 @@ class CreateTransactionsTable extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('game_id');
-            $table->foreign('game_id')->references('id')->on('games')->constrained()
-                                                                     ->onUpdate('cascade')
-                                                                     ->onDelete('cascade');
+            $table->foreign('game_id')->references('id')->on('games')
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamp('purchased_at');

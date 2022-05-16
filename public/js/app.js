@@ -2095,8 +2095,8 @@ var rightArrow = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#arrowRight");
 function moveLeft() {
   leftArrow.off("click", moveLeft);
   rightArrow.off("click", moveRight);
-  var last = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".carousel-image-card").last();
-  var current = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".carousel-image-card").first().next();
+  var last = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".carousel-image-container").last();
+  var current = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".carousel-image-container").first().next();
   slideBox.animate({
     left: "0vw"
   }, 1000, "linear");
@@ -2113,7 +2113,7 @@ function moveLeft() {
 function moveRight() {
   leftArrow.off("click", moveLeft);
   rightArrow.off("click", moveRight);
-  var first = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".carousel-image-card").first();
+  var first = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".carousel-image-container").first();
   var current = first.next();
   slideBox.animate({
     left: "-60vw"

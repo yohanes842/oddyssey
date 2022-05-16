@@ -33,8 +33,8 @@ function moveLeft() {
     leftArrow.off("click", moveLeft);
     rightArrow.off("click", moveRight);
 
-    const last = $(".carousel-image-card").last();
-    const current = $(".carousel-image-card").first().next();
+    const last = $(".carousel-image-container").last();
+    const current = $(".carousel-image-container").first().next();
 
     slideBox.animate({ left: "0vw" }, 1000, "linear");
     setTimeout(() => {
@@ -49,7 +49,7 @@ function moveRight() {
     leftArrow.off("click", moveLeft);
     rightArrow.off("click", moveRight);
 
-    const first = $(".carousel-image-card").first();
+    const first = $(".carousel-image-container").first();
     const current = first.next();
 
     slideBox.animate({ left: "-60vw" }, 1000, "linear");

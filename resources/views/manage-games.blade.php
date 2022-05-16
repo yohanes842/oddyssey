@@ -14,7 +14,13 @@
             @foreach($games as $game)
                 <div class="game-box flex justify-between items-center rounded-md bg-white shadow">
                     <div class="game-left flex">
-                        <img class="h-20" src="{{  asset('storage/assets/'.$game->image_path.'/thumb.jpg') }} " alt="">
+                        <a class="hover:brightness-90" href="{{ route('game-detail', $game->slug) }}">
+                            <img 
+                                class="h-20 w-40" 
+                                src="{{ asset('storage/assets/'.$game->image_path.$game->thumbnail_filename) }}" 
+                                alt=""
+                            >
+                        </a>
                         <div class="game-description mx-3 flex flex-col justify-center">
                             <h2 class="font-medium">{{ $game->title }}</h2>
                             <h3 class="text-gray-500 text-xs">{{ $game->category->category_name }}</h3>
@@ -23,7 +29,7 @@
                     <div class="game-right px-3 py-1 flex flex-col items-end justify-center">
                         <h2 class="font-medium"> {{ ($game->price) ?  'IDR '.number_format($game->price) : 'FREE' }}</h3>
                         <div class="flex gap-3 text-sm my-1">
-                            <a class="p-4 py-1 bg-[#374151] rounded-md text-white font-center font-medium scale-105 hover:bg-[#475161]" href="{{ route('update-game', $game->slug) }}">UPDATE GAME</a>
+                            <a class="p-4 py-1 bg-[#374151] rounded-md text-white font-center font-medium scale-105 hover:bg-[#475161]" href="{{ route('update-game', $game->slug) }}">UPDATE</a>
 
                             <form action="{{ route ('delete-game') }}" method="post">
                                 @csrf

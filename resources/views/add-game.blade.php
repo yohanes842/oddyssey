@@ -15,6 +15,7 @@
                     name="title"
                     id=""
                     placeholder="Title"
+                    value="{{ old('title') }}"
                 />
                 @error('title')
                     <p class="text-sm text-red-500">{{ $message }}</p>
@@ -23,13 +24,19 @@
         </div>
         <div class="form-field flex flex-col">
             <div>
-                <input
-                    class="w-full h-[2.5rem] p-1 px-3 shadow-sm border-2 border-gray rounded-md ring-[#c7ccf7] hover:ring-1 focus:outline-none focus:ring-2"
+                <select
+                    class="w-full h-[2.5rem] p-1 px-2 shadow-sm border-2 border-gray rounded-md ring-[#c7ccf7] hover:ring-1 focus:outline-none focus:ring-2"
                     type="text"
                     name="category"
                     id=""
                     placeholder="Category"
-                />
+                    value="{{ old('category') }}"
+                >
+                    <option class="bg-[#c7ccf7]" value="" disabled selected>Select game category</option>
+                    @foreach($categories as $category)
+                        <option value="{{ $category->category_name }}">{{ $category->category_name }}</option>
+                    @endforeach
+                </select>
                 @error('category')
                     <p class="text-sm text-red-500">{{ $message }}</p>
                 @enderror
@@ -43,6 +50,7 @@
                     name="price"
                     id=""
                     placeholder="Price"
+                    value="{{ old('price') }}"
                 />
                 @error('price')
                     <p class="text-sm text-red-500">{{ $message }}</p>
@@ -84,7 +92,7 @@
             id=""
             cols="30"
             rows="7"
-        ></textarea>
+        >{{ old('description') }}</textarea>
     </div>
     <input
         class="w-fit h-[2rem] m-1 px-2 bg-[#374151] rounded-lg text-white text-xs cursor-pointer font-semibold hover:scale-105"

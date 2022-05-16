@@ -16,7 +16,7 @@ class CategoryController extends Controller
     }
 
     public function formAddCategory(){
-        return view('input-addcat');
+        return view('add-cat');
     }
 
     public function store(Request $request){
@@ -74,9 +74,7 @@ class CategoryController extends Controller
                 ->withInput()
                 ->withErrors($validation);
         }
-        
-       
-       
+               
         $updateCat = Category::where('id', $request->id)->first();
         
         $updateCat->slug = Str::of($request->category_name)->slug('-');
@@ -85,7 +83,7 @@ class CategoryController extends Controller
 
         $updateCat->save();
 
-        return redirect(route('manage-categories'))->with('update_success', 'Category <b>"'.$request->oldName.'"</b> has successfully been updated!');
+        return redirect()->route('manage-categories')->with('update_success', 'Category <b>"'.$request->oldName.'"</b> has successfully been updated!');
     }
 
     public function delete(Request $request){
@@ -94,7 +92,7 @@ class CategoryController extends Controller
         $deleteCategory->delete();
 
         return redirect()
-            ->back()
+            ->route('manage-categories')
             ->with('delete_success', 'Category <b>"'.$category_name.'"</b> has successfully been deleted!');
     }
 }

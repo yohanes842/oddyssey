@@ -14,7 +14,13 @@
                 @foreach($cartItems as $cartItem)
                     <div class="items-box mb-3 flex justify-between items-center rounded-md">
                         <div class="left-content flex gap-5">
-                            <img class="h-24" src="assets/apex.jpg" alt="">
+                            <a class="hover:brightness-90" href="{{ route('game-detail', $cartItem->slug) }}">
+                                <img 
+                                    class="h-20 w-40" 
+                                    src="{{ asset('storage/assets/'.$cartItem->image_path.$cartItem->thumbnail_filename) }}" 
+                                    alt=""
+                                >
+                            </a>
                             <div class="items-description flex flex-col justify-center">
                                 <h2 class="font-medium">{{ $cartItem->game->title }}</h1>
                                 <h3 class="text-gray-500 text-xs">{{ $cartItem->game->category->category_name }}</h3>

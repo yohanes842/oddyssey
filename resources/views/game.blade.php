@@ -8,7 +8,7 @@
             <div class="game-description-image">
                 <img
                     class="w-full"
-                    src="{{ asset('storage/assets/'.$vargame->image_path.'thumb.jpg') }}"
+                    src="{{ asset('storage/assets/'.$vargame->image_path.$vargame->thumbnail_filename) }}"
                     alt=""
                 />
             </div>
@@ -42,24 +42,20 @@
                 <span class="material-symbols-rounded"> arrow_back </span>
             </button>
             <div
-                class="carousel-image-container flex absolute inset-0"
+                class="carousel-slider-container flex absolute left-0 top-0 bottom-0"
                 id="image-carousel"
             >
-                <img
-                    class="carousel-image-card w-[30vw] h-full"
-                    src="{{ asset('storage/assets/'.$vargame->image_path.'slide1.jpg') }}"
-                    alt=""
-                />
-                <img
-                    class="carousel-image-card w-[30vw] h-full"
-                    src="{{ asset('storage/assets/'.$vargame->image_path.'slide2.jpg') }}"
-                    alt=""
-                />
-                <img
-                    class="carousel-image-card w-[30vw] h-full"
-                    src="{{ asset('storage/assets/'.$vargame->image_path.'slide3.jpg') }}"
-                    alt=""
-                />
+                @for($i=0 ; $i < $total_images-1 ; $i++)
+                    <div class="carousel-image-container w-[30vw] h-full bg-black flex justify-center"
+                        id="image-in-carousel"
+                    >
+                        <img
+                            class="carousel-image-card"
+                            src="{{ asset('storage/'.$image_paths[$i]) }}"
+                            alt=""
+                        />
+                    </div>
+                @endfor
             </div>
 
             <button
@@ -94,7 +90,7 @@
             <div class="morelike-box w-[33%]">
                 <a href="{{ route('game-detail', ['slug' => $game->slug]) }}">
                     <img
-                        class="w-full hover:brightness-75"
+                        class="w-full h-36 hover:brightness-75"
                         src="{{ asset('storage/assets/'.$game->image_path.'thumb.jpg') }}"
                         alt=""
                     />

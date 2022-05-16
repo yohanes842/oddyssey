@@ -497,6 +497,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   bottom: -80px;
 }
 
+.bottom-0 {
+  bottom: 0px;
+}
+
 .z-10 {
   z-index: 10;
 }
@@ -525,16 +529,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin: 0.75rem;
 }
 
+.m-64 {
+  margin: 16rem;
+}
+
 .m-2 {
   margin: 0.5rem;
 }
 
 .m-auto {
   margin: auto;
-}
-
-.m-64 {
-  margin: 16rem;
 }
 
 .mx-1 {
@@ -634,18 +638,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-top: 6rem;
 }
 
-.mt-40 {
-  margin-top: 10rem;
-}
-
-.mt-\[40\%\] {
-  margin-top: 40%;
-}
-
-.mt-\[5rem\] {
-  margin-top: 5rem;
-}
-
 .mt-64 {
   margin-top: 16rem;
 }
@@ -722,6 +714,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .h-\[70px\] {
   height: 70px;
+}
+
+.h-36 {
+  height: 9rem;
 }
 
 .min-h-screen {
@@ -808,6 +804,22 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .w-\[9rem\] {
   width: 9rem;
+}
+
+.w-\[100vw\] {
+  width: 100vw;
+}
+
+.w-48 {
+  width: 12rem;
+}
+
+.w-44 {
+  width: 11rem;
+}
+
+.w-40 {
+  width: 10rem;
 }
 
 .max-w-6xl {
@@ -970,6 +982,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-width: 1px;
 }
 
+.border-4 {
+  border-width: 4px;
+}
+
 .border-t {
   border-top-width: 1px;
 }
@@ -1000,6 +1016,16 @@ Ensure the default browser behavior of the `hidden` attribute.
 .border-gray-500 {
   --tw-border-opacity: 1;
   border-color: rgb(107 114 128 / var(--tw-border-opacity));
+}
+
+.border-white {
+  --tw-border-opacity: 1;
+  border-color: rgb(255 255 255 / var(--tw-border-opacity));
+}
+
+.border-\[\#c7ccf7\] {
+  --tw-border-opacity: 1;
+  border-color: rgb(199 204 247 / var(--tw-border-opacity));
 }
 
 .bg-\[\#374151\] {
@@ -1047,61 +1073,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: rgb(0 0 0 / var(--tw-bg-opacity));
 }
 
-.bg-white\/30 {
-  background-color: rgb(255 255 255 / 0.3);
-}
-
-.bg-black\/10 {
-  background-color: rgb(0 0 0 / 0.1);
-}
-
 .bg-black\/20 {
   background-color: rgb(0 0 0 / 0.2);
-}
-
-.bg-green-500 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(34 197 94 / var(--tw-bg-opacity));
-}
-
-.bg-green-300 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(134 239 172 / var(--tw-bg-opacity));
-}
-
-.bg-red-300 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(252 165 165 / var(--tw-bg-opacity));
-}
-
-.bg-green-400 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(74 222 128 / var(--tw-bg-opacity));
-}
-
-.bg-red-400 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(248 113 113 / var(--tw-bg-opacity));
-}
-
-.bg-green-900 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(20 83 45 / var(--tw-bg-opacity));
-}
-
-.bg-red-900 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(127 29 29 / var(--tw-bg-opacity));
-}
-
-.bg-green-700 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(21 128 61 / var(--tw-bg-opacity));
-}
-
-.bg-red-700 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(185 28 28 / var(--tw-bg-opacity));
 }
 
 .bg-green-600 {
@@ -1199,6 +1172,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .py-2 {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+}
+
+.px-1 {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
 }
 
 .px-\[20\%\] {
@@ -1379,6 +1357,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 
+.text-gray-100 {
+  --tw-text-opacity: 1;
+  color: rgb(243 244 246 / var(--tw-text-opacity));
+}
+
 .underline {
   -webkit-text-decoration-line: underline;
           text-decoration-line: underline;
@@ -1387,14 +1370,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .antialiased {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-.opacity-50 {
-  opacity: 0.5;
-}
-
-.opacity-75 {
-  opacity: 0.75;
 }
 
 .shadow-md {
@@ -1452,18 +1427,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
-.backdrop-opacity-50 {
-  --tw-backdrop-opacity: opacity(0.5);
-  -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
-          backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
-}
-
-.backdrop-opacity-0 {
-  --tw-backdrop-opacity: opacity(0);
-  -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
-          backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
-}
-
 .transition {
   transition-property: color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
@@ -1504,6 +1467,10 @@ input[type="number"]::-webkit-inner-spin-button,
   --tw-scale-x: 1.1;
   --tw-scale-y: 1.1;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.hover\:border-2:hover {
+  border-width: 2px;
 }
 
 .hover\:bg-\[\#475161\]:hover {
@@ -1576,18 +1543,8 @@ input[type="number"]::-webkit-inner-spin-button,
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
-.hover\:brightness-95:hover {
-  --tw-brightness: brightness(.95);
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
-}
-
 .hover\:brightness-90:hover {
   --tw-brightness: brightness(.9);
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
-}
-
-.hover\:brightness-105:hover {
-  --tw-brightness: brightness(1.05);
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 

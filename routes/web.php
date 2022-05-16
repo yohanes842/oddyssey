@@ -5,6 +5,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\ReviewController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
