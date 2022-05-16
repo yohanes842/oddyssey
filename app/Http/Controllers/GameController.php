@@ -28,7 +28,7 @@ class GameController extends Controller
         $reviews = Review::with('user')
             ->where('game_id', $game->id)
             ->get();
-
+            
         $recommended_count = Review::where('game_id', $game->id)
             ->where('review_type', 'recommended')
             ->count();
@@ -50,7 +50,7 @@ class GameController extends Controller
     }
 
     public function search(Request $request){
-        $games = Game::where('title', 'like', '%'.$request->search.'%')->get();
+        $games = Game::where('title', 'like', '%'.$request->search.'%')->paginate(15);
         return view('search')->with('games', $games);
     }
 
@@ -99,6 +99,7 @@ class GameController extends Controller
         $newGame->category_id = $cat->id;
         $newGame->description = $request->description;
         $newGame->image_path = $request->title.'-img/';
+        $newGame->thumbnail_filename = 'thumb.'.$request->file('thumbnail')->extension();
         $newGame->created_at = now();
         $newGame->updated_at = now();
         $newGame->save();
@@ -176,6 +177,7 @@ class GameController extends Controller
         $updateGame->category_id = $cat->id;
         $updateGame->description = $request->description;
         $updateGame->image_path = $request->title.'-img/';
+        $updateGame->thumbnail_filename = 'thumb.'.$request->file('thumbnail')->extension();
         $updateGame->updated_at = now();
         $updateGame->save();
         

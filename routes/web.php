@@ -45,6 +45,9 @@ Route::delete('/remove-from-cart', [CartController::class, 'remove'])->middlewar
 Route::post('/checkout', [TransactionController::class, 'checkout'])->middleware('auth')->name('checkout');
 
 
+Route::post('/post-review/{slug}', [ReviewController::class, 'postReview'])->name('post-review');
+
+
 Route::get('/dashboard', [GameController::class, 'dashboard'])->name('dashboard');
 
 Route::get('/search', [GameController::class, 'search']); 

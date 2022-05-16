@@ -106,29 +106,39 @@
         class="content-postreview w-full p-5 bg-white rounded-md flex flex-col gap-3"
     >
         <h2 class="font-semibold">Leave a Review!</h2>
-        <form action="" method="post">
+        <form action="{{ route('post-review', $vargame->slug) }}" method="post">
+            @csrf
             <div class="review-form-container flex flex-col gap-5">
                 <div class="radio-button-recommend">
                     <input
                         type="radio"
-                        name="review-recommend"
+                        name="reviewType"
                         id="recommended"
+                        value="recommended"
                     />
-                    Recommended
+                    <label for="recommended">Recommended</label>
                     <input
                         type="radio"
-                        name="review-recommend"
-                        id="not-recommended"
+                        name="reviewType"
+                        value="not"
+                        id="not"
                     />
-                    Not Recommended
+                    <label for="not">Not Recommended</label>
                 </div>
+                @error('review_type')
+                    <p class="text-sm text-red-500">{{ $message }}</p>
+                @enderror
                 <textarea
                     class="w-full p-3 rounded-md border-gray-300 border-2 ring-[#c7ccf7] hover:ring-1 focus:outline-none focus:ring-2"
-                    name="review-commend"
+                    name="reviewDescription"
                     id=""
                     cols="30"
                     rows="7"
+                    required
                 ></textarea>
+                @error('review_description')
+                    <p class="text-sm text-red-500">{{ $message }}</p>
+                @enderror
                 <input
                     class="w-fit p-2 px-5 bg-[#374151] text-base font-medium h-[2.5rem] text-white rounded-lg cursor-pointer hover:scale-105 hover:bg-[#475161]"
                     type="submit"
@@ -169,4 +179,10 @@
         @endforeach
     </div>
 </div>
+@endsection
+
+@section('notification')
+    @if(session()->has('post_success'))
+        <x-notification message="{!! session('post_success') !!}" bg-color="bg-green-100" text-color="text-green-900"/>
+    @endif
 @endsection

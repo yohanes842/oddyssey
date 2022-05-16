@@ -7,7 +7,7 @@ window.$ = window.jQuery = $;
 if (document.title == "Oddyssey | Dashboard") {
     $("#navbar-dashboard").addClass("active");
 } else if (document.title == "Oddyssey | Your Cart") {
-    $("#navbar-dashboard").addClass("active");
+    $("#navbar-cart").addClass("active");
 }
 
 //update category form
