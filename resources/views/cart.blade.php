@@ -28,7 +28,7 @@
                         </div>
                         <div class="right-content flex flex-col items-center">
                             <h3 class="font-medium">{{ $cartItem->game->price_with_notation }}</h3>
-                            <form action="{{ route('remove-from-cart') }}" method="post">
+                            <form action="{{ route('cart') }}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <input type="hidden" name="id" value="{{ $cartItem->id }}">

@@ -36,7 +36,7 @@ class UserController extends Controller
             
             $request->session()->regenerate();
 
-            return redirect()->intended('dashboard')->with('login_success', 'Hi, <b>'.$users->name.'</b>! Welcome to Oddyssey!');
+            return redirect()->intended(route('dashboard'))->with('login_success', 'Hi, <b>'.$users->name.'</b>! Welcome to Oddyssey!');
         }
         
         return back()->withErrors([

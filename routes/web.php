@@ -24,57 +24,45 @@ use App\Http\Controllers\ReviewController;
 
 Route::redirect('/', '/dashboard');
 
-Route::get('/login', [UserController::class, 'viewLogin'])->middleware('guest')->name('login');
+Route::controller(UserController::class)->group(function () {
+    Route::get('/login', 'viewLogin')->middleware('guest')->name('login');
+    Route::post('/login', 'authentication');
+    Route::get('/register', 'viewRegister')->name('register');
+    Route::post('/register', 'store');
+    Route::post('/logout', 'logout')->name('logout');
+});
 
-Route::post('/login', [UserController::class, 'authentication']);
-
-Route::get('/register', [UserController::class, 'viewRegister'])->name('register');
-
-Route::post('/register', [UserController::class, 'store']);
-
-Route::post('/logout', [UserController::class, 'logout'])->name('logout');
-
-
-Route::get('/cart', [CartController::class, 'index'])->name('cart');
-
-Route::post('/add-to-cart', [CartController::class, 'store'])->middleware('auth')->name('add-to-cart');
-
-Route::delete('/remove-from-cart', [CartController::class, 'remove'])->middleware('auth')->name('remove-from-cart');
-
+Route::controller(CartController::class)->middleware('auth')->name('cart')->group(function () {
+    Route::get('/cart', 'index');
+    Route::post('/cart', 'store');
+    Route::delete('/cart', 'destroy');
+});
 
 Route::post('/checkout', [TransactionController::class, 'checkout'])->middleware('auth')->name('checkout');
 
+Route::controller(GameController::class)->group(function () {
+    Route::get('/dashboard', 'dashboard')->name('dashboard');
+    Route::get('/search', 'search')->name('search'); 
+    Route::get('/game/{slug}', 'gameDetails')->name("game-detail");
+});
 
-Route::post('/post-review/{slug}', [ReviewController::class, 'postReview'])->name('post-review');
+Route::controller(GameController::class)->middleware('admin')->group(function () {
+    Route::get('/admin/manage-games', 'index')->name('manage-games');
+    
+    Route::get('/admin/manage-games/add', 'formAddGame')->name('add-game');
+    Route::post('/admin/manage-games/add', 'store');
+    Route::get('/admin/manage-games/update/{slug}', 'formUpdateGame')->name('update-game');
+    Route::put('/admin/manage-games/update/{slug}', 'update');
+    Route::delete('/admin/manage-games/delete/{slug}', 'destroy')->name('delete-game');
+});
 
+Route::controller(CategoryController::class)->middleware('admin')->group(function () {
+    Route::get('/admin/manage-categories', 'index')->name('manage-categories');
+    Route::get('/admin/manage-categories/add', 'formAddCategory')->name('add-category');
+    Route::post('/admin/manage-categories/add', 'store');
+    Route::get('/admin/manage-categories/update/{slug}', 'formUpdateCategory')->name('update-category');
+    Route::put('/admin/manage-categories/update/{slug}', 'update');
+    Route::delete('/admin/manage-categories/delete/{slug}', 'destroy')->name('delete-category');
+});
 
-Route::get('/dashboard', [GameController::class, 'dashboard'])->name('dashboard');
-
-Route::get('/search', [GameController::class, 'search']); 
-
-Route::get('/game/{slug}', [GameController::class, 'gameDetails'])->name("game-detail");
-
-Route::get('/admin/manage-games', [GameController::class, 'index'])->name('manage-games');
-
-Route::get('/admin/manage-categories', [CategoryController::class, 'index'])->name('manage-categories');
-
-Route::get('/admin/manage-games/add-game', [GameController::class, 'formAddGame'])->name('add-game');
-
-Route::post('/admin/manage-games/add-game', [GameController::class, 'store']);
-
-Route::get('/admin/manage-games/update-game/{slug}', [GameController::class, 'formUpdateGame'])->name('update-game');
-
-Route::put('/admin/manage-games/update-game/{slug}', [GameController::class, 'update']);
-
-Route::delete('/admin/manage-games/delete-game', [GameController::class, 'delete'])->name('delete-game');
-
-
-Route::get('/admin/manage-categories/add-category', [CategoryController::class, 'formAddCategory'])->name('add-category');
-
-Route::post('/admin/manage-categories/add-category', [CategoryController::class, 'store']);
-
-Route::get('/admin/manage-categories/update-cat/{slug}', [CategoryController::class, 'formUpdateCategory'])->name('update-cat');
-
-Route::put('/admin/manage-categories/update-cat/{slug}', [CategoryController::class, 'update']);
-
-Route::delete('/admin/manage-categories/delete-cat', [CategoryController::class, 'delete'])->name('delete-cat');
+Route::post('/post-review/{slug}', [ReviewController::class, 'postReview'])->middleware('auth')->name('post-review');

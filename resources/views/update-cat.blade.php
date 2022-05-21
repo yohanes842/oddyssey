@@ -20,10 +20,9 @@
             <p class="text-sm text-red-500">{{ $message }}</p>
         @enderror
     </div>
-    <form action="{{ route ('update-cat',$category->slug) }}" method="post">
+    <form action="{{ route ('update-category',$category->slug) }}" method="post">
         @csrf
         @method('PUT')
-        <input type="hidden" name="id" value="{{ $category->id }}">
         <button type="submit"
         class="w-fit h-[2rem] m-1 px-2 bg-[#374151] rounded-lg text-white text-xs cursor-pointer font-semibold hover:scale-105"
             >

@@ -19,7 +19,7 @@
                 </p>
                 <div class="game-description-price flex flex-col gap-2">
                     <p class="text-lg font-semibold">{{ $vargame->price_with_notation }}</p>
-                    <form action="{{ route('add-to-cart') }}" method="POST">
+                    <form action="{{ route('cart') }}" method="POST">
                         @csrf
                         <input type="hidden" name="id" value="{{ $vargame->id }}">
                         <button

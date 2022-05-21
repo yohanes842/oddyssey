@@ -47,7 +47,7 @@ class CategoryController extends Controller
         return view('update-cat')->with('category',$category);
     }
 
-    public function update(Request $request){
+    public function update(Request $request, $slug){
         $validation = Validator::make($request->all(),
         [
             'category_name' => 'required'
@@ -75,7 +75,7 @@ class CategoryController extends Controller
                 ->withErrors($validation);
         }
                
-        $updateCat = Category::where('id', $request->id)->first();
+        $updateCat = Category::where('slug', $slug)->first();
         
         $updateCat->slug = Str::of($request->category_name)->slug('-');
         $updateCat->category_name = $request->category_name;
@@ -86,8 +86,8 @@ class CategoryController extends Controller
         return redirect()->route('manage-categories')->with('update_success', 'Category <b>"'.$request->oldName.'"</b> has successfully been updated!');
     }
 
-    public function delete(Request $request){
-        $deleteCategory = Category::where('id', $request->id)->first();
+    public function destroy($slug){
+        $deleteCategory = Category::where('slug', $slug)->first();
         $category_name = $deleteCategory->category_name;
         $deleteCategory->delete();
 

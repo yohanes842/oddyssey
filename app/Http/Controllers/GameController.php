@@ -133,7 +133,7 @@ class GameController extends Controller
         return view('update-game')->with('game',$game)->with("categories", $categories);
     }
 
-    public function update(Request $request){
+    public function update(Request $request, $slug){
         $validation = Validator::make($request->all(),
         [
             'title' => 'required',
@@ -169,7 +169,7 @@ class GameController extends Controller
         
        
        
-        $updateGame = Game::where('id', $request->id)->first();
+        $updateGame = Game::where('slug', $slug)->first();
         $cat = Category::where('category_name', $request->category)->first();
         $updateGame->title = $request->title;
         $updateGame->slug = Str::of($request->title)->slug('-');
@@ -201,8 +201,8 @@ class GameController extends Controller
         return redirect()->route('manage-games')->with('update_success', 'Game <b>"'.$request->oldTitle.'"</b> has successfully been updated!');;
     }
 
-    public function delete(Request $request){
-        $deleteGame = Game::where('id', $request->id)->first();
+    public function destroy($slug){
+        $deleteGame = Game::where('slug', $slug)->first();
 
         if(!$deleteGame){
             abort(404);

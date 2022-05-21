@@ -31,7 +31,7 @@
                         <div class="flex gap-3 text-sm my-1">
                             <a class="p-4 py-1 bg-[#374151] rounded-md text-white font-center font-medium scale-105 hover:bg-[#475161]" href="{{ route('update-game', $game->slug) }}">UPDATE</a>
 
-                            <form action="{{ route ('delete-game') }}" method="post">
+                            <form action="{{ route ('delete-game', $game->slug) }}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <input type="hidden" name="id" value="{{ $game->id }}">

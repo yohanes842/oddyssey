@@ -7,7 +7,6 @@
     @csrf
     @method('PUT')
     <input type="hidden" name="oldTitle" value ="{{ $game->title }}">
-    <input type="hidden" name="id" value="{{ $game->id }}">
 
     <h2 class="font-semibold text-[#374151] text-center mb-5">Update Game</h2>
     <div class="form-container flex flex-col gap-2 mb-2">

@@ -40,7 +40,7 @@ class CartController extends Controller
 
         return redirect(route("cart"))->with('message', 'Game <b>"'.$game->title.'"</b> has successfully been added to your cart!');
     }
-    public function remove(Request $request){
+    public function destroy(Request $request){
         $cartItem = CartItem::with('game')->where('game_id', $request->id)->first();
 
         $cartItem->delete();

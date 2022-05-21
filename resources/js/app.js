@@ -36,10 +36,8 @@ setTimeout(() => {
 }, 5000);
 
 close_notification.on("click", () => {
-    notification.animate({ opacity: 0 }, 1000);
-    setTimeout(() => {
-        notification.parent().empty();
-    }, 2500);
+    notification.css("opacity", 0);
+    notification.parent().empty();
 });
 
 //checkout

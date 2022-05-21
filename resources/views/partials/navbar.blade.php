@@ -19,7 +19,7 @@
                 <a href="{{ route("cart") }}">Cart</a>
             </div>
             @auth
-            @if(auth()->user()->user_type == 'admin')
+            @can('isAdmin')
             <div
                 class="group p-5 mx-1 h-full flex items-center justify-center cursor-pointer relative hover:bg-gray-100"
             >
@@ -39,7 +39,7 @@
                     </ul>
                 </div>
             </div>
-            @endif
+            @endcan
             @endauth
         </div>
 
