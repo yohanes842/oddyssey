@@ -29,8 +29,8 @@
                 />
             </div>
             <div class="form-field">
-                <input class="rounded-lg ring-[#c7ccf7] hover:ring-1 focus:outline-none focus:ring-2 active:ring-2" type="checkbox" name="rememberme" id="" />
-                <span>Remember me</span>
+                <input class="rounded-lg ring-[#c7ccf7] hover:ring-1 focus:outline-none focus:ring-2 active:ring-2" type="checkbox" name="rememberme" id="rememberme" />
+                <label for="rememberme">Remember me</label>
             </div>
         </div>
         <div class="submit flex flex-col items-center gap-[1rem] mt-[1rem]">
