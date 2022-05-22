@@ -16,10 +16,6 @@ class UserController extends Controller
     }
 
     public function authentication(Request $request){
-        if(Auth::viaRemember()){
-            return redirect()->intended(route('dashboard'));
-        }
-
         $credentials = Validator::make($request->all(),
         [
             'email' => ['required', 'email:dns'],
@@ -35,14 +31,9 @@ class UserController extends Controller
                 ]);
         }
 
+        Auth::setRememberDuration(60*24*2);
+
         if (Auth::attempt($request->only(['email', 'password']), $request->rememberme)) {
-            // if($request->rememberme){
-            //     setcookie(
-            //         "CookieName",
-            //         "CookieValue",
-            //         time() + (20 * 365 * 24 * 60 * 60)
-            //       );
-            // }
             $users = User::where('email', $request->email)->get()->first();
             
             $request->session()->regenerate();
