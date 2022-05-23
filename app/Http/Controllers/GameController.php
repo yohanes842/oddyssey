@@ -63,7 +63,7 @@ class GameController extends Controller
 
     //manage-game by admin
     public function index(){
-        $games = Game::with('category')->orderBy('title')->paginate(6);
+        $games = Game::with('category')->orderBy('title')->paginate(10);
         return view('manage-games')->with('games', $games);
     }
 
