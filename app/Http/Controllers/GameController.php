@@ -50,7 +50,7 @@ class GameController extends Controller
     }
 
     public function search(Request $request){
-        $games = Game::where('title', 'like', '%'.$request->search.'%')->paginate(15);
+        $games = Game::where('title', 'like', '%'.$request->search.'%')->orderBy('title')->paginate(15);
         return view('search')->with('games', $games);
     }
 
@@ -82,6 +82,8 @@ class GameController extends Controller
             'slider' => 'required|min:3',
             'slider.*' => 'image|mimes:jpg,jpeg,svg,png',
             'description' => 'required|min:10'
+        ], [
+            'slider.min' => 'The slider must be at least :min images',
         ]);
 
         if ($validation->fails()){
@@ -124,11 +126,7 @@ class GameController extends Controller
     public function formUpdateGame($slug){
         $game = Game::with('category')->where('slug', $slug)->first();
 
-        if(!$game){
-            abort(404);
-        }
-
-        $categories = Category::all();
+        $categories = Category::orderBy('category_name')->get();
 
         return view('update-game')->with('game',$game)->with("categories", $categories);
     }
@@ -143,6 +141,8 @@ class GameController extends Controller
             'slider' => 'required|min:3',
             'slider.*' => 'image|mimes:jpg,jpeg,svg,png',
             'description' => 'required|min:10'
+        ], [
+            'slider.min' => 'The slider must be at least :min images',
         ]);
         
         if ($request->title != $request->oldTitle){

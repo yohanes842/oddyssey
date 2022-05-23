@@ -125,7 +125,7 @@
                     />
                     <label for="not">Not Recommended</label>
                 </div>
-                @error('review_type')
+                @error('reviewType')
                     <p class="text-sm text-red-500">{{ $message }}</p>
                 @enderror
                 <textarea
@@ -160,7 +160,7 @@
                         >
                             thumb_up
                         </span>
-                        <span> Recommended</span>
+                        <span>Recommended</span>
                     </div>
                 @else
                     <div class="review-type flex items-center gap-2">
@@ -169,7 +169,7 @@
                         >
                             thumb_down
                         </span>
-                        <span> Recommended</span>
+                        <span>Not Recommended</span>
                     </div>
                 @endif
                 <div class="review-post text-justify">

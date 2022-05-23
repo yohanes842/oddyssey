@@ -8,7 +8,7 @@
     <div class="game-card-container mb-5 w-full h-full grid grid-cols-5 gap-4 ">
     @foreach($games as $game)
         <a href="{{ route("game-detail", $game->slug) }}">
-            <div class="game-card bg-white rounded-lg shadow-xl ring-[#c7ccf7] hover:ring-4 hover:brightness-95">
+            <div class="game-card h-full bg-white rounded-lg shadow-xl ring-[#c7ccf7] hover:ring-4 hover:brightness-95">
                 <div class="card-image">
                     <img class="w-full h-20 rounded-t-lg" src="{{ asset('storage/assets/'.$game->image_path.$game->thumbnail_filename) }}" alt="">
                 </div>

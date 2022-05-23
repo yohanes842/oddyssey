@@ -48,7 +48,6 @@ Route::controller(GameController::class)->group(function () {
 
 Route::controller(GameController::class)->middleware('admin')->group(function () {
     Route::get('/admin/manage-games', 'index')->name('manage-games');
-    
     Route::get('/admin/manage-games/add', 'formAddGame')->name('add-game');
     Route::post('/admin/manage-games/add', 'store');
     Route::get('/admin/manage-games/update/{slug}', 'formUpdateGame')->name('update-game');

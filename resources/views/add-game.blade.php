@@ -93,6 +93,9 @@
             cols="30"
             rows="7"
         >{{ old('description') }}</textarea>
+        @error('description')
+            <p class="text-sm text-red-500">{{ $message }}</p>
+        @enderror
     </div>
     <input
         class="w-fit h-[2rem] m-1 px-2 bg-[#374151] rounded-lg text-white text-xs cursor-pointer font-semibold hover:scale-105"
