@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use App\Models\Category;
+use App\Models\Game;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
@@ -89,6 +91,15 @@ class CategoryController extends Controller
     public function destroy($slug){
         $deleteCategory = Category::where('slug', $slug)->first();
         $category_name = $deleteCategory->category_name;
+
+        //Delete game assets directory which has category same as deleted category
+        $deleteGames = Game::where('category_id', $deleteCategory->id)->get();
+        foreach($deleteGames as $deleteGame){
+            $assetPath = $deleteGame->image_path;
+            Storage::deleteDirectory('assets/'.$assetPath);
+        }
+
+        //Delete category from database
         $deleteCategory->delete();
 
         return redirect()

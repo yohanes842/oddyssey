@@ -26,9 +26,9 @@ Route::redirect('/', '/dashboard');
 
 Route::controller(UserController::class)->group(function () {
     Route::get('/login', 'viewLogin')->middleware('guest')->name('login');
-    Route::post('/login', 'authentication');
-    Route::get('/register', 'viewRegister')->name('register');
-    Route::post('/register', 'store');
+    Route::post('/login', 'authentication')->middleware('guest');
+    Route::get('/register', 'viewRegister')->middleware('guest')->name('register');
+    Route::post('/register', 'store')->middleware('guest');
     Route::post('/logout', 'logout')->name('logout');
 });
 

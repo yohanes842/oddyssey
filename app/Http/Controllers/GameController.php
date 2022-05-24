@@ -209,6 +209,12 @@ class GameController extends Controller
         }
 
         $title = $deleteGame->title;
+
+        //Delete game assets directory
+        $assetPath = $deleteGame->image_path;
+        Storage::deleteDirectory('assets/'.$assetPath);
+
+        //Delete game from database
         $deleteGame->delete();
 
         return redirect()
