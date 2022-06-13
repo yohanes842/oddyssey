@@ -38,7 +38,7 @@ class UserController extends Controller
             
             $request->session()->regenerate();
 
-            return redirect()->intended(route('dashboard'))->with('login_success', 'Hi, <b>'.$users->name.'</b>! Welcome to Oddyssey!');
+            return redirect()->route('dashboard')->with('login_success', 'Hi, <b>'.$users->name.'</b>! Welcome to Oddyssey!');
         }
         
         return back()->withErrors([
@@ -70,7 +70,7 @@ class UserController extends Controller
 
         $newUser = new User();
         $newUser->name = $request->name;
-        $newUser->user_type = 'member';
+        $newUser->role_id = 2;
         $newUser->email = $request->email;
         $newUser->password = Hash::make($request->password);
         $newUser->created_at = now();

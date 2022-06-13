@@ -19,7 +19,7 @@
                 <a href="{{ route("cart") }}">Cart</a>
             </div>
             @auth
-            @can('isAdmin')
+            @can('view', App\Models\Game::class)
             <div
                 class="group p-5 mx-1 h-full flex items-center justify-center cursor-pointer relative hover:bg-gray-100"
             >

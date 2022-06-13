@@ -2100,12 +2100,8 @@ setTimeout(function () {
   notification.parent().empty();
 }, 5000);
 close_notification.on("click", function () {
-  notification.animate({
-    opacity: 0
-  }, 1000);
-  setTimeout(function () {
-    notification.parent().empty();
-  }, 2500);
+  notification.css("opacity", 0);
+  notification.parent().empty();
 }); //checkout
 
 var checkout_form = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#checkout");
