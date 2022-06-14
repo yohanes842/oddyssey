@@ -17,7 +17,7 @@
                         <a class="hover:brightness-90" href="{{ route('game-detail', $game->slug) }}">
                             <img 
                                 class="h-20 w-40" 
-                                src="{{ asset('storage/assets/'.$game->image_path.$game->thumbnail_filename) }}" 
+                                src="{{ asset('assets/'.$game->image_path.$game->thumbnail_filename) }}" 
                                 alt=""
                             >
                         </a>

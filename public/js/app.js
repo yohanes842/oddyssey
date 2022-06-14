@@ -2126,7 +2126,7 @@ function moveLeft() {
   var current = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".carousel-image-container").first().next();
   slideBox.animate({
     left: "0vw"
-  }, 1000, "linear");
+  }, 500, "linear");
   setTimeout(function () {
     last.prependTo(slideBox);
     slideBox.animate({
@@ -2134,7 +2134,7 @@ function moveLeft() {
     }, 0);
     leftArrow.on("click", moveLeft);
     rightArrow.on("click", moveRight);
-  }, 1000);
+  }, 500);
 }
 
 function moveRight() {
@@ -2144,7 +2144,7 @@ function moveRight() {
   var current = first.next();
   slideBox.animate({
     left: "-60vw"
-  }, 1000, "linear");
+  }, 500, "linear");
   setTimeout(function () {
     first.appendTo(slideBox);
     slideBox.animate({
@@ -2152,7 +2152,7 @@ function moveRight() {
     }, 0);
     leftArrow.on("click", moveLeft);
     rightArrow.on("click", moveRight);
-  }, 1000);
+  }, 500);
 }
 
 leftArrow.on("click", moveLeft);

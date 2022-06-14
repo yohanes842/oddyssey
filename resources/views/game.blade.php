@@ -8,7 +8,7 @@
             <div class="game-description-image">
                 <img
                     class="w-full"
-                    src="{{ asset('storage/assets/'.$vargame->image_path.$vargame->thumbnail_filename) }}"
+                    src="{{ asset('assets/'.$vargame->image_path.$vargame->thumbnail_filename) }}"
                     alt=""
                 />
             </div>
@@ -51,8 +51,7 @@
                     >
                         <img
                             class="carousel-image-card"
-                            {{-- {{ asset('storage/assets/'.$vargame->image_path.$vargame->thumbnail_filename) }} --}}
-                            src="{{ asset('storage/'.$image_paths[$i]) }}"
+                            src="{{ asset('assets/'.$vargame->image_path.$image_paths[$i]) }}"
                             alt=""
                         />
                     </div>
@@ -92,7 +91,7 @@
                 <a href="{{ route('game-detail', ['slug' => $game->slug]) }}">
                     <img
                         class="w-full h-36 hover:brightness-75"
-                        src="{{ asset('storage/assets/'.$game->image_path.'thumb.jpg') }}"
+                        src="{{ asset('assets/'.$game->image_path.'thumb.jpg') }}"
                         alt=""
                     />
                 </a>

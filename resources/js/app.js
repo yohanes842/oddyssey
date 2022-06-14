@@ -67,13 +67,13 @@ function moveLeft() {
     const last = $(".carousel-image-container").last();
     const current = $(".carousel-image-container").first().next();
 
-    slideBox.animate({ left: "0vw" }, 1000, "linear");
+    slideBox.animate({ left: "0vw" }, 500, "linear");
     setTimeout(() => {
         last.prependTo(slideBox);
         slideBox.animate({ left: "-30vw" }, 0);
         leftArrow.on("click", moveLeft);
         rightArrow.on("click", moveRight);
-    }, 1000);
+    }, 500);
 }
 
 function moveRight() {
@@ -83,13 +83,13 @@ function moveRight() {
     const first = $(".carousel-image-container").first();
     const current = first.next();
 
-    slideBox.animate({ left: "-60vw" }, 1000, "linear");
+    slideBox.animate({ left: "-60vw" }, 500, "linear");
     setTimeout(() => {
         first.appendTo(slideBox);
         slideBox.animate({ left: "-30vw" }, 0);
         leftArrow.on("click", moveLeft);
         rightArrow.on("click", moveRight);
-    }, 1000);
+    }, 500);
 }
 
 leftArrow.on("click", moveLeft);

@@ -11,6 +11,7 @@ use App\Models\Review;
 use App\Models\Transaction;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 
 class GameController extends Controller
 {
@@ -41,15 +42,19 @@ class GameController extends Controller
             'not' => $reviews->count()-$recommended_count,
         ];
 
-        $image_paths = Storage::files('assets/'.$game->image_path);
+        // $image_paths = Storage::files('assets/'.$game->image_path);
+        $image_paths = File::files(public_path("assets/".$game->image_path));
+        $image_fileName = [];
+        $image_fileName = array_map(fn($image) => $image->getFilename(), $image_paths);
+        // return dd($image_fileName);
 
         return view('game')
             ->with('vargame', $game)
             ->with('morelikethis', $morelikethis)
             ->with('reviews', $reviews)
             ->with('counter', $counter)
-            ->with('image_paths', $image_paths)
-            ->with('total_images', count($image_paths));
+            ->with('image_paths', $image_fileName)
+            ->with('total_images', count($image_fileName));
     }
 
     public function search(Request $request){

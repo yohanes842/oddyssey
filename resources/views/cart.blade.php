@@ -17,7 +17,7 @@
                             <a class="hover:brightness-90" href="{{ route('game-detail', $cartItem->slug) }}">
                                 <img 
                                     class="h-20 w-40" 
-                                    src="{{ asset('storage/assets/'.$cartItem->image_path.$cartItem->thumbnail_filename) }}" 
+                                    src="{{ asset('assets/'.$cartItem->image_path.$cartItem->thumbnail_filename) }}" 
                                     alt=""
                                 >
                             </a>
@@ -40,17 +40,6 @@
                             </form>
                         </div>
                     </div>
-                    
-                    {{-- <div class="ask-container z-20 fixed left-0 top-0 w-screen h-screen bg-black/20">
-                        <div class="ask-box w-fit p-10 mx-auto mt-64 bg-[#c7ccf7] text-gray-900 shadow-lg rounded-lg">
-                            <p>Do you want to remove '{{ $cartItem->game->title }}'' from your cart?</p>
-                            <div class="flex mt-5 justify-center gap-10">
-                                <button class="w-fit px-3 py-1 bg-green-600 text-white shadow rounded-lg scale-110 hover:brightness-90">Yes</button>
-                                <button class="w-fit px-3 py-1 bg-red-600 text-white shadow rounded-lg scale-110 hover:brightness-90">No</button>
-                            </div>
-                            
-                        </div>
-                    </div> --}}
                 @endforeach
             </div>
 
