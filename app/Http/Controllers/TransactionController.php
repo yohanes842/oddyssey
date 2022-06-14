@@ -23,7 +23,7 @@ class TransactionController extends Controller
             $transaction = new Transaction();
             $transaction->game_id = $cartItem->game_id;
             $transaction->user_id = $cartItem->user_id;
-            $transaction->updated_at = now();
+            $transaction->purchased_at = now();
             $transaction->save();
             $cartItem->delete();
         }

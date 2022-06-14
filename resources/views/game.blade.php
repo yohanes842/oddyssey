@@ -51,6 +51,7 @@
                     >
                         <img
                             class="carousel-image-card"
+                            {{-- {{ asset('storage/assets/'.$vargame->image_path.$vargame->thumbnail_filename) }} --}}
                             src="{{ asset('storage/'.$image_paths[$i]) }}"
                             alt=""
                         />

@@ -7,41 +7,73 @@
     
     <div>
         <h1>Featured Games</h1>
-            
-            {{-- <div class="featured-games-container h-[50%] w-full flex flex-row gap-10"> --}}
             <div class = "game-card-container mb-5 w-full h-full grid grid-cols-5 gap-4 s">
-                @foreach ($query as $query)
-                    {{-- <div class="card rounded-lg shadow-lg bg-white max-w-sm">
-                        <img src="{{ asset('storage/assets/'.$query->game->image_path.$query->game->thumbnail_filename) }}" class="card-img-top rounded-t-lg" alt="Fissure in Sandstone"/>
-                        <div class="card-body p-2">
-                        <h3 class="card-title text-gray-900 text-2xl font-normal mb-2">{{$query->game->title}}</h3>
-                        <p class="card-text text-gray-700 text-base mb-4">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-
-                        <h4 class = "flex justify-end pr-2">IDR. 10.000</h4>
-                    </div> --}}
-                    <a href="{{ route("game-detail", $query->game->slug) }}">
+                @foreach ($featured as $featured)
+                    <a href="{{ route("game-detail", $featured->game->slug) }}">
                         <div class="game-card h-fit bg-white rounded-lg shadow-xl ring-[#c7ccf7] hover:ring-4 hover:brightness-95">
                             <div class="card-image">
-                                <img class="w-full h-20 rounded-t-lg" src="{{ asset('storage/assets/'.$query->game->image_path.$query->game->thumbnail_filename) }}" alt="">
+                                <img class="w-full h-20 rounded-t-lg" src="{{ asset('storage/assets/'.$featured->game->image_path.$featured->game->thumbnail_filename) }}" alt="">
                             </div>
                             <div class="card-content flex flex-col gap-2 p-3 relative h-40">
-                                <h3 class="card-gameTitle">{{ $query->game->title }}</h3>
-                                <p class="card-description text-gray-400 text-[0.65rem] leading-3 ">{{ substr($query->game->description,0 ,100).'...'}}</p>
-                                <h3 class="card-price pt-2 text-right absolute">{{ ($query->game->price) ?  'IDR '.number_format($query->game->price) : 'FREE' }}</h3>
+                                <h3 class="card-gameTitle">{{ $featured->game->title }}</h3>
+                                <p class="card-description text-gray-400 text-[0.65rem] leading-3 ">{{ substr($featured->game->description,0 ,100).'...'}}</p>
+                                <h3 class="card-price pt-2 text-right absolute bottom-3 right-3 ">{{ ($featured->game->price) ?  'IDR '.number_format($featured->game->price) : 'FREE' }}</h3>
                             </div>
                             
                         </div>
                     </a>
                 @endforeach
             </div>
-            
-        
     </div>
     <div>
         <h1>Hot Games</h1>
-        <div class="hot-games-container h-full w-full"></div>
-    </div>
+        {{-- <div class="hot-games-container h-full w-full"> --}}
+            
+            <div class="games-list pr-2 w-[100%] flex flex-col gap-2 text-sm">
+                @foreach ($hot as $hot)
+                    <div class="game-box flex justify-between items-center rounded-md bg-white shadow">
+                        <div class="game-left flex">
+                            <a class="hover:brightness-90" href="{{ route('game-detail', $hot->game->slug) }}">
+                                <img 
+                                    class="h-20 w-40" 
+                                    src="{{ asset('storage/assets/'.$hot->game->image_path.$hot->game->thumbnail_filename) }}" 
+                                    alt=""
+                                >
+                            </a>
+                            <div class="game-description mx-3 flex flex-col">
+                                <h2 class="font-medium">{{ $hot->game->title }}</h2>
+                                <h3 class="text-gray-500 text-xs">{{ $hot->game->category->category_name }}</h3>
+                            </div>
+                        </div>
+                        
+                        <div class="game-right px-3 py-1 flex flex-col items-end justify-center">
+                            <h2 class="font-medium"> {{ ($hot->game->price) ?  'IDR '.number_format($hot->game->price) : 'FREE' }}</h3>
+                        </div>
+                    </div>
+                   
+                @endforeach
+            
+            </div>
+            
+
+            {{-- <a href="{{ route("game-detail", $featured->game->slug) }}">
+                <div class="game-card h-fit bg-white rounded-lg shadow-xl ring-[#c7ccf7] hover:ring-4 hover:brightness-95 flex flex-col">
+                    <div class="card-image">
+                        <img class="w-full h-20 rounded-t-lg" src="{{ asset('storage/assets/'.$featured->game->image_path.$featured->game->thumbnail_filename) }}" alt="">
+                    </div>
+                    <div class="card-content flex flex-col gap-2 p-3 relative h-40">
+                        <h3 class="card-gameTitle">{{ $featured->game->title }}</h3>
+                        <p class="card-description text-gray-400 text-[0.65rem] leading-3 ">{{ substr($featured->game->description,0 ,100).'...'}}</p>
+                        <h3 class="card-price pt-2 text-right absolute bottom-3 right-3 ">{{ ($featured->game->price) ?  'IDR '.number_format($featured->game->price) : 'FREE' }}</h3>
+                    </div>
+                    
+                </div>
+            </a> --}}
+
+
+
+        {{-- </div> --}}
+    {{-- </div> --}}
     <div class="notification-container">
         @if(session()->has('logout_success'))
         <x-notification message="{!! session('logout_success') !!}" bg-color="bg-[#c7ccf7]" text-color="text-gray-900"/>

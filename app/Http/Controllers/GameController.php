@@ -8,6 +8,8 @@ use Illuminate\Support\Str;
 use App\Models\Category;
 use App\Models\Game;
 use App\Models\Review;
+use App\Models\Transaction;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class GameController extends Controller
@@ -56,44 +58,24 @@ class GameController extends Controller
     }
 
     public function dashboard(){
-        // $query  = Review:: selectRaw('count(id) as count_row, game_id')
-        // // ->from('reviews') 
-        // // ->where ('games.id' ,'=', 'reviews.game_id')
-        // ->where ('review_type', '=', 'recommended')
-        // ->groupBy('game_id')
-        // ->orderBy('count_row', 'desc')
-        // ->limit(3)
-        // ->get();
-        
-        // $games = Game::where ('id', 'in',  ($query){
-        //         $query  -> select (DB::raw('count(id) as count_row, game_id'))
-        //                 ->from('reviews') 
-        //                 // ->where ('games.id' ,'=', 'reviews.game_id')
-        //                 ->where ('review_type', '=', 'recommended')
-        //                 ->groupBy('game_id')
-        //                 ->orderBy('count_row', 'desc')
-        //                 ->limit(3);
-              
-        // })->get();
-
-        // $games = $query->join('games', 'query)
-       
-
-       $query = Review::selectRaw('count(reviews.id) as count_row, game_id')
+       $featured = Review::selectRaw('count(reviews.id) as count_row, game_id')
                 // ->from('reviews')
                 ->where ('review_type', '=', 'recommended')
                 ->groupBy('reviews.game_id')
                 ->orderBy('count_row', 'desc')
                 ->limit(5)
                 ->get();
+        
+        // $time = Carbon:: now();
+        $hot = Transaction::selectRaw('count(id) as counted, game_id')
+            ->whereRaw('DATEDIFF(now(),purchased_at)<=7')
+            ->groupBy('game_id')
+            ->orderBy('counted', 'desc')
+            ->get();
 
-        // $reviews = DB::table('reviews')
-        //     ->select (DB::raw ("COUNT(*) as count_row"))
-        //     ->where ('review_type', '=', 'recommended')
-        //     ->groupBy('game_id')
-        //     ->orderBy('count_row', 'desc');
-        return view('dashboard')->with ('query', $query);
-        // return (dd($query));
+        // dd($hot);
+        return view('dashboard')->with ('featured', $featured)->with('hot', $hot);
+        
     }
     
 
