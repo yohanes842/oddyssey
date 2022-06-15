@@ -9,8 +9,6 @@ use App\Models\Category;
 use App\Models\Game;
 use App\Models\Review;
 use App\Models\Transaction;
-use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 
 class GameController extends Controller
