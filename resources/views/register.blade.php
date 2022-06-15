@@ -9,7 +9,7 @@
             <div class="form-field flex flex-col mb-2">
                 <label for="name">Name</label>
                 <input
-                    class="w-full h-[2.5rem] p-2 shadow-sm border-2 border-gray rounded-md text-black ring-[#c7ccf7] @error('name') ring-red-500 ring-1 @enderror hover:ring-1 focus:outline-none focus:ring-2"
+                    class="w-full h-[2.5rem] p-2 shadow-sm border-2 border-gray rounded-md text-black  @error('name') ring-red-500 ring-1 @enderror hover:ring-[#c7ccf7] hover:ring-1 focus:outline-none focus:ring-2"
                     type="text"
                     name="name"
                     id="name"
@@ -23,7 +23,7 @@
             <div class="form-field flex flex-col mb-2">
                 <label for="email">Email</label>
                 <input
-                    class="w-full h-[2.5rem] p-2 shadow-sm border-2 border-gray rounded-md text-black ring-[#c7ccf7] @error('email') ring-red-500 ring-1 @enderror hover:ring-1 focus:outline-none focus:ring-2"
+                    class="w-full h-[2.5rem] p-2 shadow-sm border-2 border-gray rounded-md text-black @error('email') ring-red-500 ring-1 @enderror hover:ring-[#c7ccf7]  hover:ring-1 focus:outline-none focus:ring-2"
                     type="email"
                     name="email"
                     id="email"
@@ -37,7 +37,7 @@
             <div class="form-field flex flex-col mb-2">
                 <label for="password">Password</label>
                 <input
-                    class="w-full h-[2.5rem] p-2 shadow-sm border-2 border-gray rounded-md text-black ring-[#c7ccf7] @error('password') ring-red-500 ring-1 @enderror hover:ring-1 focus:outline-none focus:ring-2"
+                    class="w-full h-[2.5rem] p-2 shadow-sm border-2 border-gray rounded-md text-black @error('password') ring-red-500 ring-1 @enderror hover:ring-[#c7ccf7] hover:ring-1 focus:outline-none focus:ring-2"
                     type="password"
                     name="password"
                     id=""
@@ -50,7 +50,7 @@
             <div class="form-field flex flex-col mb-2">
                 <label for="confirm_password">Confirm Password</label>
                 <input
-                    class="w-full h-[2.5rem] p-2 shadow-sm border-2 border-gray rounded-md text-black ring-[#c7ccf7] @error('confirm_password') ring-red-500 ring-1 @enderror hover:ring-1 focus:outline-none focus:ring-2"
+                    class="w-full h-[2.5rem] p-2 shadow-sm border-2 border-gray rounded-md text-black @error('confirm_password') ring-red-500 ring-1 @enderror hover:ring-[#c7ccf7] hover:ring-1 focus:outline-none focus:ring-2"
                     type="password"
                     name="confirm_password"
                     id=""
