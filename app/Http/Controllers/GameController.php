@@ -74,6 +74,7 @@ class GameController extends Controller
             ->whereRaw('DATEDIFF(now(),purchased_at)<=7')
             ->groupBy('game_id')
             ->orderBy('counted', 'desc')
+            ->limit(8)
             ->get();
 
         // dd($hot);
