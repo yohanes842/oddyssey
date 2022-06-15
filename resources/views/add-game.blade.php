@@ -30,7 +30,6 @@
                     name="category"
                     id=""
                     placeholder="Category"
-                    value="{{ old('category') }}"
                 >
                     <option class="bg-[#c7ccf7]" value="" @if(!old('category')) selected @endif disabled >Select game category</option>
                     @foreach($categories as $category)

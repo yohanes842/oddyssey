@@ -1,0 +1,235 @@
+[33mcommit ee068be08ee2b01cf479959e09c4b4f460090812[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: Yohanes <yohanesabing@gmail.com>
+Date:   Wed Jun 15 14:35:40 2022 +0700
+
+    Delete old value setting function for dropdown category field in app.js
+
+[33mcommit d8482ade437317f21fb7679c9cb7282f93b201b8[m
+Author: Yohanes <yohanesabing@gmail.com>
+Date:   Wed Jun 15 14:34:19 2022 +0700
+
+    Fix old value selection option field in add game and update game form
+
+[33mcommit d9dd7125b64340ec058cac268b5f73c6b262088c[m
+Author: Yohanes <yohanesabing@gmail.com>
+Date:   Wed Jun 15 14:29:04 2022 +0700
+
+    Fix old value feature in add game form
+
+[33mcommit 7c38b5388845a6c9aedccf0568c57cd6e892a624[m
+Author: Yohanes <yohanesabing@gmail.com>
+Date:   Wed Jun 15 14:10:41 2022 +0700
+
+    Clear not used import facades in game controller
+
+[33mcommit 1c8571d4c2ef188d61ed0bad8b8f936cda8fafc1[m
+Author: Yohanes <yohanesabing@gmail.com>
+Date:   Wed Jun 15 14:09:06 2022 +0700
+
+    Fix delete storage directory path in game controller (update and delete function)
+
+[33mcommit 40f2fa961baac22dce65e5eccd2ff199367e6925[m
+Author: Yohanes <yohanesabing@gmail.com>
+Date:   Wed Jun 15 13:47:14 2022 +0700
+
+    Fix undisplayed logo image due to wrong src
+
+[33mcommit b625e25a080e63c6aad0ddd02134eee2d7d60355[m
+Author: Yohanes <yohanesabing@gmail.com>
+Date:   Wed Jun 15 13:41:02 2022 +0700
+
+    Fix warning overlap css on ring color in register blade view
+
+[33mcommit 18ca0d955f13765471924cd3d458c3dab9509b3c[m
+Author: Yohanes <yohanesabing@gmail.com>
+Date:   Tue Jun 14 14:42:45 2022 +0700
+
+    Fix image storage and src link
+
+[33mcommit 6041227de5d37bcbc2d65d4bd60b2c5750ae9574[m
+Author: vannessa21 <vannessaaugustine21@gmail.com>
+Date:   Tue Jun 14 12:08:51 2022 +0700
+
+    Featured & Hot
+
+[33mcommit 93b7cea1a2d5ee4411ff05428c90968d1b73f56f[m
+Author: vannessa21 <vannessaaugustine21@gmail.com>
+Date:   Mon Jun 13 22:30:40 2022 +0700
+
+    Feature Games
+
+[33mcommit 78c5eef852d771b0d88a66abbc1c64507552ffa0[m
+Author: Yohanes <yohanesabing@gmail.com>
+Date:   Mon Jun 13 22:05:36 2022 +0700
+
+    Add policies and fix database migration adding role table
+
+[33mcommit 800ce6e96fba8b53334cabff7052fb28b551b6f1[m
+Author: Yohanes <yohanesabing@gmail.com>
+Date:   Tue May 24 13:19:04 2022 +0700
+
+    Fix delete assets directory while deleting a game or category
+
+[33mcommit 2d99e8e48f43c84cb9706985b3da7c28fff5ea4d[m
+Author: Yohanes <yohanesabing@gmail.com>
+Date:   Mon May 23 15:40:34 2022 +0700
+
+    Fix pagination
+
+[33mcommit f5d481beef98ae159c185a38a09d602d3e04cbd1[m
+Author: Yohanes <yohanesabing@gmail.com>
+Date:   Mon May 23 14:54:41 2022 +0700
+
+    Fixing errors and bugs
+
+[33mcommit 02fa0f55c8b8a894b503437882040ad2560ebe26[m
+Author: Yohanes <yohanesabing@gmail.com>
+Date:   Sun May 22 12:28:25 2022 +0700
+
+    set remember me expiration time
+
+[33mcommit 032bc791e8efc075790432e97234a86ac8a5fe42[m
+Author: Yohanes <yohanesabing@gmail.com>
+Date:   Sat May 21 20:31:51 2022 +0700
+
+    Add remember me without set the expiration
+
+[33mcommit ac9ea2d3ab12fc27b23f3ba8c34571dcebd45cd8[m
+Author: Yohanes <yohanesabing@gmail.com>
+Date:   Sat May 21 19:35:22 2022 +0700
+
+    Add authorization and grouping controllers
+
+[33mcommit 8f53d03d80990ba2515499b800611aad9f28830e[m
+Author: Yohanes <yohanesabing@gmail.com>
+Date:   Mon May 16 19:30:49 2022 +0700
+
+    Adding post review feature
+
+[33mcommit a54f03200ce244bf152ee6452a1f15c49b611a37[m
+Author: Yohanes <yohanesabing@gmail.com>
+Date:   Mon May 16 17:19:05 2022 +0700
+
+    Adding additional javascript
+
+[33mcommit 551fc6a1d22c3a38ac4c5371ffc18cc4bd747e60[m
+Author: Yohanes <yohanesabing@gmail.com>
+Date:   Mon May 16 16:29:51 2022 +0700
+
+    Fix checkout process
+
+[33mcommit b515afc75fd1b76ca0cf3e4b270837dc588f47fb[m
+Author: Yohanes <yohanesabing@gmail.com>
+Date:   Mon May 16 14:23:04 2022 +0700
+
+    Adding feature:upload images file to storage, and fixing some image setting every view page
+
+[33mcommit 272310da80ea5459f687dbadac4e943dfcad47af[m
+Author: Yohanes <yohanesabing@gmail.com>
+Date:   Mon May 16 10:58:59 2022 +0700
+
+    Refactoring controller based on models
+
+[33mcommit 18c98f9a2e50ce029f086bf23452c2ba84a1f080[m
+Merge: 6660bab c1f4330
+Author: vannessa21 <vannessaaugustine21@gmail.com>
+Date:   Sun May 15 21:57:12 2022 +0700
+
+    Merge remote-tracking branch 'refs/remotes/origin/master'
+
+[33mcommit 6660bab6515b75d854d05e7fab9c30bdbb6d34ff[m
+Author: vannessa21 <vannessaaugustine21@gmail.com>
+Date:   Sun May 15 21:53:11 2022 +0700
+
+    Update and Delete Categories
+
+[33mcommit c1f43308c2627a08829ceb626f86230d571742cd[m
+Author: Yohanes <yohanesabing@gmail.com>
+Date:   Sun May 15 19:49:18 2022 +0700
+
+    Fix url image src in every pae view
+
+[33mcommit b9368aaf610406b15cbd13f7d1ee0f630b57368b[m
+Merge: d75e236 04a1944
+Author: Yohanes <yohanesabing@gmail.com>
+Date:   Sun May 15 19:32:35 2022 +0700
+
+    Merge remote-tracking branch 'refs/remotes/origin/master'
+
+[33mcommit d75e236c314ea3f67814d0bb7f7ad8b507ac57b0[m
+Author: Yohanes <yohanesabing@gmail.com>
+Date:   Sun May 15 19:22:23 2022 +0700
+
+    Added cart features
+
+[33mcommit 04a1944e73ab02abfc2fdbd552df4ede3642c31c[m
+Author: vannessa21 <vannessaaugustine21@gmail.com>
+Date:   Sun May 15 17:01:50 2022 +0700
+
+    Update and Delete Games
+
+[33mcommit 4115c10288b268754da007a7ce05394a10ac8408[m
+Author: Yohanes <yohanesabing@gmail.com>
+Date:   Sun May 15 13:17:57 2022 +0700
+
+    Fix routing to add form page and additional upadate in game and cart features
+
+[33mcommit 3b03f3d71a518d09dd1e837de1ee06e3ab7fdcb5[m
+Author: Yohanes <yohanesabing@gmail.com>
+Date:   Sat May 14 21:14:15 2022 +0700
+
+    Add cart dynamic view
+
+[33mcommit 3ebd0c6ed15d6ee01605d24ff2f83637b3fdc102[m
+Author: Yohanes <yohanesabing@gmail.com>
+Date:   Sat May 14 16:48:28 2022 +0700
+
+    Update routing & href url, update game controller and game.blade.php view
+
+[33mcommit ba3a38117dd5296dd7ceba80ac6ae44f25463e7d[m
+Author: Yohanes <yohanesabing@gmail.com>
+Date:   Fri May 13 20:57:28 2022 +0700
+
+    Add game views
+
+[33mcommit d147c0e5995fdca04ae2e9f3d2641acf176a3e79[m
+Author: vannessa21 <vannessaaugustine21@gmail.com>
+Date:   Fri May 13 12:41:43 2022 +0700
+
+    Add Game Desc and Image
+
+[33mcommit 7c9bdbddb4de3ea554f12d36454e627bc971b719[m
+Author: vannessa21 <vannessaaugustine21@gmail.com>
+Date:   Thu May 12 21:38:15 2022 +0700
+
+    Input Game Added
+
+[33mcommit fce494bf3600dd1a1720470d44dee67f7c24ff36[m
+Author: Yohanes <yohanesabing@gmail.com>
+Date:   Thu May 12 20:01:30 2022 +0700
+
+    Add add game input validation and store
+
+[33mcommit 0aa9c1ee5cad537c60aa49d653ac97fa41d411ee[m
+Author: Yohanes <yohanesabing@gmail.com>
+Date:   Thu May 12 18:03:00 2022 +0700
+
+    Add search bar function
+
+[33mcommit 292f0dda11da2c2ecd32cfac9a16bd6a4cf95b6e[m
+Author: Yohanes <yohanesabing@gmail.com>
+Date:   Wed May 11 21:21:54 2022 +0700
+
+    Set Pagination in Manage Games View and Manage Categories View
+
+[33mcommit 7fd8d8a99e7d83bd9d4785111d15d3be15882612[m
+Author: Yohanes <yohanesabing@gmail.com>
+Date:   Wed May 11 20:32:20 2022 +0700
+
+    set up npm for jquery
+
+[33mcommit 0d766c973c540fbb9fbbabe07f2cdc3410c9ba09[m
+Author: Yohanes <yohanesabing@gmail.com>
+Date:   Wed May 11 18:53:41 2022 +0700
+
+    Init github

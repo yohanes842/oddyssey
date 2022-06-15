@@ -18,7 +18,7 @@
                     name="title"
                     id=""
                     placeholder="Title"
-                    value = "{{ $game->title}}" 
+                    value = "{{ old('title', $game->title)}}" 
                 />
                 @error('title')
                     <p class="text-sm text-red-500">{{ $message }}</p>
@@ -51,7 +51,7 @@
                     name="price"
                     id=""
                     placeholder="Price"
-                    value = "{{ $game->price}}"
+                    value = "{{ old('price', $game->price)}}"
                 />
                 @error('price')
                     <p class="text-sm text-red-500">{{ $message }}</p>
@@ -93,7 +93,7 @@
             id=""
             cols="30"
             rows="7"
-        >{{ $game->description }}</textarea>
+        >{{ old('description', $game->description) }}</textarea>
     </div>
     
     <button type="submit"
