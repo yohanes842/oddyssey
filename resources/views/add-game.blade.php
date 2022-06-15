@@ -32,9 +32,9 @@
                     placeholder="Category"
                     value="{{ old('category') }}"
                 >
-                    <option class="bg-[#c7ccf7]" value="" disabled selected>Select game category</option>
+                    <option class="bg-[#c7ccf7]" value="" @if(!old('category')) selected @endif disabled >Select game category</option>
                     @foreach($categories as $category)
-                        <option value="{{ $category->category_name }}">{{ $category->category_name }}</option>
+                        <option value="{{ $category->category_name }}" @if(old('category') === $category->category_name) selected @endif>{{ $category->category_name }}</option>
                     @endforeach
                 </select>
                 @error('category')
