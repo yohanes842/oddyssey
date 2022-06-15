@@ -33,11 +33,9 @@
                     name="category"
                     id="update-category-field"
                     placeholder="Category"
-                    old="{{ old('category') }}"
-                    initial = "{{ $game->category->category_name }}"
                 >
                     @foreach($categories as $category)
-                        <option value="{{ $category->category_name }}">{{ $category->category_name }}</option>
+                        <option value="{{ $category->category_name }}" @if(old('category', $game->category->category_name) === $category->category_name) selected @endif>{{ $category->category_name }}</option>
                     @endforeach
                 </select>
                 @error('category')
