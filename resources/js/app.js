@@ -10,20 +10,6 @@ if (document.title == "Oddyssey | Dashboard") {
     $("#navbar-cart").addClass("active");
 }
 
-//update category form
-// const category_field = $("#update-category-field");
-// if (category_field.attr("old") != "") {
-//     category_field.children("option").each(function () {
-//         if (category_field.attr("old") == $(this).attr("value"))
-//             $(this).attr("selected", "selected");
-//     });
-// } else {
-//     category_field.children("option").each(function () {
-//         if (category_field.attr("initial") == $(this).attr("value"))
-//             $(this).attr("selected", "selected");
-//     });
-// }
-
 //Notification
 const notification = $(".notification");
 const close_notification = $("#close-btn-notification");
