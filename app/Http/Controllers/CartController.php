@@ -20,9 +20,12 @@ class CartController extends Controller
         
 
         return view('cart')
-            ->with('cartItems', $cartItems)
-            ->with('count', $count);
+            ->with([
+                'cartItems' => $cartItems,
+                'count' => $count,
+            ]);
     }
+
     public function store(Request $request){
         $game = Game::where('id', $request->id)->first();
         $cartItem = CartItem::where('user_id', auth()->user()->id)
@@ -40,6 +43,7 @@ class CartController extends Controller
 
         return redirect(route("cart"))->with('message', 'Game <b>"'.$game->title.'"</b> has successfully been added to your cart!');
     }
+    
     public function destroy(Request $request){
         $cartItem = CartItem::with('game')->where('game_id', $request->id)->first();
 

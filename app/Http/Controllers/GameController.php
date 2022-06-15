@@ -24,7 +24,7 @@ class GameController extends Controller
         $morelikethis = Game::where('category_id', $game->category_id)
             ->where('id', '!=', $game->id)
             ->inRandomOrder()
-            ->take(3)
+            ->limit(3)
             ->get();
 
         $reviews = Review::with('user')
@@ -40,19 +40,19 @@ class GameController extends Controller
             'not' => $reviews->count()-$recommended_count,
         ];
 
-        // $image_paths = Storage::files('assets/'.$game->image_path);
         $image_paths = File::files(public_path("assets/".$game->image_path));
         $image_fileName = [];
         $image_fileName = array_map(fn($image) => $image->getFilename(), $image_paths);
-        // return dd($image_fileName);
 
         return view('game')
-            ->with('vargame', $game)
-            ->with('morelikethis', $morelikethis)
-            ->with('reviews', $reviews)
-            ->with('counter', $counter)
-            ->with('image_paths', $image_fileName)
-            ->with('total_images', count($image_fileName));
+            ->with([
+                'vargame' => $game,
+                'morelikethis' => $morelikethis,
+                'reviews' => $reviews,
+                'counter' => $counter,
+                'image_paths' => $image_fileName,
+                'total_images' => count($image_fileName),
+            ]);
     }
 
     public function search(Request $request){
@@ -62,14 +62,12 @@ class GameController extends Controller
 
     public function dashboard(){
        $featured = Review::selectRaw('count(reviews.id) as count_row, game_id')
-                // ->from('reviews')
                 ->where ('review_type', '=', 'recommended')
                 ->groupBy('reviews.game_id')
                 ->orderBy('count_row', 'desc')
                 ->limit(5)
                 ->get();
-        
-        // $time = Carbon:: now();
+       
         $hot = Transaction::selectRaw('count(id) as counted, game_id')
             ->whereRaw('DATEDIFF(now(),purchased_at)<=7')
             ->groupBy('game_id')
@@ -77,8 +75,11 @@ class GameController extends Controller
             ->limit(8)
             ->get();
 
-        // dd($hot);
-        return view('dashboard')->with ('featured', $featured)->with('hot', $hot);
+        return view('dashboard')
+            ->with ([
+                'featured' => $featured,
+                'hot' => $hot,
+            ]);
         
     }
     
@@ -152,7 +153,11 @@ class GameController extends Controller
 
         $categories = Category::orderBy('category_name')->get();
 
-        return view('update-game')->with('game',$game)->with("categories", $categories);
+        return view('update-game')
+            ->with([
+                'game' => $game,
+                'categories' =>  $categories,
+            ]);
     }
 
     public function update(Request $request, $slug){
@@ -221,8 +226,7 @@ class GameController extends Controller
             $slider->storeAs($path, 'slide'.$counter.'.'.$slider->extension());
         }
 
-
-        return redirect()->route('manage-games')->with('update_success', 'Game <b>"'.$request->oldTitle.'"</b> has successfully been updated!');;
+        return redirect()->route('manage-games')->with('update_success', 'Game <b>"'.$request->oldTitle.'"</b> has successfully been updated!');
     }
 
     public function destroy($slug){
