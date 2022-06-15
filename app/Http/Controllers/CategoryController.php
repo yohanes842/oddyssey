@@ -50,27 +50,16 @@ class CategoryController extends Controller
     }
 
     public function update(Request $request, $slug){
-        $validation = Validator::make($request->all(),
-        [
-            'category_name' => 'required'
+        if ($request->category_name === $request->oldName){ 
+            return redirect()->back()
+                ->withErrors(['category_name' => 'New category name must be different.'])
+                ->withInput();  
+        }
+         
+        $validation = Validator::make($request->all(), [
+            'category_name'=>'required|unique:categories'
         ]);
-        
-        if ($request->category_name != $request->oldName){
-            $validationName = Validator::make($request->all(), [
-                'category_name'=>'required|unique:categories'
-            ]);
-        }
-
-        if(isset($validationName)){
-            if  ($validation->fails() ||$validationName->fails() ){
-                return redirect()
-                    ->back()
-                    ->withInput()
-                    ->withErrors($validation)
-                    ->withErrors($validationName);
-            }
-        }
-        else if ($validation->fails()){
+        if  ($validation->fails()){
             return redirect()
                 ->back()
                 ->withInput()
