@@ -131,7 +131,7 @@ class GameController extends Controller
         $newGame->updated_at = now();
         $newGame->save();
 
-        $path = 'assets/'.$newGame->image_path;
+        $path = 'public/assets/'.$newGame->image_path;
         $file = $request->file('thumbnail');
         $thumb_filename = 'thumb.'.$file->extension();
 
@@ -206,9 +206,9 @@ class GameController extends Controller
         $updateGame->updated_at = now();
         $updateGame->save();
         
-        Storage::deleteDirectory($request->oldTitle."-img/");
+        Storage::deleteDirectory('public/assets/'.$request->oldTitle.'-img/');
 
-        $path = 'assets/'.$updateGame->image_path;
+        $path = 'public/assets/'.$updateGame->image_path;
         $file = $request->file('thumbnail');
         $thumb_filename = 'thumb.'.$file->extension();
 
@@ -237,7 +237,7 @@ class GameController extends Controller
 
         //Delete game assets directory
         $assetPath = $deleteGame->image_path;
-        Storage::deleteDirectory('assets/'.$assetPath);
+        Storage::deleteDirectory('public/assets/'.$assetPath);
 
         //Delete game from database
         $deleteGame->delete();
