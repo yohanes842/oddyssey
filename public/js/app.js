@@ -2078,15 +2078,19 @@ if (document.title == "Oddyssey | Dashboard") {
 
 var notification = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".notification");
 var close_notification = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#close-btn-notification");
-setTimeout(function () {
-  notification.animate({
-    opacity: 0
+
+if (notification) {
+  setTimeout(function () {
+    notification.animate({
+      opacity: 0
+    }, 2000);
   }, 2000);
-}, 2000);
-setTimeout(function () {
-  notification.parent().empty();
-}, 5000);
-close_notification.on("click", function () {
+  setTimeout(function () {
+    notification.parent().empty();
+  }, 5000);
+}
+
+close_notification === null || close_notification === void 0 ? void 0 : close_notification.on("click", function () {
   notification.css("opacity", 0);
   notification.parent().empty();
 }); //checkout
@@ -2094,10 +2098,10 @@ close_notification.on("click", function () {
 var checkout_form = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#checkout");
 var checkout_button = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#checkout-button");
 var checkout_exit = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#checkout-exit-button");
-checkout_button.on("click", function () {
+checkout_button === null || checkout_button === void 0 ? void 0 : checkout_button.on("click", function () {
   checkout_form.css("display", "block");
 });
-checkout_exit.on("click", function () {
+checkout_exit === null || checkout_exit === void 0 ? void 0 : checkout_exit.on("click", function () {
   checkout_form.css("display", "none");
 }); //Carousel
 
@@ -2105,8 +2109,10 @@ var slideBox = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#image-carousel");
 slideBox.css("left", "-30vw");
 var leftArrow = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#arrowLeft");
 var rightArrow = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#arrowRight");
+var slideInterval;
 
 function moveLeft() {
+  clearInterval(slideInterval);
   leftArrow.off("click", moveLeft);
   rightArrow.off("click", moveRight);
   var last = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".carousel-image-container").last();
@@ -2122,9 +2128,11 @@ function moveLeft() {
     leftArrow.on("click", moveLeft);
     rightArrow.on("click", moveRight);
   }, 500);
+  automation_slide();
 }
 
 function moveRight() {
+  clearInterval(slideInterval);
   leftArrow.off("click", moveLeft);
   rightArrow.off("click", moveRight);
   var first = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".carousel-image-container").first();
@@ -2140,10 +2148,19 @@ function moveRight() {
     leftArrow.on("click", moveLeft);
     rightArrow.on("click", moveRight);
   }, 500);
+  automation_slide();
 }
 
-leftArrow.on("click", moveLeft);
-rightArrow.on("click", moveRight);
+function automation_slide() {
+  console.log("masuk");
+  slideInterval = setInterval(moveRight, 5500);
+}
+
+if (slideBox) {
+  window.addEventListener("load", automation_slide);
+  leftArrow.on("click", moveLeft);
+  rightArrow.on("click", moveRight);
+}
 
 /***/ }),
 

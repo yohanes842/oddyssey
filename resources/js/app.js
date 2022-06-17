@@ -14,14 +14,16 @@ if (document.title == "Oddyssey | Dashboard") {
 const notification = $(".notification");
 const close_notification = $("#close-btn-notification");
 
-setTimeout(() => {
-    notification.animate({ opacity: 0 }, 2000);
-}, 2000);
-setTimeout(() => {
-    notification.parent().empty();
-}, 5000);
+if (notification) {
+    setTimeout(() => {
+        notification.animate({ opacity: 0 }, 2000);
+    }, 2000);
+    setTimeout(() => {
+        notification.parent().empty();
+    }, 5000);
+}
 
-close_notification.on("click", () => {
+close_notification?.on("click", () => {
     notification.css("opacity", 0);
     notification.parent().empty();
 });
@@ -31,11 +33,11 @@ const checkout_form = $("#checkout");
 const checkout_button = $("#checkout-button");
 const checkout_exit = $("#checkout-exit-button");
 
-checkout_button.on("click", () => {
+checkout_button?.on("click", () => {
     checkout_form.css("display", "block");
 });
 
-checkout_exit.on("click", () => {
+checkout_exit?.on("click", () => {
     checkout_form.css("display", "none");
 });
 
@@ -45,8 +47,10 @@ slideBox.css("left", "-30vw");
 
 const leftArrow = $("#arrowLeft");
 const rightArrow = $("#arrowRight");
+let slideInterval;
 
 function moveLeft() {
+    clearInterval(slideInterval);
     leftArrow.off("click", moveLeft);
     rightArrow.off("click", moveRight);
 
@@ -60,9 +64,12 @@ function moveLeft() {
         leftArrow.on("click", moveLeft);
         rightArrow.on("click", moveRight);
     }, 500);
+
+    automation_slide();
 }
 
 function moveRight() {
+    clearInterval(slideInterval);
     leftArrow.off("click", moveLeft);
     rightArrow.off("click", moveRight);
 
@@ -76,7 +83,16 @@ function moveRight() {
         leftArrow.on("click", moveLeft);
         rightArrow.on("click", moveRight);
     }, 500);
+
+    automation_slide();
 }
 
-leftArrow.on("click", moveLeft);
-rightArrow.on("click", moveRight);
+function automation_slide() {
+    slideInterval = setInterval(moveRight, 5500);
+}
+
+if (slideBox) {
+    window.addEventListener("load", automation_slide);
+    leftArrow.on("click", moveLeft);
+    rightArrow.on("click", moveRight);
+}
