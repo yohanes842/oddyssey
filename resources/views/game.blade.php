@@ -86,20 +86,23 @@
     <div class="content-morelike w-full">
         <h3 class="font-medium text-gray-500">More Like This</h3>
         <div class="morelike-container flex justify-start gap-2">
+            @if($morelikethis->isEmpty()) <h2 class="text-center w-full font-semibold py-12">No games with the same category!</h2>
+            @else
             @foreach($morelikethis as $game)
-            <div class="morelike-box w-[33%]">
-                <a href="{{ route('game-detail', ['slug' => $game->slug]) }}">
-                    <img
-                        class="w-full h-36 hover:brightness-75"
-                        src="{{ asset('assets/'.$game->image_path.'thumb.jpg') }}"
-                        alt=""
-                    />
-                </a>
-                <div class="morelike-price w-full font-medium text-right">
-                    {{  $game->price_with_notation  }}
+                <div class="morelike-box w-[33%]">
+                    <a href="{{ route('game-detail', ['slug' => $game->slug]) }}">
+                        <img
+                            class="w-full h-36 hover:brightness-75"
+                            src="{{ asset('assets/'.$game->image_path.'thumb.jpg') }}"
+                            alt=""
+                        />
+                    </a>
+                    <div class="morelike-price w-full font-medium text-right">
+                        {{  $game->price_with_notation  }}
+                    </div>
                 </div>
-            </div>
-            @endforeach
+                @endforeach
+            @endif
         </div>
     </div>
     <div
@@ -147,37 +150,40 @@
             </div>
         </form>
     </div>
-    <div class="content-reviews w-full grid grid-cols-3 gap-3">
-        @foreach($reviews as $review)
-            <div
-                class="review-box p-3 mb-5 bg-white rounded-md shadow flex flex-col gap-3"
-            >
-                <div class="review-user font-semibold">{{ $review->user->name }}</div>
-                @if($review->review_type == 'recommended')
-                    <div class="review-type flex items-center gap-2">
-                        <span
-                            class="material-symbols-rounded p-1 text-green-400 rounded-[50%] bg-green-100"
-                        >
-                            thumb_up
-                        </span>
-                        <span>Recommended</span>
+    @if($morelikethis->isEmpty()) <h2 class="text-center w-full font-semibold py-12">There are no reviews for this game yet!</h2>
+    @else
+        <div class="content-reviews w-full grid grid-cols-3 gap-3">
+            @foreach($reviews as $review)
+                <div
+                    class="review-box p-3 mb-5 bg-white rounded-md shadow flex flex-col gap-3"
+                >
+                    <div class="review-user font-semibold">{{ $review->user->name }}</div>
+                    @if($review->review_type == 'recommended')
+                        <div class="review-type flex items-center gap-2">
+                            <span
+                                class="material-symbols-rounded p-1 text-green-400 rounded-[50%] bg-green-100"
+                            >
+                                thumb_up
+                            </span>
+                            <span>Recommended</span>
+                        </div>
+                    @else
+                        <div class="review-type flex items-center gap-2">
+                            <span
+                                class="material-symbols-rounded p-1 text-red-400 rounded-[50%] bg-red-100"
+                            >
+                                thumb_down
+                            </span>
+                            <span>Not Recommended</span>
+                        </div>
+                    @endif
+                    <div class="review-post text-justify">
+                        {{ $review->description }}
                     </div>
-                @else
-                    <div class="review-type flex items-center gap-2">
-                        <span
-                            class="material-symbols-rounded p-1 text-red-400 rounded-[50%] bg-red-100"
-                        >
-                            thumb_down
-                        </span>
-                        <span>Not Recommended</span>
-                    </div>
-                @endif
-                <div class="review-post text-justify">
-                    {{ $review->description }}
                 </div>
-            </div>
-        @endforeach
-    </div>
+            @endforeach
+        </div>
+    @endif
 </div>
 @endsection
 
