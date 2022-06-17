@@ -697,26 +697,22 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 100%;
 }
 
-.h-20 {
-  height: 5rem;
-}
-
-.h-32 {
-  height: 8rem;
-}
-
-.h-\[2rem\] {
-  height: 2rem;
-}
-
 .h-fit {
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
 }
 
+.h-20 {
+  height: 5rem;
+}
+
 .h-40 {
   height: 10rem;
+}
+
+.h-\[2rem\] {
+  height: 2rem;
 }
 
 .h-5 {
@@ -1548,6 +1544,11 @@ input[type="number"]::-webkit-inner-spin-button,
   --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
   --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
   box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+
+.hover\:ring-\[\#c7ccf7\]:hover {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(199 204 247 / var(--tw-ring-opacity));
 }
 
 .hover\:brightness-95:hover {

@@ -35,7 +35,12 @@
                 @enderror
             </div>
             <div class="form-field flex flex-col mb-2">
-                <label for="password">Password</label>
+                <label for="password">
+                    Password
+                    <span class="text-xs"> 
+                        (Minimum 8 characters)*
+                    </span>
+                </label>
                 <input
                     class="w-full h-[2.5rem] p-2 shadow-sm border-2 border-gray rounded-md text-black @error('password') ring-red-500 ring-1 @enderror hover:ring-[#c7ccf7] hover:ring-1 focus:outline-none focus:ring-2"
                     type="password"

@@ -57,7 +57,12 @@
             </div>
         </div>
         <div>
-            <label for="thumbnail">Thumbnail</label>
+            <label for="thumbnail">
+                Thumbnail
+                <span class="text-xs"> 
+                    (File extension : jpg, jpeg, svg, png)*
+                </span>
+            </label>
             <input
                 class="w-full h-[3rem] p-1 pt-2 px-3 text-sm shadow-sm border-2 border-gray rounded-md ring-[#c7ccf7] hover:ring-1 focus:outline-none focus:ring-2"
                 type="file"
@@ -69,7 +74,12 @@
             @enderror
         </div>
         <div>
-            <label for="slider[]">Slider</label>
+            <label for="slider[]">
+                Slider
+                <span class="text-xs"> 
+                    (Minimum 3 images, file extension : jpg, jpeg, svg, png)*
+                </span>
+            </label>
             <input
                 class="w-full h-[3rem] p-1 pt-2 px-3 text-sm shadow-sm border-2 border-gray rounded-md ring-[#c7ccf7] hover:ring-1 focus:outline-none focus:ring-2"
                 type="file"
@@ -91,6 +101,7 @@
             id=""
             cols="30"
             rows="7"
+            placeholder="Descriptions (Minimum 10 characters)"
         >{{ old('description') }}</textarea>
         @error('description')
             <p class="text-sm text-red-500">{{ $message }}</p>

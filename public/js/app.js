@@ -2073,19 +2073,6 @@ if (document.title == "Oddyssey | Dashboard") {
   jquery__WEBPACK_IMPORTED_MODULE_0___default()("#navbar-dashboard").addClass("active");
 } else if (document.title == "Oddyssey | Your Cart") {
   jquery__WEBPACK_IMPORTED_MODULE_0___default()("#navbar-cart").addClass("active");
-} //update category form
-
-
-var category_field = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#update-category-field");
-
-if (category_field.attr("old") != "") {
-  category_field.children("option").each(function () {
-    if (category_field.attr("old") == jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).attr("value")) jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).attr("selected", "selected");
-  });
-} else {
-  category_field.children("option").each(function () {
-    if (category_field.attr("initial") == jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).attr("value")) jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).attr("selected", "selected");
-  });
 } //Notification
 
 
