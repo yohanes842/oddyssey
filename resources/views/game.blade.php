@@ -1,29 +1,29 @@
 @extends('layouts.main') @section('title', 'Oddyssey | Nama Game')
 @section('content')
 <div class="flex flex-col items-center gap-5 px-[15%]">
-    <div class="content-1 flex justify-between">
+    <div class="content-1 flex justify-between gap-2">
         <div
-            class="game-description w-[37%] flex flex-col gap-2 bg-white rounded-b-md shadow"
+            class="game-description w-[18vw] flex flex-col gap-2 bg-white rounded-b-md shadow"
         >
             <div class="game-description-image">
                 <img
-                    class="w-full"
+                    class="w-full h-28"
                     src="{{ asset('assets/'.$vargame->image_path.$vargame->thumbnail_filename) }}"
                     alt=""
                 />
             </div>
-            <div class="game-description-text p-2 pb-4 flex flex-col gap-2">
+            <div class="game-description-text p-2 flex flex-col gap-1">
                 <h1 class="font-medium">{{ $vargame->title }}</h1>
-                <p class="text-gray-500 text-xs w-full">
+                <p class="text-gray-500 text-xs w-full mb-3">
                     {{ $vargame->description }}
                 </p>
-                <div class="game-description-price flex flex-col gap-2">
+                <div class="game-description-price w-full flex justify-between items-center">
                     <p class="text-lg font-semibold">{{ $vargame->price_with_notation }}</p>
                     <form action="{{ route('cart') }}" method="POST">
                         @csrf
                         <input type="hidden" name="id" value="{{ $vargame->id }}">
                         <button
-                            class="p-2 w-[45%] rounded-lg text-sm font-medium text-white bg-[#374151] hover:bg-[#475161]"
+                            class="p-2 rounded-lg text-sm font-medium text-white bg-[#374151] hover:bg-[#475161]"
                             type="submit"
                             >
                             ADD TO CART

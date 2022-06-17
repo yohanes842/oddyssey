@@ -12,7 +12,7 @@
                 <a href="{{ route("game-detail", $featured->game->slug) }}">
                     <div class="game-card h-fit bg-white rounded-lg shadow-xl ring-[#c7ccf7] hover:ring-4 hover:brightness-95">
                         <div class="card-image">
-                            <img class="w-full h-20 rounded-t-lg" src="{{ asset('assets/'.$featured->game->image_path.$featured->game->thumbnail_filename) }}" alt="">
+                            <img class="w-full h-28 rounded-t-lg" src="{{ asset('assets/'.$featured->game->image_path.$featured->game->thumbnail_filename) }}" alt="">
                         </div>
                         <div class="card-content flex flex-col gap-2 p-3 relative h-40">
                             <h3 class="card-gameTitle">{{ $featured->game->title }}</h3>
@@ -33,7 +33,7 @@
                     <div class="game-left flex">
                         <a class="hover:brightness-90" href="{{ route('game-detail', $hot->game->slug) }}">
                             <img 
-                                class="h-20 w-40" 
+                                class="h-24 w-48" 
                                 src="{{ asset('assets/'.$hot->game->image_path.$hot->game->thumbnail_filename) }}" 
                                 alt=""
                             >

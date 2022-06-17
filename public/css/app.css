@@ -743,6 +743,18 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 8rem;
 }
 
+.h-28 {
+  height: 7rem;
+}
+
+.h-24 {
+  height: 6rem;
+}
+
+.h-44 {
+  height: 11rem;
+}
+
 .min-h-screen {
   min-height: 100vh;
 }
@@ -839,6 +851,42 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .w-\[9rem\] {
   width: 9rem;
+}
+
+.w-48 {
+  width: 12rem;
+}
+
+.w-\[37vw\] {
+  width: 37vw;
+}
+
+.w-\[20vw\] {
+  width: 20vw;
+}
+
+.w-\[19vw\] {
+  width: 19vw;
+}
+
+.w-\[18vw\] {
+  width: 18vw;
+}
+
+.w-\[18\.5vw\] {
+  width: 18.5vw;
+}
+
+.w-\[15vw\] {
+  width: 15vw;
+}
+
+.w-\[33vw\] {
+  width: 33vw;
+}
+
+.w-\[22vw\] {
+  width: 22vw;
 }
 
 .max-w-6xl {
@@ -940,6 +988,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .gap-10 {
   gap: 2.5rem;
+}
+
+.gap-1 {
+  gap: 0.25rem;
 }
 
 .divide-y > :not([hidden]) ~ :not([hidden]) {
