@@ -2064,6 +2064,8 @@ module.exports = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+var _$, _$2;
+
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
@@ -2152,7 +2154,6 @@ function moveRight() {
 }
 
 function automation_slide() {
-  console.log("masuk");
   slideInterval = setInterval(moveRight, 5500);
 }
 
@@ -2160,7 +2161,46 @@ if (slideBox) {
   window.addEventListener("load", automation_slide);
   leftArrow.on("click", moveLeft);
   rightArrow.on("click", moveRight);
-}
+} //live search
+
+
+(_$ = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#search")) === null || _$ === void 0 ? void 0 : _$.on("focus", function () {
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()("#dark-screen").css("display", "block");
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()("#search-list").css("display", "flex");
+});
+(_$2 = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#dark-screen")) === null || _$2 === void 0 ? void 0 : _$2.on("click", function () {
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()("#dark-screen").css("display", "none");
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()("#search-list").css("display", "none");
+});
+jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()("#search").on("keyup", function () {
+    var keyword = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).val();
+    jquery__WEBPACK_IMPORTED_MODULE_0___default().ajax({
+      url: "live-search",
+      type: "GET",
+      data: {
+        keyword: keyword
+      },
+      success: function success(data) {
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()("#search-list").empty();
+        data.forEach(function (each) {
+          var price = each.price ? "IDR " + each.price.toLocaleString("id-ID") : "FREE";
+          console.log(price);
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()("#search-list").append(jquery__WEBPACK_IMPORTED_MODULE_0___default()("<a>", {
+            href: "/game/" + each.slug
+          }).append(jquery__WEBPACK_IMPORTED_MODULE_0___default()("<div>", {
+            "class": "h-16 p-1 pr-3 flex flex-row items-center justify-between bg-white border-x-2 border-y-[1px] hover:border-4 hover:border-[#c7ccf7]"
+          }).append([jquery__WEBPACK_IMPORTED_MODULE_0___default()("<div>", {
+            "class": "h-full flex flex-row items-center gap-5"
+          }).append([jquery__WEBPACK_IMPORTED_MODULE_0___default()("<img>", {
+            "class": "h-full w-28 flex flex-row items-center gap-5",
+            src: "assets/" + each.image_path + each.thumbnail_filename
+          }), jquery__WEBPACK_IMPORTED_MODULE_0___default()("<h3>").text(each.title)]), jquery__WEBPACK_IMPORTED_MODULE_0___default()("<h3>").text(price)])));
+        });
+      }
+    });
+  });
+});
 
 /***/ }),
 

@@ -55,11 +55,6 @@ class GameController extends Controller
             ]);
     }
 
-    public function search(Request $request){
-        $games = Game::where('title', 'like', '%'.$request->search.'%')->orderBy('title')->paginate(15);
-        return view('search')->with('games', $games);
-    }
-
     public function dashboard(){
        $featured = Review::selectRaw('count(reviews.id) as count_row, game_id')
                 ->where ('review_type', '=', 'recommended')

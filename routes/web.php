@@ -7,6 +7,7 @@ use App\Http\Controllers\GameController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\SearchController;
 use App\Models\Category;
 use App\Models\Game;
 
@@ -43,9 +44,13 @@ Route::controller(CartController::class)->middleware('auth')->name('cart')->grou
 
 Route::post('/checkout', [TransactionController::class, 'checkout'])->middleware('auth')->name('checkout');
 
+Route::controller(SearchController::class)->group(function (){
+    Route::get('/search', 'search')->name('search');
+    Route::get('live-search', 'liveSearch');
+});
+
 Route::controller(GameController::class)->group(function () {
     Route::get('/dashboard', 'dashboard')->name('dashboard');
-    Route::get('/search', 'search')->name('search'); 
     Route::get('/game/{slug}', 'gameDetails')->name("game-detail");
 });
 
