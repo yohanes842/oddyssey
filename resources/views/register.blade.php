@@ -45,7 +45,7 @@
                     class="w-full h-[2.5rem] p-2 shadow-sm border-2 border-gray rounded-md text-black @error('password') ring-red-500 ring-1 @enderror hover:ring-[#c7ccf7] hover:ring-1 focus:outline-none focus:ring-2"
                     type="password"
                     name="password"
-                    id=""
+                    id="password"
                     required
                 />
                 @error('password')
@@ -58,7 +58,7 @@
                     class="w-full h-[2.5rem] p-2 shadow-sm border-2 border-gray rounded-md text-black @error('confirm_password') ring-red-500 ring-1 @enderror hover:ring-[#c7ccf7] hover:ring-1 focus:outline-none focus:ring-2"
                     type="password"
                     name="confirm_password"
-                    id=""
+                    id="confirm_password"
                     required
                 />
                 @error('confirm_password')

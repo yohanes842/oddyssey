@@ -13,7 +13,7 @@
                         class="w-full h-[2.5rem] p-2 shadow-sm border-2 border-gray rounded-md ring-[#c7ccf7] hover:ring-1 focus:outline-none focus:ring-2"
                         type="email"
                         name="email"
-                        id=""
+                        id="email"
                         required
                     />
                 </div>
@@ -24,7 +24,7 @@
                     class="w-full h-[2.5rem] p-2 shadow-sm border-2 border-gray rounded-md ring-[#c7ccf7] hover:ring-1 focus:outline-none focus:ring-2"
                     type="password"
                     name="password"
-                    id=""
+                    id="password"
                     required
                 />
             </div>

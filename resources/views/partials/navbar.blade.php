@@ -1,5 +1,5 @@
 <nav
-    class="w-screen h-[70px] z-10 flex items-center bg-white shadow-lg px-[20%] text-md font-sans fixed top-0"
+    class="w-screen h-[70px] z-50 flex items-center bg-white shadow-lg px-[20%] text-md font-sans fixed top-0"
 >
     <div>
         <img class="w-[50px]" src="{{ asset('assets/Logo.png') }}" alt="" />
@@ -27,7 +27,7 @@
                 <span class="material-symbols-rounded"> expand_more </span>
 
                 <div
-                    class="admin-dropdown z-20 w-[13rem] text-md py-3 bg-white rounded-b-lg x-10 divide-y divide-gray-400 shadow hidden absolute top-[60px] group-hover:block"
+                    class="admin-dropdown z-30 w-[13rem] text-md py-3 bg-white rounded-b-lg x-10 divide-y divide-gray-400 shadow hidden absolute top-[60px] group-hover:block"
                 >
                     <ul class="divide-y divide-gray-400">
                         <li class="p-2 hover:bg-[#c7ccf7] hover:bg-opacity-40 hover:text-[#374151] ease-in-out duration-300 hover:text-[1.1rem]">
@@ -51,7 +51,7 @@
                 <span class="material-symbols-rounded"> expand_more </span>
 
                 <div
-                    class="account-dropdown z-20 w-[9rem] text-md py-3 bg-white rounded-b-lg shadow hidden absolute top-[60px] group-hover:block"
+                    class="account-dropdown z-30 w-[9rem] text-md py-3 bg-white rounded-b-lg shadow hidden absolute top-[60px] group-hover:block"
                 >
                     <ul class="divide-y divide-gray-400">
                         <li class="p-2 hover:bg-[#c7ccf7] hover:bg-opacity-40 ease-in-out duration-300 text-red-500 hover:text-[1.1rem] hover:text-red-600">
