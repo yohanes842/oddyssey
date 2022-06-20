@@ -56,9 +56,9 @@ class GameController extends Controller
     }
 
     public function dashboard(){
-       $featured = Review::selectRaw('count(reviews.id) as count_row, game_id')
+       $featured = Review::selectRaw('count(id) as count_row, game_id')
                 ->where ('review_type', '=', 'recommended')
-                ->groupBy('reviews.game_id')
+                ->groupBy('game_id')
                 ->orderBy('count_row', 'desc')
                 ->limit(5)
                 ->get();
