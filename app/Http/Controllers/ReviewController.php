@@ -14,15 +14,23 @@ class ReviewController extends Controller
             'reviewType' => 'required',
             'reviewDescription' => 'required',
         ]);
-
+        
+        $game = Game::where('slug', $slug)->first();
         if($validation->fails()){
             return redirect()
                 ->back()
                 ->withErrors($validation)
                 ->withInput();
+        }else{
+            $user = Review::where('game_id', $game->id)
+                    ->where('user_id', auth()->user()->id)
+                    ->get();
+            if(count($user) > 0){
+                return redirect()
+                ->back()
+                ->with("alreadyReviewed", "You already reviewed this game before!");
+            }
         }
-
-        $game = Game::where('slug', $slug)->first();
         $newReview = new Review();
         $newReview->game_id = $game->id;
         $newReview->user_id = auth()->user()->id;

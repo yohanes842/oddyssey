@@ -190,4 +190,7 @@
     @if(session()->has('post_success'))
         <x-notification message="{!! session('post_success') !!}" bg-color="bg-green-100" text-color="text-green-900"/>
     @endif
+    @if(session()->has('alreadyReviewed'))
+    <x-notification message="{!! session('alreadyReviewed') !!}" bg-color="bg-red-100" text-color="text-red-900"/>
+@endif
 @endsection
