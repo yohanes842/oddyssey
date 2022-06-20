@@ -150,7 +150,7 @@
             </div>
         </form>
     </div>
-    @if($morelikethis->isEmpty()) <h2 class="text-center w-full font-semibold py-12">There are no reviews for this game yet!</h2>
+    @if($reviews->isEmpty()) <h2 class="text-center w-full font-semibold py-12">There are no reviews for this game yet!</h2>
     @else
         <div class="content-reviews w-full grid grid-cols-3 gap-3">
             @foreach($reviews as $review)
