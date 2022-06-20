@@ -18,7 +18,8 @@ class ReviewController extends Controller
         if($validation->fails()){
             return redirect()
                 ->back()
-                ->withErrors($validation);
+                ->withErrors($validation)
+                ->withInput();
         }
 
         $game = Game::where('slug', $slug)->first();

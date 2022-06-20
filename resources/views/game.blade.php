@@ -134,12 +134,11 @@
                 <textarea
                     class="w-full p-3 rounded-md border-gray-300 border-2 ring-[#c7ccf7] hover:ring-1 focus:outline-none focus:ring-2"
                     name="reviewDescription"
-                    id=""
+                    id="reviewDescription"
                     cols="30"
                     rows="7"
-                    required
-                ></textarea>
-                @error('review_description')
+                >{{ old('reviewDescription') }}</textarea>
+                @error('reviewDescription')
                     <p class="text-sm text-red-500">{{ $message }}</p>
                 @enderror
                 <input
