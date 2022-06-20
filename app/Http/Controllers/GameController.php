@@ -62,14 +62,12 @@ class GameController extends Controller
                 ->orderBy('count_row', 'desc')
                 ->limit(5)
                 ->get();
-       
         $hot = Transaction::selectRaw('count(id) as counted, game_id')
             ->whereRaw('DATEDIFF(now(),purchased_at)<=7')
             ->groupBy('game_id')
             ->orderBy('counted', 'desc')
             ->limit(8)
             ->get();
-
         return view('dashboard')
             ->with ([
                 'featured' => $featured,
