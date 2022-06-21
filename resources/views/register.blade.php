@@ -13,7 +13,6 @@
                     type="text"
                     name="name"
                     id="name"
-                    required
                     value="{{ old('name') }}"
                 />
                 @error('name')
@@ -27,7 +26,6 @@
                     type="email"
                     name="email"
                     id="email"
-                    required
                     value="{{ old('email')}}"
                 >
                 @error('email')
@@ -46,7 +44,6 @@
                     type="password"
                     name="password"
                     id="password"
-                    required
                 />
                 @error('password')
                     <p class="text-sm text-red-500">{{ $message }}</p>
@@ -59,7 +56,6 @@
                     type="password"
                     name="confirm_password"
                     id="confirm_password"
-                    required
                 />
                 @error('confirm_password')
                     <p class="text-sm text-red-500">{{ $message }}</p>
