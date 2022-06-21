@@ -56,26 +56,31 @@ class GameController extends Controller
     }
 
     public function dashboard(){
-       $featured = Review::selectRaw('count(id) as count_row, game_id')
-                ->where ('review_type', '=', 'recommended')
+        $featured = Review::selectRaw('count(id) as count_row, game_id')
+                    ->where ('review_type', '=', 'recommended')
+                    ->groupBy('game_id')
+                    ->orderBy('count_row', 'desc')
+                    ->limit(5)
+                    ->get();
+        
+        $hot = '';
+        $i = 7;
+        do{
+            $hot = Transaction::selectRaw('count(id) as counted, game_id')
+                ->whereRaw('DATEDIFF(now(),purchased_at)<='.$i)
                 ->groupBy('game_id')
-                ->orderBy('count_row', 'desc')
-                ->limit(5)
+                ->orderBy('counted', 'desc')
+                ->limit(8)
                 ->get();
-       
-        $hot = Transaction::selectRaw('count(id) as counted, game_id')
-            ->whereRaw('DATEDIFF(now(),purchased_at)<=7')
-            ->groupBy('game_id')
-            ->orderBy('counted', 'desc')
-            ->limit(8)
-            ->get();
+            $i = $i*2;
+        } while($hot->isEmpty());
+        
 
         return view('dashboard')
             ->with ([
                 'featured' => $featured,
                 'hot' => $hot,
             ]);
-        
     }
     
 
