@@ -16,14 +16,14 @@
         <div
             class="opening-content w-screen h-screen flex flex-col items-center justify-center"
         >
-            <div class="logo">
+            <a href="{{ route('dashboard') }}" class="logo rounded-[50%] p-2 hover:scale-105 mb-5">
                 <img
                     class="mb-4"
                     src="{{ asset('assets/Logo.png') }}"
                     alt="Logo"
                     width="100px"
                 />
-            </div>
+            </a>
             <div class="card bg-white shadow-md p-5 w-[25vw] text-gray-500">
                 @yield('form')
             </div>
