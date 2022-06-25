@@ -14,8 +14,12 @@
                         type="email"
                         name="email"
                         id="email"
-                        required
+                        value="{{ old('email') }}"
+                        autofocus
                     />
+                    @error('email')
+                        <p class="text-sm text-red-500">{{ $message }}</p>
+                    @enderror
                 </div>
             </div>
             <div class="form-field flex flex-col mb-2">
@@ -25,8 +29,10 @@
                     type="password"
                     name="password"
                     id="password"
-                    required
                 />
+                @error('password')
+                    <p class="text-sm text-red-500">{{ $message }}</p>
+                @enderror
             </div>
             <div class="form-field">
                 <input class="rounded-lg ring-[#c7ccf7] hover:ring-1 focus:outline-none focus:ring-2 active:ring-2" type="checkbox" name="rememberme" id="rememberme" />

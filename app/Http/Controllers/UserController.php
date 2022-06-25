@@ -19,16 +19,16 @@ class UserController extends Controller
         $credentials = Validator::make($request->all(),
         [
             'email' => ['required', 'email:dns'],
-            'password' => ['required'],
+            'password' => ['required', 'min:8'],
+        ],[
+            'password.min' => 'Invalid email or password!'
         ]);
 
         if($credentials->fails()){
             return redirect()
                 ->back()
                 ->withInput()
-                ->withErrors([
-                    'login' => '<b>Login Error!</b> The email is not valid',
-                ]);
+                ->withErrors($credentials);
         }
 
         Auth::setRememberDuration(60*24*2);
@@ -42,7 +42,7 @@ class UserController extends Controller
         }
         
         return back()->withErrors([
-            'login' => '<b>Login Error!</b> The email and password do not match!',
+            'login' => '<b>Login Error!</b> Invalid email or password!',
         ]);
     }
 

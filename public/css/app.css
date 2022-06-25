@@ -517,24 +517,20 @@ Ensure the default browser behavior of the `hidden` attribute.
   bottom: -80px;
 }
 
-.z-10 {
-  z-index: 10;
-}
-
-.z-0 {
-  z-index: 0;
+.z-50 {
+  z-index: 50;
 }
 
 .z-20 {
   z-index: 20;
 }
 
-.z-50 {
-  z-index: 50;
+.z-10 {
+  z-index: 10;
 }
 
-.z-40 {
-  z-index: 40;
+.z-0 {
+  z-index: 0;
 }
 
 .z-30 {
@@ -604,12 +600,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-right: 3rem;
 }
 
-.mb-4 {
-  margin-bottom: 1rem;
-}
-
 .mb-5 {
   margin-bottom: 1.25rem;
+}
+
+.mt-1 {
+  margin-top: 0.25rem;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
 }
 
 .mb-2 {
@@ -666,10 +666,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .-ml-px {
   margin-left: -1px;
-}
-
-.mt-1 {
-  margin-top: 0.25rem;
 }
 
 .mt-64 {
@@ -764,26 +760,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .h-\[70px\] {
   height: 70px;
-}
-
-.h-10 {
-  height: 2.5rem;
-}
-
-.h-14 {
-  height: 3.5rem;
-}
-
-.h-\[90\%\] {
-  height: 90%;
-}
-
-.h-\[95\%\] {
-  height: 95%;
-}
-
-.h-\[92\%\] {
-  height: 92%;
 }
 
 .min-h-screen {
@@ -884,18 +860,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: 9rem;
 }
 
-.w-\[70vw\] {
-  width: 70vw;
-}
-
-.w-\[48vw\] {
-  width: 48vw;
-}
-
-.w-\[80\%\] {
-  width: 80%;
-}
-
 .w-28 {
   width: 7rem;
 }
@@ -981,16 +945,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   justify-content: space-between;
 }
 
+.gap-3 {
+  gap: 0.75rem;
+}
+
 .gap-4 {
   gap: 1rem;
 }
 
 .gap-2 {
   gap: 0.5rem;
-}
-
-.gap-3 {
-  gap: 0.75rem;
 }
 
 .gap-\[1rem\] {
@@ -1095,10 +1059,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-top-width: 2px;
 }
 
-.border-t-0 {
-  border-top-width: 0px;
-}
-
 .border-gray-300 {
   --tw-border-opacity: 1;
   border-color: rgb(209 213 219 / var(--tw-border-opacity));
@@ -1119,14 +1079,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-color: rgb(107 114 128 / var(--tw-border-opacity));
 }
 
-.border-\[\#c7ccf7\] {
-  --tw-border-opacity: 1;
-  border-color: rgb(199 204 247 / var(--tw-border-opacity));
-}
-
 .bg-\[\#374151\] {
   --tw-bg-opacity: 1;
   background-color: rgb(55 65 81 / var(--tw-bg-opacity));
+}
+
+.bg-black {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
 }
 
 .bg-\[\#f3f4f6\] {
@@ -1162,11 +1122,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .bg-red-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(254 226 226 / var(--tw-bg-opacity));
-}
-
-.bg-black {
-  --tw-bg-opacity: 1;
-  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
 }
 
 .bg-black\/20 {
@@ -1218,11 +1173,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .px-\[10\%\] {
   padding-left: 10%;
   padding-right: 10%;
-}
-
-.py-5 {
-  padding-top: 1.25rem;
-  padding-bottom: 1.25rem;
 }
 
 .px-5 {
@@ -1285,6 +1235,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-bottom: 0.75rem;
 }
 
+.pt-5 {
+  padding-top: 1.25rem;
+}
+
 .pt-2 {
   padding-top: 0.5rem;
 }
@@ -1299,10 +1253,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .pb-20 {
   padding-bottom: 5rem;
-}
-
-.pt-5 {
-  padding-top: 1.25rem;
 }
 
 .pr-3 {
@@ -1582,10 +1532,6 @@ input[type="number"]::-webkit-inner-spin-button,
   border-width: 4px;
 }
 
-.hover\:border-2:hover {
-  border-width: 2px;
-}
-
 .hover\:border-\[\#c7ccf7\]:hover {
   --tw-border-opacity: 1;
   border-color: rgb(199 204 247 / var(--tw-border-opacity));
@@ -1691,11 +1637,6 @@ input[type="number"]::-webkit-inner-spin-button,
   border-color: rgb(147 197 253 / var(--tw-border-opacity));
 }
 
-.focus\:bg-red-600:focus {
-  --tw-bg-opacity: 1;
-  background-color: rgb(220 38 38 / var(--tw-bg-opacity));
-}
-
 .focus\:outline-none:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
@@ -1736,14 +1677,6 @@ input[type="number"]::-webkit-inner-spin-button,
 
 .group:hover .group-hover\:block {
   display: block;
-}
-
-.group:focus .group-focus\:block {
-  display: block;
-}
-
-.group:focus .group-focus\:flex {
-  display: flex;
 }
 
 @media (prefers-color-scheme: dark) {
