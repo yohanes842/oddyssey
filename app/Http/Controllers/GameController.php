@@ -56,6 +56,7 @@ class GameController extends Controller
     }
 
     public function dashboard(){
+        //Getting 5 games with highest count of positive reviews
         $featured = Review::selectRaw('count(id) as count_row, game_id')
                     ->where ('review_type', '=', 'recommended')
                     ->groupBy('game_id')
@@ -65,14 +66,17 @@ class GameController extends Controller
         
         $hot = '';
         $i = 7;
+
+        //Getting transactions from pasts week until get a least one transaction and maximum 8 transactions which most purchased in the past week
+        //First check from one past week and do increment until get the last transaction data
         do{
-            $hot = Transaction::selectRaw('count(id) as counted, game_id')
+            $hot = Transaction::selectRaw('count(id) as count_row, game_id')
                 ->whereRaw('DATEDIFF(now(),purchased_at)<='.$i)
                 ->groupBy('game_id')
-                ->orderBy('counted', 'desc')
+                ->orderBy('count_row', 'desc')
                 ->limit(8)
                 ->get();
-            $i = $i*2;
+            $i = $i+7;
         } while($hot->isEmpty());
         
 

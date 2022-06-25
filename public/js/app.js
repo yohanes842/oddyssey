@@ -2166,7 +2166,6 @@ if (slideBox) {
 
 (_$ = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#search")) === null || _$ === void 0 ? void 0 : _$.on("focus", function () {
   jquery__WEBPACK_IMPORTED_MODULE_0___default()("#dark-screen").css("display", "block");
-  jquery__WEBPACK_IMPORTED_MODULE_0___default()("#search-list").css("display", "flex");
 });
 (_$2 = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#dark-screen")) === null || _$2 === void 0 ? void 0 : _$2.on("click", function () {
   jquery__WEBPACK_IMPORTED_MODULE_0___default()("#dark-screen").css("display", "none");
@@ -2174,6 +2173,7 @@ if (slideBox) {
 });
 jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
   jquery__WEBPACK_IMPORTED_MODULE_0___default()("#search").on("keyup", function () {
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()("#search-list").css("display", "flex");
     var keyword = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).val();
     jquery__WEBPACK_IMPORTED_MODULE_0___default().ajax({
       url: "live-search",

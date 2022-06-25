@@ -100,7 +100,6 @@ if (slideBox) {
 //live search
 $("#search")?.on("focus", function () {
     $("#dark-screen").css("display", "block");
-    $("#search-list").css("display", "flex");
 });
 $("#dark-screen")?.on("click", function () {
     $("#dark-screen").css("display", "none");
@@ -109,6 +108,7 @@ $("#dark-screen")?.on("click", function () {
 
 $(document).ready(function () {
     $("#search").on("keyup", function () {
+        $("#search-list").css("display", "flex");
         var keyword = $(this).val();
         $.ajax({
             url: "live-search",
