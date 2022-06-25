@@ -18,7 +18,7 @@ class ReviewController extends Controller
         $game = Game::where('slug', $slug)->first();
         if($validation->fails()){
             return redirect()
-                ->back()
+                ->route("game-detail", $slug."#review-form")
                 ->withErrors($validation)
                 ->withInput();
         }else{

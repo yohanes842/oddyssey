@@ -106,7 +106,7 @@
         </div>
     </div>
     <div
-        class="content-postreview w-full p-5 bg-white rounded-md flex flex-col gap-3"
+        class="content-postreview w-full p-5 bg-white rounded-md flex flex-col gap-3" id="review-form"
     >
         <h2 class="font-semibold">Leave a Review!</h2>
         <form action="{{ route('post-review', $vargame->slug) }}" method="post">
