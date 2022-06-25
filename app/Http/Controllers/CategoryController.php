@@ -85,7 +85,7 @@ class CategoryController extends Controller
         $deleteGames = Game::where('category_id', $deleteCategory->id)->get();
         foreach($deleteGames as $deleteGame){
             $assetPath = $deleteGame->image_path;
-            Storage::deleteDirectory('assets/'.$assetPath);
+            Storage::deleteDirectory('public/assets/'.$assetPath);
         }
 
         //Delete category from database
