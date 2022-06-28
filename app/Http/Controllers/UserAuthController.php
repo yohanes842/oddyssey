@@ -61,11 +61,11 @@ class UserAuthController extends Controller
     }
 
     public function getTrans(Request $request){
-        // $id = $request->user()->id;
+        $id = $request->user()->id;
         
-        // // $trans = Transaction::where('user_id', $id );
+        $trans = Transaction::where('user_id', $id)->get();
         
-        // return response(['message'=>'Success', 'data'=>$id]);
+        return response(['message'=>'Success', 'data'=>$trans]);
   
     }
 }
