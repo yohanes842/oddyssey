@@ -32,7 +32,10 @@ class UserAuthController extends Controller
         $newUser->created_at = now();
         $newUser->updated_at = now();
         $newUser->save();    
+
         $token = $newUser->createToken('API Token')->accessToken;
+        $newUser['role'] = $newUser->role;
+        $newUser['token'] = $newUser->tokens;
 
         return response([
             'message'=>'success', 
@@ -52,7 +55,9 @@ class UserAuthController extends Controller
         if (!auth()->attempt($request->only(['email', 'password']))) return response (['error'=>'Invalid Credentials'], 403);
         
         $token = auth()->user()->createToken('API Token')->accessToken;
-        
+        auth()->user()['role'] = auth()->user()->role;
+        auth()->user()['token'] = auth()->user()->tokens;
+
         return response([
             'message'=>'success', 
             'user' => auth()->user(),
@@ -60,9 +65,9 @@ class UserAuthController extends Controller
         ], 200);
     }
 
-    public function getTrans(Request $request){
-        $trans = Transaction::with('game')->where('user_id', $request->user()->id)->get();
+    public function getTrans(){
+        $trans = Transaction::with('game')->where('user_id', auth()->user()->id)->get();
 
-        return response(['message'=>'Success', 'data'=>$trans]);
+        return response(['message'=>'Success', 'data' => $trans]);
     }
 }
