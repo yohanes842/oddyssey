@@ -8,21 +8,21 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Passport\HasApiTokens;
+use Symfony\Component\HttpKernel\Event\ResponseEvent;
 
 class UserAuthController extends Controller
 {
     use HasApiTokens;
 
     public function register(Request $request){
-        //validasi & create paling tan copas dari yang di register di userController
-        $data = $request->validate([
+        $data = Validator::make($request->all(), [
             'name' => 'required|max:255',
             'email' => 'required|email:dns|unique:users',
             'password' => 'required',
             'confirm_password' => 'required|same:password'
         ]);
-   
-        // $data['password']=bcrypt($request->password);
+
+        if($data->fails()) return response(['error' => $data->errors()]);
 
         $newUser = new User();
         $newUser->name = $request->name;
@@ -36,34 +36,32 @@ class UserAuthController extends Controller
 
         return response([
             'message'=>'success', 
-            'data' => $newUser,
+            'user' => $newUser,
             'access_token' => $token,
         ], 200);
     }
 
     public function login(Request $request){
-        //validasi & create paling tan copas dari yang di register di userController
-        $data = $request->validate([
+        $data = Validator::make($request->all(), [
             'email' => 'required|email:dns',
             'password' => 'required'
         ]);
 
-        if (!auth()->attempt($data)) return response (['error'=>'Invalid Credentials'], 403);
+        if($data->fails()) return response(['error' => $data->errors()]);
+
+        if (!auth()->attempt($request->only(['email', 'password']))) return response (['error'=>'Invalid Credentials'], 403);
         
         $token = auth()->user()->createToken('API Token')->accessToken;
         
         return response([
             'message'=>'success', 
-            'data' => auth()->user(),
-            'token'=>auth()->user()->token_get_all,
+            'user' => auth()->user(),
             'access_token' => $token,
         ], 200);
     }
 
     public function getTrans(Request $request){
-        $id = $request->user()->id;
-        
-        $trans = Transaction::with('game')->where('user_id', $id)->get();
+        $trans = Transaction::with('game')->where('user_id', $request->user()->id)->get();
 
         return response(['message'=>'Success', 'data'=>$trans]);
     }
