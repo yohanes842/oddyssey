@@ -121,7 +121,6 @@ $(document).ready(function () {
                     var price = each.price
                         ? "IDR " + each.price.toLocaleString("id-ID")
                         : "FREE";
-                    console.log(price);
                     $("#search-list").append(
                         $("<a>", {
                             href: "/game/" + each.slug,

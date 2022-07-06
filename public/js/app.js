@@ -2185,7 +2185,6 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
         jquery__WEBPACK_IMPORTED_MODULE_0___default()("#search-list").empty();
         data.forEach(function (each) {
           var price = each.price ? "IDR " + each.price.toLocaleString("id-ID") : "FREE";
-          console.log(price);
           jquery__WEBPACK_IMPORTED_MODULE_0___default()("#search-list").append(jquery__WEBPACK_IMPORTED_MODULE_0___default()("<a>", {
             href: "/game/" + each.slug
           }).append(jquery__WEBPACK_IMPORTED_MODULE_0___default()("<div>", {

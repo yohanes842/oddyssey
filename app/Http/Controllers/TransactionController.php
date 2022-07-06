@@ -10,7 +10,10 @@ use App\Models\Transaction;
 class TransactionController extends Controller
 {
     public function checkout(Request $request){
-        if(!Hash::check($request->password, auth()->user()->password)){
+        $user = auth()->user();
+        $total = auth()->user()->cartItems()->join('games', 'game_id', '=', 'games.id')->sum('price');
+
+        if(!Hash::check($request->password, $user->password)){
             return redirect()
                 ->back()
                 ->withErrors([
@@ -18,7 +21,7 @@ class TransactionController extends Controller
                 ]);
         }
 
-        $cartItems = CartItem::where('user_id', auth()->user()->id)->get();
+        $cartItems = CartItem::where('user_id', $user()->id)->get();
         foreach($cartItems as $cartItem){
             $transaction = new Transaction();
             $transaction->game_id = $cartItem->game_id;
@@ -27,7 +30,7 @@ class TransactionController extends Controller
             $transaction->save();
             $cartItem->delete();
         }
-        
-        return redirect()->route("cart")->with('checkout_success', $request->counter.' game(s) has successfully been checked out!<br><b>Your total Payment : '.$request->total.'</b>');
+
+        return redirect()->route("cart")->with('checkout_success', $cartItems->count().' game(s) has successfully been checked out!<br><b>Your total Payment : '. $total .'</b>');
     }
 }
