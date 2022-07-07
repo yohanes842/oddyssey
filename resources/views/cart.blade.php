@@ -70,11 +70,7 @@
         <div class="checkout-form-box w-[50%] p-10 mx-auto mt-64 bg-[#c7ccf7] text-gray-900 shadow-lg rounded-lg">
             <form action="{{ route('checkout') }}" method="POST">
                 @csrf
-                <input type="hidden" name="counter" value="{{ $count['counter'] }}">
-                <input type="hidden" name="total" value="{{ $count['total'] }}">
-                <input type="hidden" name="email" value="{{ auth()->user()->email }}">
-
-                <h2>Hi, <b>{{ auth()->user()->name }}</b>! Please type your password to continue your transaction!</h2>
+                <h2 class="text-center">Hi, <b>{{ auth()->user()->name }}</b>! Please type your password to continue your transaction!</h2>
                 <h2 class="text-center font-semibold">Your total transaction : {{ $count['total'] }}</h2>
                 <input
                     class="w-[50%] h-[2rem] p-2 mx-[25%] my-5 shadow-sm border-2 border-gray rounded-md ring-[#c7ccf7] hover:ring-1 focus:outline-none focus:ring-2"

@@ -21,7 +21,7 @@ class TransactionController extends Controller
                 ]);
         }
 
-        $cartItems = CartItem::where('user_id', $user()->id)->get();
+        $cartItems = CartItem::where('user_id', $user->id)->get();
         foreach($cartItems as $cartItem){
             $transaction = new Transaction();
             $transaction->game_id = $cartItem->game_id;
@@ -31,6 +31,6 @@ class TransactionController extends Controller
             $cartItem->delete();
         }
 
-        return redirect()->route("cart")->with('checkout_success', $cartItems->count().' game(s) has successfully been checked out!<br><b>Your total Payment : '. $total .'</b>');
+        return redirect()->route("cart")->with('checkout_success', $cartItems->count().' game(s) has successfully been checked out!<br><b>Your total Payment : IDR '. number_format($total) .'</b>');
     }
 }
