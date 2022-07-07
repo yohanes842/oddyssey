@@ -100,7 +100,6 @@ if (slideBox) {
 //live search
 $("#search")?.on("focus", function () {
     $("#dark-screen").css("display", "block");
-    $("#search-list").css("display", "block");
 });
 $("#dark-screen")?.on("click", function () {
     $("#dark-screen").css("display", "none");
@@ -116,7 +115,6 @@ function ajaxRequest(keyword) {
             $("#search-list").empty();
 
             data.forEach((each) => {
-                console.log(each);
                 var price = each.price
                     ? "IDR " + each.price.toLocaleString("id-ID")
                     : "FREE";
@@ -144,6 +142,8 @@ function ajaxRequest(keyword) {
                     )
                 );
             });
+
+            $("#search-list").css("display", "block");
         },
     });
 }

@@ -2166,7 +2166,6 @@ if (slideBox) {
 
 (_$ = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#search")) === null || _$ === void 0 ? void 0 : _$.on("focus", function () {
   jquery__WEBPACK_IMPORTED_MODULE_0___default()("#dark-screen").css("display", "block");
-  jquery__WEBPACK_IMPORTED_MODULE_0___default()("#search-list").css("display", "block");
 });
 (_$2 = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#dark-screen")) === null || _$2 === void 0 ? void 0 : _$2.on("click", function () {
   jquery__WEBPACK_IMPORTED_MODULE_0___default()("#dark-screen").css("display", "none");
@@ -2183,7 +2182,6 @@ function ajaxRequest(keyword) {
     success: function success(data) {
       jquery__WEBPACK_IMPORTED_MODULE_0___default()("#search-list").empty();
       data.forEach(function (each) {
-        console.log(each);
         var price = each.price ? "IDR " + each.price.toLocaleString("id-ID") : "FREE";
         jquery__WEBPACK_IMPORTED_MODULE_0___default()("#search-list").append(jquery__WEBPACK_IMPORTED_MODULE_0___default()("<a>", {
           href: "/game/" + each.slug
@@ -2196,6 +2194,7 @@ function ajaxRequest(keyword) {
           src: "assets/" + each.image_path + each.thumbnail_filename
         }), jquery__WEBPACK_IMPORTED_MODULE_0___default()("<h3>").text(each.title)]), jquery__WEBPACK_IMPORTED_MODULE_0___default()("<h3>").text(price)])));
       });
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()("#search-list").css("display", "block");
     }
   });
 } //Optimization live search feature
@@ -2207,7 +2206,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
     clearTimeout(requestTimeout);
     requestTimeout = setTimeout(function () {
       ajaxRequest(e.target.value);
-    }, 500);
+    }, 300);
   });
 });
 
