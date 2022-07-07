@@ -33,7 +33,7 @@ Route::controller(UserController::class)->group(function () {
     Route::post('/login', 'authentication')->middleware('guest');
     Route::get('/register', 'viewRegister')->middleware('guest')->name('register');
     Route::post('/register', 'store')->middleware('guest');
-    Route::post('/logout', 'logout')->name('logout');
+    Route::post('/logout', 'logout')->middleware('auth')->name('logout');
 });
 
 Route::controller(CartController::class)->middleware('auth')->name('cart')->group(function () {
@@ -54,22 +54,35 @@ Route::controller(GameController::class)->group(function () {
     Route::get('/game/{slug}', 'gameDetails')->name("game-detail");
 });
 
+Route::post('/post-review/{slug}', [ReviewController::class, 'postReview'])->middleware('auth')->name('post-review');
+
+//admin
 Route::controller(GameController::class)->group(function () {
-    Route::get('/admin/manage-games', 'index')->can('view', Game::class)->name('manage-games');
-    Route::get('/admin/manage-games/add', 'formAddGame')->can('create', Game::class)->name('add-game');
-    Route::post('/admin/manage-games/add', 'store')->can('create', Game::class);
-    Route::get('/admin/manage-games/update/{slug}', 'formUpdateGame')->can('update', Game::class)->name('update-game');
-    Route::put('/admin/manage-games/update/{slug}', 'update')->can('update', Game::class);
-    Route::delete('/admin/manage-games/delete/{slug}', 'destroy')->can('delete', Game::class)->name('delete-game');
+    Route::get('/game/manage', 'index')
+        ->can('view', Game::class)->name('manage-games');
+    Route::get('/game/manage/add', 'formAddGame')
+        ->can('create', Game::class)->name('add-game');
+    Route::post('/game/manage/add', 'store')
+        ->can('create', Game::class);
+    Route::get('/game/manage/update/{slug}', 'formUpdateGame')
+        ->can('update', Game::class)->name('update-game');
+    Route::put('/game/manage/update/{slug}', 'update')
+        ->can('update', Game::class);
+    Route::delete('/game/manage/delete/{slug}', 'destroy')
+        ->can('delete', Game::class)->name('delete-game');
 });
 
 Route::controller(CategoryController::class)->group(function () {
-    Route::get('/admin/manage-categories', 'index')->can('view', Category::class)->name('manage-categories');
-    Route::get('/admin/manage-categories/add', 'formAddCategory')->can('create', Category::class)->name('add-category');
-    Route::post('/admin/manage-categories/add', 'store')->can('create', Category::class);
-    Route::get('/admin/manage-categories/update/{slug}', 'formUpdateCategory')->can('update', Category::class)->name('update-category');
-    Route::put('/admin/manage-categories/update/{slug}', 'update')->can('update', Category::class);
-    Route::delete('/admin/manage-categories/delete/{slug}', 'destroy')->can('delete', Category::class)->name('delete-category');
+    Route::get('/category/manage', 'index')
+        ->can('view', Category::class)->name('manage-categories');
+    Route::get('/category/manage/add', 'formAddCategory')
+        ->can('create', Category::class)->name('add-category');
+    Route::post('/category/manage/add', 'store')
+        ->can('create', Category::class);
+    Route::get('/category/manage/update/{slug}', 'formUpdateCategory')
+        ->can('update', Category::class)->name('update-category');
+    Route::put('/category/manage/update/{slug}', 'update')
+        ->can('update', Category::class);
+    Route::delete('/category/manage/delete/{slug}', 'destroy')
+        ->can('delete', Category::class)->name('delete-category');
 });
-
-Route::post('/post-review/{slug}', [ReviewController::class, 'postReview'])->middleware('auth')->name('post-review');
