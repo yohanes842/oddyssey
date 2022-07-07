@@ -100,52 +100,62 @@ if (slideBox) {
 //live search
 $("#search")?.on("focus", function () {
     $("#dark-screen").css("display", "block");
+    $("#search-list").css("display", "block");
 });
 $("#dark-screen")?.on("click", function () {
     $("#dark-screen").css("display", "none");
     $("#search-list").css("display", "none");
 });
 
-$(document).ready(function () {
-    $("#search").on("keyup", function () {
-        $("#search-list").css("display", "flex");
-        var keyword = $(this).val();
-        $.ajax({
-            url: "live-search",
-            type: "GET",
-            data: { keyword: keyword },
-            success: function (data) {
-                $("#search-list").empty();
+function ajaxRequest(keyword) {
+    $.ajax({
+        url: "live-search",
+        type: "GET",
+        data: { keyword: keyword },
+        success: function (data) {
+            $("#search-list").empty();
 
-                data.forEach((each) => {
-                    var price = each.price
-                        ? "IDR " + each.price.toLocaleString("id-ID")
-                        : "FREE";
-                    $("#search-list").append(
-                        $("<a>", {
-                            href: "/game/" + each.slug,
-                        }).append(
+            data.forEach((each) => {
+                console.log(each);
+                var price = each.price
+                    ? "IDR " + each.price.toLocaleString("id-ID")
+                    : "FREE";
+                $("#search-list").append(
+                    $("<a>", {
+                        href: "/game/" + each.slug,
+                    }).append(
+                        $("<div>", {
+                            class: "h-16 p-1 pr-3 flex flex-row items-center justify-between bg-white border-x-2 border-y-[1px] hover:border-4 hover:border-[#c7ccf7]",
+                        }).append([
                             $("<div>", {
-                                class: "h-16 p-1 pr-3 flex flex-row items-center justify-between bg-white border-x-2 border-y-[1px] hover:border-4 hover:border-[#c7ccf7]",
+                                class: "h-full flex flex-row items-center gap-5",
                             }).append([
-                                $("<div>", {
-                                    class: "h-full flex flex-row items-center gap-5",
-                                }).append([
-                                    $("<img>", {
-                                        class: "h-full w-28 flex flex-row items-center gap-5",
-                                        src:
-                                            "assets/" +
-                                            each.image_path +
-                                            each.thumbnail_filename,
-                                    }),
-                                    $("<h3>").text(each.title),
-                                ]),
-                                $("<h3>").text(price),
-                            ])
-                        )
-                    );
-                });
-            },
-        });
+                                $("<img>", {
+                                    class: "h-full w-28 flex flex-row items-center gap-5",
+                                    src:
+                                        "assets/" +
+                                        each.image_path +
+                                        each.thumbnail_filename,
+                                }),
+                                $("<h3>").text(each.title),
+                            ]),
+                            $("<h3>").text(price),
+                        ])
+                    )
+                );
+            });
+        },
+    });
+}
+
+//Optimization live search feature
+let requestTimeout = "";
+
+$(document).ready(function () {
+    $("#search").on("keyup", (e) => {
+        clearTimeout(requestTimeout);
+        requestTimeout = setTimeout(() => {
+            ajaxRequest(e.target.value);
+        }, 500);
     });
 });
