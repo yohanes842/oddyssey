@@ -58,7 +58,7 @@ Route::post('/post-review/{slug}', [ReviewController::class, 'postReview'])->mid
 
 //admin
 Route::controller(GameController::class)->group(function () {
-    Route::get('/game/manage', 'index')
+    Route::get('/game/manage/view', 'index')
         ->can('view', Game::class)->name('manage-games');
     Route::get('/game/manage/add', 'formAddGame')
         ->can('create', Game::class)->name('add-game');
@@ -73,7 +73,7 @@ Route::controller(GameController::class)->group(function () {
 });
 
 Route::controller(CategoryController::class)->group(function () {
-    Route::get('/category/manage', 'index')
+    Route::get('/category/manage/view', 'index')
         ->can('view', Category::class)->name('manage-categories');
     Route::get('/category/manage/add', 'formAddCategory')
         ->can('create', Category::class)->name('add-category');
