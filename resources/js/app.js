@@ -156,6 +156,6 @@ $(document).ready(function () {
         clearTimeout(requestTimeout);
         requestTimeout = setTimeout(() => {
             ajaxRequest(e.target.value);
-        }, 500);
+        }, 300);
     });
 });
