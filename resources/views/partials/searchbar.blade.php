@@ -2,7 +2,7 @@
 <form class="z-50" action="{{ route('search') }}" method="GET">
     <div class="w-full px-[10%] pt-5 flex justify-center z-20 gap-3">
         <div class="w-full mx-1 mb-5 z-20 relative">
-            <input class=" w-full h-[2.5rem] border-2 border-gray-300 rounded-lg px-5 ring-[#c7ccf7] z-20 hover:ring-1 focus:outline-none focus:ring-3" type="text" name="search" id="search" placeholder="Search by game title">
+            <input  autocomplete="off" class=" w-full h-[2.5rem] border-2 border-gray-300 rounded-lg px-5 ring-[#c7ccf7] z-20 hover:ring-1 focus:outline-none focus:ring-3" type="text" name="search" id="search" placeholder="Search by game title">
             <div class="w-full h-96 mt-1 absolute flex-col z-20 hidden overflow-y-scroll" id="search-list">
             </div>
             
