@@ -41,7 +41,7 @@ class CategoryController extends Controller
         $newCategory->updated_at = now();
         $newCategory->save();
 
-        return redirect(route('manage-categories'))->with('add_success', 'Category <b>"'.$request->category_name.'"</b> has successfully been added!');
+        return redirect(route('manage-categories'))->with('add_success', 'Successfully added new category!');
     }
 
     public function formUpdateCategory($slug){
@@ -74,12 +74,15 @@ class CategoryController extends Controller
 
         $updateCat->save();
 
-        return redirect()->route('manage-categories')->with('update_success', 'Category <b>"'.$request->oldName.'"</b> has successfully been updated!');
+        return redirect()->route('manage-categories')->with('update_success', 'Successfully updated category!');
     }
 
     public function destroy($slug){
         $deleteCategory = Category::where('slug', $slug)->first();
-        $category_name = $deleteCategory->category_name;
+
+        if(!$deleteCategory){
+            abort(404);
+        }
 
         //Delete game assets directory which has category same as deleted category
         $deleteGames = Game::where('category_id', $deleteCategory->id)->get();
@@ -93,6 +96,6 @@ class CategoryController extends Controller
 
         return redirect()
             ->route('manage-categories')
-            ->with('delete_success', 'Category <b>"'.$category_name.'"</b> has successfully been deleted!');
+            ->with('delete_success', 'Successfully deleted category!');
     }
 }
