@@ -146,7 +146,7 @@ class GameController extends Controller
             $slider->storeAs($path, 'slide'.$counter.'.'.$slider->extension());
         }
 
-        return redirect()->route('manage-games')->with('add_success', 'Successfully added new game!');
+        return redirect()->route('manage-games')->with('add_success', 'New game added successfully!');
     }
 
     public function formUpdateGame($slug){
@@ -227,7 +227,7 @@ class GameController extends Controller
             $slider->storeAs($path, 'slide'.$counter.'.'.$slider->extension());
         }
 
-        return redirect()->route('manage-games')->with('update_success', 'Successfully updated game!');
+        return redirect()->route('manage-games')->with('update_success', 'Game updated successfully!');
     }
 
     public function destroy($slug){
@@ -248,6 +248,6 @@ class GameController extends Controller
 
         return redirect()
             ->route('manage-games')
-            ->with('delete_success', 'Successfully deleted game!');
+            ->with('delete_success', 'Game deleted successfully!');
     }
 }

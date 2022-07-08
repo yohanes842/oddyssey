@@ -33,7 +33,7 @@ class CartController extends Controller
             ->first();
         
         if($cartItem){
-            return redirect(route("cart"))->with('message', 'You already had <b>"'.$game->title.'"</b> in your cart!');
+            return redirect(route("cart"))->with('message', 'You already had '.$game->title.' in your cart!');
         }
 
         $new = new CartItem;
@@ -41,13 +41,13 @@ class CartController extends Controller
         $new->game_id = $game->id;
         $new->save();
 
-        return redirect(route("cart"))->with('message', 'Game <b>"'.$game->title.'"</b> has successfully been added to your cart!');
+        return redirect(route("cart"))->with('message', 'Game '.$game->title.' has successfully been added to your cart!');
     }
     
     public function destroy(Request $request){
         $cartItem = CartItem::with('game')->where('game_id', $request->id)->first();
 
         $cartItem->delete();
-        return redirect(route("cart"))->with('message', 'Game <b>"'.$cartItem->game->title.'"</b> has successfully been deleted from your cart!');
+        return redirect(route("cart"))->with('message', 'Game '.$cartItem->game->title.' has successfully been deleted from your cart!');
     }
 }

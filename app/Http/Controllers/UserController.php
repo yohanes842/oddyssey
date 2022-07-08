@@ -38,7 +38,7 @@ class UserController extends Controller
             
             $request->session()->regenerate();
 
-            return redirect()->route('dashboard')->with('login_success', 'Hi, <b>'.$users->name.'</b>! Welcome to Oddyssey!');
+            return redirect()->route('dashboard')->with('login_success', 'Hi, '.$users->name.'! Welcome to Oddyssey!');
         }
         
         return back()->withErrors([
@@ -78,7 +78,7 @@ class UserController extends Controller
         $newUser->save();    
         
 
-        return redirect()->route('login')->with('register_success', '<b>Registration successful!</b> Please login to your account!');
+        return redirect()->route('login')->with('register_success', 'Registration successful! Please login to your account!');
     }
 
 
@@ -91,6 +91,6 @@ class UserController extends Controller
     
         $request->session()->regenerateToken();
     
-        return redirect()->route('dashboard')->with('logout_success', '<b>You just logged out from your account!</b> You are logged in as guest now!');
+        return redirect()->route('dashboard')->with('logout_success', 'You just logged out from your account! You are logged in as guest now!');
     }
 }

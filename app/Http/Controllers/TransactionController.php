@@ -31,6 +31,6 @@ class TransactionController extends Controller
             $cartItem->delete();
         }
 
-        return redirect()->route("cart")->with('checkout_success', $cartItems->count().' game(s) has successfully been checked out!<br><b>Your total Payment : IDR '. number_format($total) .'</b>');
+        return redirect()->route("cart")->with('checkout_success', $cartItems->count().' game(s) has successfully been checked out! Your total Payment : IDR '. number_format($total));
     }
 }

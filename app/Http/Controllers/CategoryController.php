@@ -41,7 +41,7 @@ class CategoryController extends Controller
         $newCategory->updated_at = now();
         $newCategory->save();
 
-        return redirect(route('manage-categories'))->with('add_success', 'Successfully added new category!');
+        return redirect(route('manage-categories'))->with('add_success', 'New category added successfully!');
     }
 
     public function formUpdateCategory($slug){
@@ -74,7 +74,7 @@ class CategoryController extends Controller
 
         $updateCat->save();
 
-        return redirect()->route('manage-categories')->with('update_success', 'Successfully updated category!');
+        return redirect()->route('manage-categories')->with('update_success', 'Category updated successfully!');
     }
 
     public function destroy($slug){
@@ -96,6 +96,6 @@ class CategoryController extends Controller
 
         return redirect()
             ->route('manage-categories')
-            ->with('delete_success', 'Successfully deleted category!');
+            ->with('delete_success', 'Category deleted successfully!');
     }
 }

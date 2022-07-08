@@ -38,6 +38,6 @@ class ReviewController extends Controller
         $newReview->description = $request->reviewDescription;
         $newReview->save();
 
-        return redirect()->back()->with("post_success", "Your review is successfully posted!");
+        return redirect()->back()->with("post_success", "Your review was successfully posted!");
     }
 }
