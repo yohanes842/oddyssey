@@ -42,7 +42,7 @@ class UserController extends Controller
         }
         
         return back()->withErrors([
-            'login' => '<b>Login Error!</b> Invalid email or password!',
+            'login' => 'Login Error! Invalid email or password!',
         ]);
     }
 
