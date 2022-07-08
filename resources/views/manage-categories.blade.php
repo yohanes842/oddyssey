@@ -20,7 +20,7 @@
                         <div class="flex gap-3 text-sm">
                             <a class="p-4 py-1 bg-[#374151] rounded-md text-white font-center font-medium scale-105 hover:bg-[#475161]" href="{{ route('update-category', $category->slug) }}">UPDATE</a>
 
-                            <form action="{{ route ('delete-category', $category->slug) }}" method="post">
+                            <form action="{{ route ('delete-category', $category->sl{) }}" method="}st">
                                 @csrf
                                 @method('DELETE')
                                 <input type="hidden" name="id" value="{{ $category->id }}">
@@ -45,14 +45,14 @@
 
 @section('notification')
     @if(session()->has('delete_success'))
-    <x-notification message="{!! session('delete_success') !!}" bg-color="bg-green-100" text-color="text-green-900"/>
+    <x-notification message="{{ session('delete_success') }}" bg-color="bg-green-100" text-color="text-green-900"/>
     @endif  
 
     @if(session()->has('update_success'))
-    <x-notification message="{!! session('update_success') !!}" bg-color="bg-green-100" text-color="text-green-900"/>
+    <x-notification message="{{ session('update_success') }}" bg-color="bg-green-100" text-color="text-green-900"/>
     @endif  
 
     @if(session()->has('add_success'))
-    <x-notification message="{!! session('add_success') !!}" bg-color="bg-green-100" text-color="text-green-900"/>
+    <x-notification message="{{ session('add_success') }}" bg-color="bg-green-100" text-color="text-green-900"/>
     @endif  
 @endsection

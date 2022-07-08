@@ -29,9 +29,3 @@
     Back
 </a>
 @endsection
-
-@section('notification')
-    @if(session()->has('add_success'))
-    <x-notification message="{!! session('add_success') !!}" bg-color="bg-green-100" text-color="text-green-900"/>
-    @endif  
-@endsection

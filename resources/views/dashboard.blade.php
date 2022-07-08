@@ -53,9 +53,9 @@
     </div>
     <div class="notification-container">
         @if(session()->has('logout_success'))
-        <x-notification message="{!! session('logout_success') !!}" bg-color="bg-[#c7ccf7]" text-color="text-gray-900"/>
+        <x-notification message="{{ session('logout_success') }}" bg-color="bg-[#c7ccf7]" text-color="text-gray-900"/>
         @elseif(session()->has('login_success'))
-        <x-notification message="{!! session('login_success') !!}" bg-color="bg-green-100" text-color="text-green-900"/>
+        <x-notification message="{{ session('login_success') }}" bg-color="bg-green-100" text-color="text-green-900"/>
         @endif
     </div>
 @endsection

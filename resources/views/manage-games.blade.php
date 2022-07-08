@@ -57,15 +57,15 @@
 
 @section('notification')
     @if(session()->has('delete_success'))
-    <x-notification message="{!! session('delete_success') !!}" bg-color="bg-green-100" text-color="text-green-900"/>
+    <x-notification message="{{ session('delete_success') }}" bg-color="bg-green-100" text-color="text-green-900"/>
     @endif  
 
     @if(session()->has('update_success'))
-    <x-notification message="{!! session('update_success') !!}" bg-color="bg-green-100" text-color="text-green-900"/>
+    <x-notification message="{{ session('update_success') }}" bg-color="bg-green-100" text-color="text-green-900"/>
     @endif 
     
     @if(session()->has('add_success'))
-    <x-notification message="{!! session('add_success') !!}" bg-color="bg-green-100" text-color="text-green-900"/>
+    <x-notification message="{{ session('add_success') }}" bg-color="bg-green-100" text-color="text-green-900"/>
     @endif  
 @endsection
 

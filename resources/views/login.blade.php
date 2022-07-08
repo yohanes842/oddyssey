@@ -54,9 +54,9 @@
 
 @section('notification')
     @if(session()->has('register_success'))
-    <x-notification message="{!! session('register_success') !!}" bg-color="bg-green-100" text-color="text-green-900"/>
+    <x-notification message="{{ session('register_success') }}" bg-color="bg-green-100" text-color="text-green-900"/>
     @endif
     @error('login')
-    <x-notification message="{!! $message !!}" bg-color="bg-red-100" text-color="text-red-900"/>
+    <x-notification message="{{ $message }}" bg-color="bg-red-100" text-color="text-red-900"/>
     @enderror    
 @endsection

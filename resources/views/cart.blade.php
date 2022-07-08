@@ -104,8 +104,8 @@
 
 @section('notification')
     @if(session()->has('message'))
-    <x-notification message="{!! session('message') !!}" bg-color="bg-[#c7ccf7]" text-color="text-gray-900"/>
+    <x-notification message="{{ session('message') }}" bg-color="bg-[#c7ccf7]" text-color="text-gray-900"/>
     @elseif(session()->has('checkout_success'))
-    <x-notification message="{!! session('checkout_success') !!}" bg-color="bg-[#c7ccf7]" text-color="text-gray-900"/>
+    <x-notification message="{{ session('checkout_success') }}" bg-color="bg-[#c7ccf7]" text-color="text-gray-900"/>
     @endif  
 @endsection
