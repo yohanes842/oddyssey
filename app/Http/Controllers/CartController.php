@@ -11,7 +11,8 @@ class CartController extends Controller
     public function index(){
         $cartItems = CartItem::with('game.category')
             ->join('games', 'cart_items.game_id', '=', 'games.id')
-            ->where('user_id', auth()->user()->id)->get();
+            ->where('user_id', auth()->user()->id)
+            ->orderBy('cart_items.created_at', 'desc')->get();
 
         $count = [
             'counter' => $cartItems->count(),
